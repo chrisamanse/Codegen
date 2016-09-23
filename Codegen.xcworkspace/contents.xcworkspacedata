@@ -4,4 +4,8 @@
    <FileRef
       location = "container:Codegen.xcodeproj">
    </FileRef>
+   <Group
+      location = "container:"
+      name = "Metadata">
+   </Group>
 </Workspace>
