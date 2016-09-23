@@ -7,5 +7,8 @@
    <Group
       location = "container:"
       name = "Metadata">
+      <FileRef
+         location = "group:Cartfile">
+      </FileRef>
    </Group>
 </Workspace>
