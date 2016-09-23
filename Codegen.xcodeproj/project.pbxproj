@@ -18,6 +18,14 @@
 		DFE7F0821D95353F00B8E15B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE7F0811D95353F00B8E15B /* Assets.xcassets */; };
 		DFE7F0851D95353F00B8E15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE7F0831D95353F00B8E15B /* Main.storyboard */; };
 		DFE7F0901D95353F00B8E15B /* Codegen_macOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7F08F1D95353F00B8E15B /* Codegen_macOSUITests.swift */; };
+		DFE7F09B1D95395B00B8E15B /* CryptoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE7F0991D95395B00B8E15B /* CryptoKit.framework */; };
+		DFE7F09C1D95395B00B8E15B /* OTPKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE7F09A1D95395B00B8E15B /* OTPKit.framework */; };
+		DFE7F0A31D953A6300B8E15B /* CryptoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE7F09E1D95397C00B8E15B /* CryptoKit.framework */; };
+		DFE7F0A41D953A6300B8E15B /* CryptoKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFE7F09E1D95397C00B8E15B /* CryptoKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DFE7F0A51D953A6300B8E15B /* OTPKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE7F09F1D95397C00B8E15B /* OTPKit.framework */; };
+		DFE7F0A61D953A6300B8E15B /* OTPKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFE7F09F1D95397C00B8E15B /* OTPKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DFE7F0AB1D953AC000B8E15B /* CryptoKit.framework.dSYM in Carthage Copy Debug Symbols */ = {isa = PBXBuildFile; fileRef = DFE7F0A91D953AC000B8E15B /* CryptoKit.framework.dSYM */; };
+		DFE7F0AC1D953AC000B8E15B /* OTPKit.framework.dSYM in Carthage Copy Debug Symbols */ = {isa = PBXBuildFile; fileRef = DFE7F0AA1D953AC000B8E15B /* OTPKit.framework.dSYM */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +44,33 @@
 			remoteInfo = "Codegen macOS";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DFE7F0A71D953A6300B8E15B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DFE7F0A41D953A6300B8E15B /* CryptoKit.framework in Embed Frameworks */,
+				DFE7F0A61D953A6300B8E15B /* OTPKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFE7F0A81D953A9A00B8E15B /* Carthage Copy Debug Symbols */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				DFE7F0AB1D953AC000B8E15B /* CryptoKit.framework.dSYM in Carthage Copy Debug Symbols */,
+				DFE7F0AC1D953AC000B8E15B /* OTPKit.framework.dSYM in Carthage Copy Debug Symbols */,
+			);
+			name = "Carthage Copy Debug Symbols";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DFE7F0561D9534A000B8E15B /* Codegen iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codegen iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +92,12 @@
 		DFE7F08B1D95353F00B8E15B /* Codegen macOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Codegen macOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE7F08F1D95353F00B8E15B /* Codegen_macOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codegen_macOSUITests.swift; sourceTree = "<group>"; };
 		DFE7F0911D95353F00B8E15B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFE7F0991D95395B00B8E15B /* CryptoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoKit.framework; path = Carthage/Build/iOS/CryptoKit.framework; sourceTree = "<group>"; };
+		DFE7F09A1D95395B00B8E15B /* OTPKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OTPKit.framework; path = Carthage/Build/iOS/OTPKit.framework; sourceTree = "<group>"; };
+		DFE7F09E1D95397C00B8E15B /* CryptoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoKit.framework; path = Carthage/Build/Mac/CryptoKit.framework; sourceTree = "<group>"; };
+		DFE7F09F1D95397C00B8E15B /* OTPKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OTPKit.framework; path = Carthage/Build/Mac/OTPKit.framework; sourceTree = "<group>"; };
+		DFE7F0A91D953AC000B8E15B /* CryptoKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = CryptoKit.framework.dSYM; path = Carthage/Build/Mac/CryptoKit.framework.dSYM; sourceTree = "<group>"; };
+		DFE7F0AA1D953AC000B8E15B /* OTPKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = OTPKit.framework.dSYM; path = Carthage/Build/Mac/OTPKit.framework.dSYM; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFE7F09B1D95395B00B8E15B /* CryptoKit.framework in Frameworks */,
+				DFE7F09C1D95395B00B8E15B /* OTPKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +121,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFE7F0A31D953A6300B8E15B /* CryptoKit.framework in Frameworks */,
+				DFE7F0A51D953A6300B8E15B /* OTPKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +144,7 @@
 				DFE7F07C1D95353E00B8E15B /* Codegen macOS */,
 				DFE7F08E1D95353F00B8E15B /* Codegen macOSUITests */,
 				DFE7F0571D9534A000B8E15B /* Products */,
+				DFE7F0981D95395B00B8E15B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,6 +202,35 @@
 			path = "Codegen macOSUITests";
 			sourceTree = "<group>";
 		};
+		DFE7F0981D95395B00B8E15B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DFE7F09D1D95396200B8E15B /* iOS */,
+				DFE7F0A21D95397F00B8E15B /* macOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DFE7F09D1D95396200B8E15B /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				DFE7F0991D95395B00B8E15B /* CryptoKit.framework */,
+				DFE7F09A1D95395B00B8E15B /* OTPKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		DFE7F0A21D95397F00B8E15B /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				DFE7F09E1D95397C00B8E15B /* CryptoKit.framework */,
+				DFE7F09F1D95397C00B8E15B /* OTPKit.framework */,
+				DFE7F0A91D953AC000B8E15B /* CryptoKit.framework.dSYM */,
+				DFE7F0AA1D953AC000B8E15B /* OTPKit.framework.dSYM */,
+			);
+			name = macOS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -166,6 +241,7 @@
 				DFE7F0521D9534A000B8E15B /* Sources */,
 				DFE7F0531D9534A000B8E15B /* Frameworks */,
 				DFE7F0541D9534A000B8E15B /* Resources */,
+				DFE7F0AD1D953B5900B8E15B /* Carthage Copy Frameworks Script */,
 			);
 			buildRules = (
 			);
@@ -201,6 +277,8 @@
 				DFE7F0771D95353E00B8E15B /* Sources */,
 				DFE7F0781D95353E00B8E15B /* Frameworks */,
 				DFE7F0791D95353E00B8E15B /* Resources */,
+				DFE7F0A71D953A6300B8E15B /* Embed Frameworks */,
+				DFE7F0A81D953A9A00B8E15B /* Carthage Copy Debug Symbols */,
 			);
 			buildRules = (
 			);
@@ -314,6 +392,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DFE7F0AD1D953B5900B8E15B /* Carthage Copy Frameworks Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/CryptoKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/OTPKit.framework",
+			);
+			name = "Carthage Copy Frameworks Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DFE7F0521D9534A000B8E15B /* Sources */ = {
@@ -432,6 +529,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -488,6 +589,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -643,6 +748,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -699,6 +808,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -844,6 +957,7 @@
 				DFE7F0731D9534A000B8E15B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DFE7F0741D9534A000B8E15B /* Build configuration list for PBXNativeTarget "Codegen iOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -852,6 +966,7 @@
 				DFE7F0761D9534A000B8E15B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DFE7F0921D95353F00B8E15B /* Build configuration list for PBXNativeTarget "Codegen macOS" */ = {
 			isa = XCConfigurationList;
@@ -860,6 +975,7 @@
 				DFE7F0941D95353F00B8E15B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DFE7F0951D95353F00B8E15B /* Build configuration list for PBXNativeTarget "Codegen macOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -868,6 +984,7 @@
 				DFE7F0971D95353F00B8E15B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
