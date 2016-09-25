@@ -136,9 +136,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF370C5E1D97B8C3004EC853 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		DFE7F04B1D95345800B8E15B = {
 			isa = PBXGroup;
 			children = (
+				DF370C5E1D97B8C3004EC853 /* Shared */,
 				DFE7F0581D9534A000B8E15B /* Codegen iOS */,
 				DFE7F06D1D9534A000B8E15B /* Codegen iOSUITests */,
 				DFE7F07C1D95353E00B8E15B /* Codegen macOS */,
