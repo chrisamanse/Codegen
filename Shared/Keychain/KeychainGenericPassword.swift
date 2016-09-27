@@ -98,7 +98,7 @@ public extension KeychainGenericPassword {
         return query
     }
     
-    public static func fetchAttributes(service: String, account: String?, accessGroup: String?) throws -> [String: AnyObject] {
+    public static func fetchAttributes(service: String, account: String? = nil, accessGroup: String? = nil) throws -> [String: AnyObject] {
         // Create query
         var query = self.query(service: service, account: account, accessGroup: accessGroup)
         query[kSecMatchLimit as String] = kSecMatchLimitOne
