@@ -15,6 +15,8 @@
 		DF61E5361D9A150100DA2607 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF61E5321D9A150100DA2607 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF61E5391D9A154300DA2607 /* Realm.framework.dSYM in Carthage Copy Debug Symbols */ = {isa = PBXBuildFile; fileRef = DF61E5371D9A154300DA2607 /* Realm.framework.dSYM */; };
 		DF61E53A1D9A154300DA2607 /* RealmSwift.framework.dSYM in Carthage Copy Debug Symbols */ = {isa = PBXBuildFile; fileRef = DF61E5381D9A154300DA2607 /* RealmSwift.framework.dSYM */; };
+		DF61E53D1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E53C1D9A18DA00DA2607 /* RealmDefaults.swift */; };
+		DF61E53E1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E53C1D9A18DA00DA2607 /* RealmDefaults.swift */; };
 		DFE7F05A1D9534A000B8E15B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7F0591D9534A000B8E15B /* AppDelegate.swift */; };
 		DFE7F05C1D9534A000B8E15B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7F05B1D9534A000B8E15B /* ViewController.swift */; };
 		DFE7F05F1D9534A000B8E15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE7F05D1D9534A000B8E15B /* Main.storyboard */; };
@@ -91,6 +93,7 @@
 		DF61E5321D9A150100DA2607 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/Mac/RealmSwift.framework; sourceTree = "<group>"; };
 		DF61E5371D9A154300DA2607 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Realm.framework.dSYM; path = Carthage/Build/Mac/Realm.framework.dSYM; sourceTree = "<group>"; };
 		DF61E5381D9A154300DA2607 /* RealmSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RealmSwift.framework.dSYM; path = Carthage/Build/Mac/RealmSwift.framework.dSYM; sourceTree = "<group>"; };
+		DF61E53C1D9A18DA00DA2607 /* RealmDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDefaults.swift; sourceTree = "<group>"; };
 		DFE7F0561D9534A000B8E15B /* Codegen iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codegen iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE7F0591D9534A000B8E15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFE7F05B1D9534A000B8E15B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -161,8 +164,17 @@
 		DF370C5E1D97B8C3004EC853 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				DF61E53B1D9A15E800DA2607 /* Realm */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		DF61E53B1D9A15E800DA2607 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				DF61E53C1D9A18DA00DA2607 /* RealmDefaults.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		DFE7F04B1D95345800B8E15B = {
@@ -458,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFE7F05C1D9534A000B8E15B /* ViewController.swift in Sources */,
+				DF61E53D1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */,
 				DFE7F05A1D9534A000B8E15B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,6 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFE7F0801D95353F00B8E15B /* ViewController.swift in Sources */,
+				DF61E53E1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */,
 				DFE7F07E1D95353F00B8E15B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
