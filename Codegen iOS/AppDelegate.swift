@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Setup Realm
+        do {
+            try RealmDefaults.setupDefaultRealmConfiguration()
+            
+            // Inspect key
+            guard let key = Realm.Configuration.defaultConfiguration.encryptionKey else {
+                fatalError("No key found!")
+            }
+            
+            let hexString = key.map {
+                String(format: "%02x", $0)
+                }.joined()
+            
+            print("Key data: \(hexString)")
+            
+            // Try to create a Realm (initializes Realm files)
+            let realm = try Realm()
+            
+            // Ensure default Realm has key
+            if realm.configuration.encryptionKey != key {
+                fatalError("Different keys used!")
+            }
+        } catch let error {
+            fatalError("Failed to generate RealmKey!: \(error)")
+        }
+        
         return true
     }
 
