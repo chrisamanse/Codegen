@@ -26,6 +26,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 fatalError("No key found in default Realm.Configuration!")
             }
             
+            #if DEBUG
+                // Only print key when debugging
+                print("Key: \(key.map { String(format: "%02x", $0) }.joined())")
+            #endif
+            
             // Try to create a Realm (initializes Realm files if not yet initialized)
             let realm = try Realm()
             
