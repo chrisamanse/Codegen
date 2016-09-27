@@ -28,6 +28,9 @@ enum RealmDefaults {
         let newURL = realmDirectory.appendingPathComponent(realmFilename)
         config.fileURL = newURL
         
+        // Set encryption key
+        config.encryptionKey = try RealmKey.fetchDefault().key
+        
         Realm.Configuration.defaultConfiguration = config
     }
     
