@@ -574,6 +574,7 @@
 		DFE7F0501D95345800B8E15B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
 			};
 			name = Debug;
 		};
