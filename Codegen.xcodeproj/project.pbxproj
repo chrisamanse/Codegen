@@ -17,6 +17,14 @@
 		DF61E53A1D9A154300DA2607 /* RealmSwift.framework.dSYM in Carthage Copy Debug Symbols */ = {isa = PBXBuildFile; fileRef = DF61E5381D9A154300DA2607 /* RealmSwift.framework.dSYM */; };
 		DF61E53D1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E53C1D9A18DA00DA2607 /* RealmDefaults.swift */; };
 		DF61E53E1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E53C1D9A18DA00DA2607 /* RealmDefaults.swift */; };
+		DF61E5441D9A24B500DA2607 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E5401D9A24B500DA2607 /* Keychain.swift */; };
+		DF61E5451D9A24B500DA2607 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E5401D9A24B500DA2607 /* Keychain.swift */; };
+		DF61E5461D9A24B500DA2607 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E5411D9A24B500DA2607 /* KeychainError.swift */; };
+		DF61E5471D9A24B500DA2607 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E5411D9A24B500DA2607 /* KeychainError.swift */; };
+		DF61E5481D9A24B500DA2607 /* Keychain.Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E5421D9A24B500DA2607 /* Keychain.Accessibility.swift */; };
+		DF61E5491D9A24B500DA2607 /* Keychain.Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E5421D9A24B500DA2607 /* Keychain.Accessibility.swift */; };
+		DF61E54A1D9A24B500DA2607 /* KeychainGenericPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E5431D9A24B500DA2607 /* KeychainGenericPassword.swift */; };
+		DF61E54B1D9A24B500DA2607 /* KeychainGenericPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E5431D9A24B500DA2607 /* KeychainGenericPassword.swift */; };
 		DFE7F05A1D9534A000B8E15B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7F0591D9534A000B8E15B /* AppDelegate.swift */; };
 		DFE7F05C1D9534A000B8E15B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7F05B1D9534A000B8E15B /* ViewController.swift */; };
 		DFE7F05F1D9534A000B8E15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE7F05D1D9534A000B8E15B /* Main.storyboard */; };
@@ -94,6 +102,10 @@
 		DF61E5371D9A154300DA2607 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Realm.framework.dSYM; path = Carthage/Build/Mac/Realm.framework.dSYM; sourceTree = "<group>"; };
 		DF61E5381D9A154300DA2607 /* RealmSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RealmSwift.framework.dSYM; path = Carthage/Build/Mac/RealmSwift.framework.dSYM; sourceTree = "<group>"; };
 		DF61E53C1D9A18DA00DA2607 /* RealmDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDefaults.swift; sourceTree = "<group>"; };
+		DF61E5401D9A24B500DA2607 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		DF61E5411D9A24B500DA2607 /* KeychainError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
+		DF61E5421D9A24B500DA2607 /* Keychain.Accessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.Accessibility.swift; sourceTree = "<group>"; };
+		DF61E5431D9A24B500DA2607 /* KeychainGenericPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainGenericPassword.swift; sourceTree = "<group>"; };
 		DFE7F0561D9534A000B8E15B /* Codegen iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codegen iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE7F0591D9534A000B8E15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFE7F05B1D9534A000B8E15B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +176,7 @@
 		DF370C5E1D97B8C3004EC853 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				DF61E53F1D9A235700DA2607 /* Keychain */,
 				DF61E53B1D9A15E800DA2607 /* Realm */,
 			);
 			path = Shared;
@@ -175,6 +188,17 @@
 				DF61E53C1D9A18DA00DA2607 /* RealmDefaults.swift */,
 			);
 			path = Realm;
+			sourceTree = "<group>";
+		};
+		DF61E53F1D9A235700DA2607 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				DF61E5401D9A24B500DA2607 /* Keychain.swift */,
+				DF61E5411D9A24B500DA2607 /* KeychainError.swift */,
+				DF61E5421D9A24B500DA2607 /* Keychain.Accessibility.swift */,
+				DF61E5431D9A24B500DA2607 /* KeychainGenericPassword.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 		DFE7F04B1D95345800B8E15B = {
@@ -470,8 +494,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFE7F05C1D9534A000B8E15B /* ViewController.swift in Sources */,
+				DF61E5461D9A24B500DA2607 /* KeychainError.swift in Sources */,
+				DF61E54A1D9A24B500DA2607 /* KeychainGenericPassword.swift in Sources */,
+				DF61E5441D9A24B500DA2607 /* Keychain.swift in Sources */,
 				DF61E53D1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */,
 				DFE7F05A1D9534A000B8E15B /* AppDelegate.swift in Sources */,
+				DF61E5481D9A24B500DA2607 /* Keychain.Accessibility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,8 +516,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFE7F0801D95353F00B8E15B /* ViewController.swift in Sources */,
+				DF61E5471D9A24B500DA2607 /* KeychainError.swift in Sources */,
+				DF61E54B1D9A24B500DA2607 /* KeychainGenericPassword.swift in Sources */,
+				DF61E5451D9A24B500DA2607 /* Keychain.swift in Sources */,
 				DF61E53E1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */,
 				DFE7F07E1D95353F00B8E15B /* AppDelegate.swift in Sources */,
+				DF61E5491D9A24B500DA2607 /* Keychain.Accessibility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
