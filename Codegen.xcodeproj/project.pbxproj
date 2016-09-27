@@ -25,6 +25,8 @@
 		DF61E5491D9A24B500DA2607 /* Keychain.Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E5421D9A24B500DA2607 /* Keychain.Accessibility.swift */; };
 		DF61E54A1D9A24B500DA2607 /* KeychainGenericPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E5431D9A24B500DA2607 /* KeychainGenericPassword.swift */; };
 		DF61E54B1D9A24B500DA2607 /* KeychainGenericPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E5431D9A24B500DA2607 /* KeychainGenericPassword.swift */; };
+		DF61E54D1D9A268900DA2607 /* RealmKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E54C1D9A268900DA2607 /* RealmKey.swift */; };
+		DF61E54E1D9A268900DA2607 /* RealmKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E54C1D9A268900DA2607 /* RealmKey.swift */; };
 		DFE7F05A1D9534A000B8E15B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7F0591D9534A000B8E15B /* AppDelegate.swift */; };
 		DFE7F05C1D9534A000B8E15B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7F05B1D9534A000B8E15B /* ViewController.swift */; };
 		DFE7F05F1D9534A000B8E15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE7F05D1D9534A000B8E15B /* Main.storyboard */; };
@@ -106,6 +108,7 @@
 		DF61E5411D9A24B500DA2607 /* KeychainError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
 		DF61E5421D9A24B500DA2607 /* Keychain.Accessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.Accessibility.swift; sourceTree = "<group>"; };
 		DF61E5431D9A24B500DA2607 /* KeychainGenericPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainGenericPassword.swift; sourceTree = "<group>"; };
+		DF61E54C1D9A268900DA2607 /* RealmKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmKey.swift; sourceTree = "<group>"; };
 		DFE7F0561D9534A000B8E15B /* Codegen iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codegen iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE7F0591D9534A000B8E15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFE7F05B1D9534A000B8E15B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				DF61E53C1D9A18DA00DA2607 /* RealmDefaults.swift */,
+				DF61E54C1D9A268900DA2607 /* RealmKey.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -496,6 +500,7 @@
 				DFE7F05C1D9534A000B8E15B /* ViewController.swift in Sources */,
 				DF61E5461D9A24B500DA2607 /* KeychainError.swift in Sources */,
 				DF61E54A1D9A24B500DA2607 /* KeychainGenericPassword.swift in Sources */,
+				DF61E54D1D9A268900DA2607 /* RealmKey.swift in Sources */,
 				DF61E5441D9A24B500DA2607 /* Keychain.swift in Sources */,
 				DF61E53D1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */,
 				DFE7F05A1D9534A000B8E15B /* AppDelegate.swift in Sources */,
@@ -518,6 +523,7 @@
 				DFE7F0801D95353F00B8E15B /* ViewController.swift in Sources */,
 				DF61E5471D9A24B500DA2607 /* KeychainError.swift in Sources */,
 				DF61E54B1D9A24B500DA2607 /* KeychainGenericPassword.swift in Sources */,
+				DF61E54E1D9A268900DA2607 /* RealmKey.swift in Sources */,
 				DF61E5451D9A24B500DA2607 /* Keychain.swift in Sources */,
 				DF61E53E1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */,
 				DFE7F07E1D95353F00B8E15B /* AppDelegate.swift in Sources */,
