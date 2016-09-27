@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF1A78AC1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A78AB1D9A7C3D00CEDE7C /* OTPAccount.swift */; };
+		DF1A78AD1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A78AB1D9A7C3D00CEDE7C /* OTPAccount.swift */; };
 		DF61E52F1D9A144F00DA2607 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF61E52D1D9A144F00DA2607 /* Realm.framework */; };
 		DF61E5301D9A144F00DA2607 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF61E52E1D9A144F00DA2607 /* RealmSwift.framework */; };
 		DF61E5331D9A150100DA2607 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF61E5311D9A150100DA2607 /* Realm.framework */; };
@@ -89,6 +91,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DF1A78AB1D9A7C3D00CEDE7C /* OTPAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPAccount.swift; sourceTree = "<group>"; };
 		DF61E52D1D9A144F00DA2607 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		DF61E52E1D9A144F00DA2607 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		DF61E5311D9A150100DA2607 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/Mac/Realm.framework; sourceTree = "<group>"; };
@@ -165,6 +168,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF1A78AA1D9A7C1100CEDE7C /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				DF1A78AB1D9A7C3D00CEDE7C /* OTPAccount.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 		DF370C5E1D97B8C3004EC853 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +187,7 @@
 		DF61E53B1D9A15E800DA2607 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
+				DF1A78AA1D9A7C1100CEDE7C /* Objects */,
 				DF61E53C1D9A18DA00DA2607 /* RealmDefaults.swift */,
 				DF61E54C1D9A268900DA2607 /* RealmKey.swift */,
 			);
@@ -481,6 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFE7F05C1D9534A000B8E15B /* ViewController.swift in Sources */,
+				DF1A78AC1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */,
 				DF61E54D1D9A268900DA2607 /* RealmKey.swift in Sources */,
 				DF61E53D1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */,
 				DFE7F05A1D9534A000B8E15B /* AppDelegate.swift in Sources */,
@@ -500,6 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFE7F0801D95353F00B8E15B /* ViewController.swift in Sources */,
+				DF1A78AD1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */,
 				DF61E54E1D9A268900DA2607 /* RealmKey.swift in Sources */,
 				DF61E53E1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */,
 				DFE7F07E1D95353F00B8E15B /* AppDelegate.swift in Sources */,
