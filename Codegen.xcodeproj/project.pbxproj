@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF61E52F1D9A144F00DA2607 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF61E52D1D9A144F00DA2607 /* Realm.framework */; };
+		DF61E5301D9A144F00DA2607 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF61E52E1D9A144F00DA2607 /* RealmSwift.framework */; };
+		DF61E5331D9A150100DA2607 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF61E5311D9A150100DA2607 /* Realm.framework */; };
+		DF61E5341D9A150100DA2607 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF61E5311D9A150100DA2607 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF61E5351D9A150100DA2607 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF61E5321D9A150100DA2607 /* RealmSwift.framework */; };
+		DF61E5361D9A150100DA2607 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF61E5321D9A150100DA2607 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF61E5391D9A154300DA2607 /* Realm.framework.dSYM in Carthage Copy Debug Symbols */ = {isa = PBXBuildFile; fileRef = DF61E5371D9A154300DA2607 /* Realm.framework.dSYM */; };
+		DF61E53A1D9A154300DA2607 /* RealmSwift.framework.dSYM in Carthage Copy Debug Symbols */ = {isa = PBXBuildFile; fileRef = DF61E5381D9A154300DA2607 /* RealmSwift.framework.dSYM */; };
 		DFE7F05A1D9534A000B8E15B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7F0591D9534A000B8E15B /* AppDelegate.swift */; };
 		DFE7F05C1D9534A000B8E15B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7F05B1D9534A000B8E15B /* ViewController.swift */; };
 		DFE7F05F1D9534A000B8E15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE7F05D1D9534A000B8E15B /* Main.storyboard */; };
@@ -52,7 +60,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				DF61E5341D9A150100DA2607 /* Realm.framework in Embed Frameworks */,
 				DFE7F0A41D953A6300B8E15B /* CryptoKit.framework in Embed Frameworks */,
+				DF61E5361D9A150100DA2607 /* RealmSwift.framework in Embed Frameworks */,
 				DFE7F0A61D953A6300B8E15B /* OTPKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -66,6 +76,8 @@
 			files = (
 				DFE7F0AB1D953AC000B8E15B /* CryptoKit.framework.dSYM in Carthage Copy Debug Symbols */,
 				DFE7F0AC1D953AC000B8E15B /* OTPKit.framework.dSYM in Carthage Copy Debug Symbols */,
+				DF61E5391D9A154300DA2607 /* Realm.framework.dSYM in Carthage Copy Debug Symbols */,
+				DF61E53A1D9A154300DA2607 /* RealmSwift.framework.dSYM in Carthage Copy Debug Symbols */,
 			);
 			name = "Carthage Copy Debug Symbols";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,6 +85,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DF61E52D1D9A144F00DA2607 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		DF61E52E1D9A144F00DA2607 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		DF61E5311D9A150100DA2607 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/Mac/Realm.framework; sourceTree = "<group>"; };
+		DF61E5321D9A150100DA2607 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/Mac/RealmSwift.framework; sourceTree = "<group>"; };
+		DF61E5371D9A154300DA2607 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Realm.framework.dSYM; path = Carthage/Build/Mac/Realm.framework.dSYM; sourceTree = "<group>"; };
+		DF61E5381D9A154300DA2607 /* RealmSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RealmSwift.framework.dSYM; path = Carthage/Build/Mac/RealmSwift.framework.dSYM; sourceTree = "<group>"; };
 		DFE7F0561D9534A000B8E15B /* Codegen iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codegen iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE7F0591D9534A000B8E15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFE7F05B1D9534A000B8E15B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +125,8 @@
 			files = (
 				DFE7F09B1D95395B00B8E15B /* CryptoKit.framework in Frameworks */,
 				DFE7F09C1D95395B00B8E15B /* OTPKit.framework in Frameworks */,
+				DF61E52F1D9A144F00DA2607 /* Realm.framework in Frameworks */,
+				DF61E5301D9A144F00DA2607 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +143,8 @@
 			files = (
 				DFE7F0A31D953A6300B8E15B /* CryptoKit.framework in Frameworks */,
 				DFE7F0A51D953A6300B8E15B /* OTPKit.framework in Frameworks */,
+				DF61E5331D9A150100DA2607 /* Realm.framework in Frameworks */,
+				DF61E5351D9A150100DA2607 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +246,8 @@
 			children = (
 				DFE7F0991D95395B00B8E15B /* CryptoKit.framework */,
 				DFE7F09A1D95395B00B8E15B /* OTPKit.framework */,
+				DF61E52D1D9A144F00DA2607 /* Realm.framework */,
+				DF61E52E1D9A144F00DA2607 /* RealmSwift.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -233,8 +257,12 @@
 			children = (
 				DFE7F09E1D95397C00B8E15B /* CryptoKit.framework */,
 				DFE7F09F1D95397C00B8E15B /* OTPKit.framework */,
+				DF61E5311D9A150100DA2607 /* Realm.framework */,
+				DF61E5321D9A150100DA2607 /* RealmSwift.framework */,
 				DFE7F0A91D953AC000B8E15B /* CryptoKit.framework.dSYM */,
 				DFE7F0AA1D953AC000B8E15B /* OTPKit.framework.dSYM */,
+				DF61E5371D9A154300DA2607 /* Realm.framework.dSYM */,
+				DF61E5381D9A154300DA2607 /* RealmSwift.framework.dSYM */,
 			);
 			name = macOS;
 			sourceTree = "<group>";
@@ -412,6 +440,8 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/CryptoKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/OTPKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 			);
 			name = "Carthage Copy Frameworks Script";
 			outputPaths = (
