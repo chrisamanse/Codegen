@@ -109,6 +109,7 @@
 		DF61E5421D9A24B500DA2607 /* Keychain.Accessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.Accessibility.swift; sourceTree = "<group>"; };
 		DF61E5431D9A24B500DA2607 /* KeychainGenericPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainGenericPassword.swift; sourceTree = "<group>"; };
 		DF61E54C1D9A268900DA2607 /* RealmKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmKey.swift; sourceTree = "<group>"; };
+		DF61E54F1D9A2F2700DA2607 /* Codegen iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Codegen iOS.entitlements"; sourceTree = "<group>"; };
 		DFE7F0561D9534A000B8E15B /* Codegen iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codegen iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE7F0591D9534A000B8E15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFE7F05B1D9534A000B8E15B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +233,7 @@
 		DFE7F0581D9534A000B8E15B /* Codegen iOS */ = {
 			isa = PBXGroup;
 			children = (
+				DF61E54F1D9A2F2700DA2607 /* Codegen iOS.entitlements */,
 				DFE7F0591D9534A000B8E15B /* AppDelegate.swift */,
 				DFE7F05B1D9534A000B8E15B /* ViewController.swift */,
 				DFE7F05D1D9534A000B8E15B /* Main.storyboard */,
@@ -396,6 +398,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = D58254GC6C;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					DFE7F0691D9534A000B8E15B = {
 						CreatedOnToolsVersion = 8.0;
@@ -616,6 +623,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "Codegen iOS/Codegen iOS.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -677,6 +685,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "Codegen iOS/Codegen iOS.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
