@@ -9,79 +9,85 @@
 import Foundation
 import Security
 
-struct RealmKey: KeychainGenericPassword {
-    static var accessGroup: String? {
-        return nil
+enum RealmKey {
+    static var `class`: CFString {
+        return kSecClassKey
+    }
+    static var identifierData: Data {
+        return "xyz.chrisamanse.codegen.realmKey".data(using: .utf8)!
+    }
+    static var keySizeInBits: Int {
+        return 512
+    }
+    static var accessibility: CFString {
+        return kSecAttrAccessibleAfterFirstUnlock
+    }
+    static var query: [String: AnyObject] {
+        return [
+            kSecClass as String: self.class as AnyObject,
+            kSecAttrApplicationTag as String: self.identifierData as AnyObject,
+            kSecAttrKeySizeInBits as String: self.keySizeInBits as AnyObject
+        ]
     }
     
-    static func fetchDefault() throws -> RealmKey {
-        let service = "Codegen"
-        let account = "RealmKey"
-        let accessibility = Keychain.Accessibility.afterFirstUnlock
+    static func fetchKey() throws -> Data {
+        var fetchQuery: [String: AnyObject] = self.query
+        fetchQuery[kSecReturnData as String] = kCFBooleanTrue
         
-        do {
-            // Return fetched account
-            let fetchedAccount = try RealmKey(fromKeychainWithService: service, account: account, accessGroup: RealmKey.accessGroup)
-            
-            return fetchedAccount
-        } catch KeychainError.noPassword {
-            // Generate random key
-            let key = try self.generateRandomKey()
-            
-            // Create new RealmKey
-            let account = RealmKey(service: service, account: account, key: key, accessibility: accessibility)
-            
-            // Save to Keychain
-            try account.saveToKeychain(accessGroup: self.accessGroup)
-            
-            // Return newly created account
-            return account
+        // Fetch Keychain item
+        var result: AnyObject?
+        let status = SecItemCopyMatching(fetchQuery as CFDictionary, &result)
+        
+        // If found, return key
+        if status == errSecSuccess {
+            if let key = result as? Data {
+                return key
+            } else {
+                throw RealmKeyError.unexpectedResult(status: status, result: result)
+            }
         }
+        
+        // Not found, create Keychain item, if other error, throw error
+        guard status == errSecItemNotFound else {
+            print("Not errSecItemNotFound: \(errSecItemNotFound)")
+            throw RealmKeyError.failedToFetchStoredKey(status: status)
+        }
+        
+        // Generate random 512-bit key
+        let key = try generateRandomKey()
+        
+        var newItem: [String: AnyObject] = self.query
+        newItem[kSecValueData as String] = key as AnyObject
+        newItem[kSecAttrAccessible as String] = self.accessibility as AnyObject
+        
+        let addStatus = SecItemAdd(newItem as CFDictionary, nil)
+        
+        guard addStatus == noErr else {
+            throw RealmKeyError.failedToSaveGeneratedKey(status: addStatus)
+        }
+        
+        return key
     }
     
-    var service: String
-    var account: String
-    var key: Data
-    
-    var accessibility: Keychain.Accessibility?
-    
-    static func generateRandomKey() throws -> Data {
-        // Create two random keys
+    private static func generateRandomKey() throws -> Data {
         var key = Data(count: 64)
-        var key2 = Data(count: 64)
         
+        // Get random bytes from /dev/random
         let flag = key.withUnsafeMutableBytes { bytes in
             SecRandomCopyBytes(kSecRandomDefault, 64, bytes)
         }
         
-        let flag2 = key2.withUnsafeMutableBytes { bytes in
-            SecRandomCopyBytes(kSecRandomDefault, 64, bytes)
+        guard flag == 0 else {
+            throw RealmKeyError.failedToGenerateKey(error: errno)
         }
         
-        guard flag == 0 && flag2 == 0 else {
-            throw RealmKeyGenerationError.failedToGenerateKey(error: errno)
-        }
-        
-        // XOR two random keys and use it as key
-        var combinedBytes = [UInt8]()
-        
-        for index in 0 ..< key.count {
-            let xored = key[index] ^ key2[index]
-            
-            combinedBytes.append(xored)
-        }
-        
-        return Data(bytes: combinedBytes)
-    }
-    
-    init(service: String, account: String, key: Data, accessibility: Keychain.Accessibility?) {
-        self.service = service
-        self.account = account
-        self.key = key
-        self.accessibility = accessibility
+        return key
     }
 }
 
-enum RealmKeyGenerationError: Error {
+enum RealmKeyError: Error {
+    case unexpectedResult(status: OSStatus, result: AnyObject?)
+    case failedToFetchStoredKey(status: OSStatus)
+    case failedToSaveGeneratedKey(status: OSStatus)
     case failedToGenerateKey(error: Int32)
 }

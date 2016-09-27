@@ -29,7 +29,7 @@ enum RealmDefaults {
         config.fileURL = newURL
         
         // Set encryption key
-        config.encryptionKey = try RealmKey.fetchDefault().key
+        config.encryptionKey = try RealmKey.fetchKey()
         
         Realm.Configuration.defaultConfiguration = config
     }
