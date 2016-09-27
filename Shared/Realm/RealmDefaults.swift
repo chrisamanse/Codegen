@@ -21,8 +21,8 @@ enum RealmDefaults {
         let defaultURL = config.fileURL!
         let realmDirectory = defaultURL.deletingLastPathComponent().appendingPathComponent("Realm", isDirectory: true)
         
-        // Setup file protection for Realm directory
-        try setupFileProtection(atURL: realmDirectory)
+        // Setup Realm directory
+        try setupRealmDirectory(atURL: realmDirectory)
         
         // Set URL for configuration
         let newURL = realmDirectory.appendingPathComponent(realmFilename)
@@ -31,18 +31,20 @@ enum RealmDefaults {
         Realm.Configuration.defaultConfiguration = config
     }
     
-    private static func setupFileProtection(atURL url: URL) throws {
+    private static func setupRealmDirectory(atURL url: URL) throws {
         // Create if doesn't exist
         if !FileManager.default.fileExists(atPath: url.path) {
             try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
         }
         
-        // Get attributes
-        var attributes = try FileManager.default.attributesOfItem(atPath: url.path)
-        
-        attributes[FileAttributeKey.protectionKey] = FileProtectionType.completeUntilFirstUserAuthentication
-        
-        // Set attributes
-        try FileManager.default.setAttributes(attributes, ofItemAtPath: url.path)
+        #if os(iOS) || os(tvOS) || os(watchOS)
+            // Get attributes
+            var attributes = try FileManager.default.attributesOfItem(atPath: url.path)
+            
+            attributes[FileAttributeKey.protectionKey] = FileProtectionType.completeUntilFirstUserAuthentication
+            
+            // Set attributes
+            try FileManager.default.setAttributes(attributes, ofItemAtPath: url.path)
+        #endif
     }
 }
