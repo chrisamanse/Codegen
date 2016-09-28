@@ -69,6 +69,14 @@ enum RealmKey {
         return key
     }
     
+    static func deleteKey() throws {
+        let status = SecItemDelete(self.query as CFDictionary)
+        
+        if !(status == noErr || status == errSecItemNotFound) {
+            throw RealmKeyError.failedToDeleteStoredKey(status: status)
+        }
+    }
+    
     private static func generateRandomKey() throws -> Data {
         var key = Data(count: 64)
         
@@ -90,4 +98,6 @@ enum RealmKeyError: Error {
     case failedToFetchStoredKey(status: OSStatus)
     case failedToSaveGeneratedKey(status: OSStatus)
     case failedToGenerateKey(error: Int32)
+    
+    case failedToDeleteStoredKey(status: OSStatus)
 }
