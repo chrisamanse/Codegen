@@ -49,7 +49,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Failed to generate key: \(error)")
             case .unexpectedResult(status: let status, result: let result):
                 fatalError("Unexpected fetch result: \(result)\n\nStatus: \(status)")
+            case .failedToDeleteStoredKey(status: let status):
+                fatalError("Failed to delete stored key: \(status)")
             }
+        } catch let error as Realm.Error {
+            fatalError("Realm error: \(error)")
         } catch let error {
             fatalError("Failed to setup Realm: \(error)")
         }
