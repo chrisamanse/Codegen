@@ -33,12 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             #endif
             
             // Try to create a Realm (initializes Realm files if not yet initialized)
-            let realm = try Realm()
+            _ = try Realm()
             
-            // Ensure default Realm has the same key
-            if realm.configuration.encryptionKey != key {
-                fatalError("Unexpected key!")
-            }
         } catch let error as RealmKeyError {
             switch error {
             case .failedToFetchStoredKey(status: let status):
