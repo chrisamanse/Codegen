@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import CryptoKit
 
 class OTPAccount: Object {
     dynamic var id: String = UUID().uuidString
@@ -15,6 +16,38 @@ class OTPAccount: Object {
     dynamic var account: String = ""
     dynamic var key: Data?
     dynamic var digits: Int = 6
+    
+    private dynamic var hashFunctionRaw: String = "sha1"
+    var hashFunction: HashFunction {
+        get {
+            switch hashFunctionRaw {
+            case    "md5": return .md5
+            case   "sha1": return .sha1
+            case "sha224": return .sha224
+            case "sha256": return .sha256
+            case "sha384": return .sha384
+            case "sha512": return .sha512
+            default      :
+                // Unexpected raw hash function, set raw to "sha1"
+                hashFunctionRaw = "sha1"
+                return .sha1
+            }
+        }
+        set {
+            let raw: String
+            switch newValue {
+            case    HashFunction.md5: raw = "md5"
+            case   HashFunction.sha1: raw = "sha1"
+            case HashFunction.sha224: raw = "sha224"
+            case HashFunction.sha256: raw = "sha256"
+            case HashFunction.sha384: raw = "sha384"
+            case HashFunction.sha512: raw = "sha512"
+            default                 : raw = "sha1" // Unexpected hash function, set raw to "sha1"
+            }
+            
+            hashFunctionRaw = raw
+        }
+    }
     
     dynamic var timeBased: Bool = false
     
