@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class OTPAccount: Object {
+    dynamic var id: String = UUID().uuidString
     dynamic var issuer: String?
     dynamic var account: String = ""
     dynamic var key: Data?
@@ -39,6 +40,10 @@ class OTPAccount: Object {
         set {
             periodStored.value = newValue
         }
+    }
+    
+    override class func primaryKey() -> String {
+        return "id"
     }
 }
 
