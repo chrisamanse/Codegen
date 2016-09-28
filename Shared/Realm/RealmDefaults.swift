@@ -14,40 +14,52 @@ enum RealmDefaults {
         return "Codegen.realm"
     }
     
-    static func setupDefaultRealmConfiguration() throws {
+    static var realmDirectoryURL: URL {
+        #if os(iOS) || os(tvOS) || os(watchOS)
+            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            
+            return documentsURL.appendingPathComponent("Realm", isDirectory: true)
+        #elseif os(macOS)
+            let applicationSupportURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+            
+            let bundleIdentifier = Bundle.main.bundleIdentifier ?? "xyz.chrisamanse.macos.codegen"
+            
+            return applicationSupportURL
+                .appendingPathComponent(bundleIdentifier, isDirectory: true)
+                .appendingPathComponent("Realm", isDirectory: true)
+        #endif
+    }
+    
+    static func setupDefaultRealmConfiguration(encryptionKey: Data? = nil) throws {
         var config = Realm.Configuration()
         
-        // Compose URL for Realm directory
-        let defaultURL = config.fileURL!
-        let realmDirectory = defaultURL.deletingLastPathComponent().appendingPathComponent("Realm", isDirectory: true)
-        
         // Setup Realm directory
-        try setupRealmDirectory(atURL: realmDirectory)
+        try setupRealmDirectory()
         
         // Set URL for configuration
-        let newURL = realmDirectory.appendingPathComponent(realmFilename)
+        let newURL = realmDirectoryURL.appendingPathComponent(realmFilename)
         config.fileURL = newURL
         
         // Set encryption key
-        config.encryptionKey = try RealmKey.fetchKey()
+        config.encryptionKey = encryptionKey
         
         Realm.Configuration.defaultConfiguration = config
     }
     
-    private static func setupRealmDirectory(atURL url: URL) throws {
+    private static func setupRealmDirectory() throws {
         // Create if doesn't exist
-        if !FileManager.default.fileExists(atPath: url.path) {
-            try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
+        if !FileManager.default.fileExists(atPath: realmDirectoryURL.path) {
+            try FileManager.default.createDirectory(at: realmDirectoryURL, withIntermediateDirectories: true)
         }
         
         #if os(iOS) || os(tvOS) || os(watchOS)
             // Get attributes
-            var attributes = try FileManager.default.attributesOfItem(atPath: url.path)
+            var attributes = try FileManager.default.attributesOfItem(atPath: realmDirectoryURL.path)
             
             attributes[FileAttributeKey.protectionKey] = FileProtectionType.completeUntilFirstUserAuthentication
             
             // Set attributes
-            try FileManager.default.setAttributes(attributes, ofItemAtPath: url.path)
+            try FileManager.default.setAttributes(attributes, ofItemAtPath: realmDirectoryURL.path)
         #endif
     }
 }
