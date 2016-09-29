@@ -135,6 +135,7 @@
 		DFE7F0A91D953AC000B8E15B /* CryptoKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = CryptoKit.framework.dSYM; path = Carthage/Build/Mac/CryptoKit.framework.dSYM; sourceTree = "<group>"; };
 		DFE7F0AA1D953AC000B8E15B /* OTPKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = OTPKit.framework.dSYM; path = Carthage/Build/Mac/OTPKit.framework.dSYM; sourceTree = "<group>"; };
 		DFEB3FE11D9D2AA800A65A48 /* OTPAccount.Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPAccount.Defaults.swift; sourceTree = "<group>"; };
+		DFEB3FE41D9D303600A65A48 /* Codegen macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Codegen macOS.entitlements"; sourceTree = "<group>"; };
 		DFF9EFAC1D9D05DA00EF36C6 /* OTPURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPURL.swift; sourceTree = "<group>"; };
 		DFF9EFAF1D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OTPAccount+OTPURL.swift"; sourceTree = "<group>"; };
 		DFF9EFB21D9D093000EF36C6 /* HashFunction+Raw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HashFunction+Raw.swift"; sourceTree = "<group>"; };
@@ -260,6 +261,7 @@
 		DFE7F07C1D95353E00B8E15B /* Codegen macOS */ = {
 			isa = PBXGroup;
 			children = (
+				DFEB3FE41D9D303600A65A48 /* Codegen macOS.entitlements */,
 				DFE7F07D1D95353F00B8E15B /* AppDelegate.swift */,
 				DFE7F07F1D95353F00B8E15B /* ViewController.swift */,
 				DFE7F0811D95353F00B8E15B /* Assets.xcassets */,
@@ -417,6 +419,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = D58254GC6C;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					DFE7F08A1D95353F00B8E15B = {
 						CreatedOnToolsVersion = 8.0;
@@ -852,6 +859,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "Codegen macOS/Codegen macOS.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -913,6 +921,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "Codegen macOS/Codegen macOS.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
