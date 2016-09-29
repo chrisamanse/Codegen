@@ -9,12 +9,13 @@
 import Foundation
 import RealmSwift
 import CryptoKit
+import OTPKit
 
 class OTPAccount: Object {
     dynamic var id: String = UUID().uuidString
     dynamic var issuer: String?
     dynamic var account: String = ""
-    dynamic var key: Data?
+    dynamic var key: Data = Data()
     dynamic var digits: Int = 6
     
     private dynamic var hashFunctionRaw: String = "sha1"
@@ -75,9 +76,38 @@ class OTPAccount: Object {
         }
     }
     
+    func currentPassword() throws -> String {
+        if timeBased {
+            guard let period = self.period else {
+                throw OTPAccountError.noPeriod
+            }
+            
+            let currentTimeInterval = Date().timeIntervalSince1970
+            return try TOTP.generate(key: key,
+                                 timeInterval: currentTimeInterval,
+                                 period: period,
+                                 digits: UInt(digits),
+                                 hashFunction: hashFunction)
+        } else {
+            guard let counter = self.counter else {
+                throw OTPAccountError.noCounter
+            }
+            
+            return try HOTP.generate(key: key,
+                                     counter: counter,
+                                     digits: UInt(digits),
+                                     hashFunction: hashFunction)
+        }
+    }
+    
     override class func primaryKey() -> String {
         return "id"
     }
+}
+
+enum OTPAccountError: Error {
+    case noPeriod
+    case noCounter
 }
 
 // Extension for 64-bit integer signed <-> unsigned conversion
