@@ -72,6 +72,12 @@ public struct OTPURL {
         self.label = url.lastPathComponent
         self.parameters = parameters
     }
+    
+    public init?(urlString: String) {
+        guard let url = URL(string: urlString) else { return nil }
+        
+        self.init(url: url)
+    }
 }
 
 // Equatable
