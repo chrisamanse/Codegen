@@ -31,7 +31,7 @@ enum RealmDefaults {
     }
     
     static func setupDefaultRealmConfiguration(encryptionKey: Data? = nil) throws {
-        var config = Realm.Configuration()
+        var config = Realm.Configuration.defaultConfiguration
         
         // Setup Realm directory
         try setupRealmDirectory()
