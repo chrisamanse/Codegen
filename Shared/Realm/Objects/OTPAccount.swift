@@ -16,9 +16,9 @@ class OTPAccount: Object {
     dynamic var issuer: String?
     dynamic var account: String = ""
     dynamic var key: Data = Data()
-    dynamic var digits: Int = 6
+    dynamic var digits: Int = Defaults.digits
     
-    private dynamic var hashFunctionRaw: String = "sha1"
+    private dynamic var hashFunctionRaw: String = Defaults.hashFunction.rawValue
     var hashFunction: HashFunction {
         get {
             guard let hash = HashFunction(rawValue: hashFunctionRaw) else {
@@ -31,7 +31,7 @@ class OTPAccount: Object {
             let rawValue = newValue.rawValue
             
             if rawValue == "" {
-                hashFunctionRaw = "sha1"
+                hashFunctionRaw = Defaults.hashFunction.rawValue
             } else {
                 hashFunctionRaw = newValue.rawValue
             }

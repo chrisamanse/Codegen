@@ -40,6 +40,8 @@
 		DFE7F0A61D953A6300B8E15B /* OTPKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFE7F09F1D95397C00B8E15B /* OTPKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DFE7F0AB1D953AC000B8E15B /* CryptoKit.framework.dSYM in Carthage Copy Debug Symbols */ = {isa = PBXBuildFile; fileRef = DFE7F0A91D953AC000B8E15B /* CryptoKit.framework.dSYM */; };
 		DFE7F0AC1D953AC000B8E15B /* OTPKit.framework.dSYM in Carthage Copy Debug Symbols */ = {isa = PBXBuildFile; fileRef = DFE7F0AA1D953AC000B8E15B /* OTPKit.framework.dSYM */; };
+		DFEB3FE21D9D2AA800A65A48 /* OTPAccount.Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEB3FE11D9D2AA800A65A48 /* OTPAccount.Defaults.swift */; };
+		DFEB3FE31D9D2AA800A65A48 /* OTPAccount.Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEB3FE11D9D2AA800A65A48 /* OTPAccount.Defaults.swift */; };
 		DFF9EFAD1D9D05DA00EF36C6 /* OTPURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFAC1D9D05DA00EF36C6 /* OTPURL.swift */; };
 		DFF9EFAE1D9D05DA00EF36C6 /* OTPURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFAC1D9D05DA00EF36C6 /* OTPURL.swift */; };
 		DFF9EFB01D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFAF1D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift */; };
@@ -132,6 +134,7 @@
 		DFE7F09F1D95397C00B8E15B /* OTPKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OTPKit.framework; path = Carthage/Build/Mac/OTPKit.framework; sourceTree = "<group>"; };
 		DFE7F0A91D953AC000B8E15B /* CryptoKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = CryptoKit.framework.dSYM; path = Carthage/Build/Mac/CryptoKit.framework.dSYM; sourceTree = "<group>"; };
 		DFE7F0AA1D953AC000B8E15B /* OTPKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = OTPKit.framework.dSYM; path = Carthage/Build/Mac/OTPKit.framework.dSYM; sourceTree = "<group>"; };
+		DFEB3FE11D9D2AA800A65A48 /* OTPAccount.Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPAccount.Defaults.swift; sourceTree = "<group>"; };
 		DFF9EFAC1D9D05DA00EF36C6 /* OTPURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPURL.swift; sourceTree = "<group>"; };
 		DFF9EFAF1D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OTPAccount+OTPURL.swift"; sourceTree = "<group>"; };
 		DFF9EFB21D9D093000EF36C6 /* HashFunction+Raw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HashFunction+Raw.swift"; sourceTree = "<group>"; };
@@ -181,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				DF1A78AB1D9A7C3D00CEDE7C /* OTPAccount.swift */,
+				DFEB3FE11D9D2AA800A65A48 /* OTPAccount.Defaults.swift */,
 				DFF9EFAF1D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift */,
 			);
 			path = Objects;
@@ -506,6 +510,7 @@
 			files = (
 				DFF9EFB31D9D093000EF36C6 /* HashFunction+Raw.swift in Sources */,
 				DFE7F05C1D9534A000B8E15B /* ViewController.swift in Sources */,
+				DFEB3FE21D9D2AA800A65A48 /* OTPAccount.Defaults.swift in Sources */,
 				DFF9EFAD1D9D05DA00EF36C6 /* OTPURL.swift in Sources */,
 				DF1A78AC1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */,
 				DF61E54D1D9A268900DA2607 /* RealmKey.swift in Sources */,
@@ -529,6 +534,7 @@
 			files = (
 				DFF9EFB41D9D093000EF36C6 /* HashFunction+Raw.swift in Sources */,
 				DFE7F0801D95353F00B8E15B /* ViewController.swift in Sources */,
+				DFEB3FE31D9D2AA800A65A48 /* OTPAccount.Defaults.swift in Sources */,
 				DFF9EFAE1D9D05DA00EF36C6 /* OTPURL.swift in Sources */,
 				DF1A78AD1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */,
 				DF61E54E1D9A268900DA2607 /* RealmKey.swift in Sources */,

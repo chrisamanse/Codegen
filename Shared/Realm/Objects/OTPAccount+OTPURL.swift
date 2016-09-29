@@ -20,7 +20,7 @@ extension OTPAccount {
             if let value = url.parameters[OTPURL.Keys.period], let interval = TimeInterval(value) {
                 self.period = interval
             } else {
-                self.period = 30
+                self.period = Defaults.period
             }
             
             self.timeBased = true
@@ -41,14 +41,14 @@ extension OTPAccount {
         if let algorithm = url.parameters[OTPURL.Keys.algorithm]?.lowercased(), let hash = HashFunction(rawValue: algorithm) {
             self.hashFunction = hash
         } else {
-            self.hashFunction = .sha1
+            self.hashFunction = Defaults.hashFunction
         }
         
         // Digits
         if let value = url.parameters[OTPURL.Keys.digits], let intValue = Int(value) {
             self.digits = intValue
         } else {
-            self.digits = 6
+            self.digits = Defaults.digits
         }
         
         // Issuer and Account
