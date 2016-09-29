@@ -15,19 +15,9 @@ enum RealmDefaults {
     }
     
     static var realmDirectoryURL: URL {
-        #if os(iOS) || os(tvOS) || os(watchOS)
-            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            
-            return documentsURL.appendingPathComponent("Realm", isDirectory: true)
-        #elseif os(macOS)
-            let applicationSupportURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
-            
-            let bundleIdentifier = Bundle.main.bundleIdentifier ?? "xyz.chrisamanse.macos.codegen"
-            
-            return applicationSupportURL
-                .appendingPathComponent(bundleIdentifier, isDirectory: true)
-                .appendingPathComponent("Realm", isDirectory: true)
-        #endif
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        return documentsURL.appendingPathComponent("Realm", isDirectory: true)
     }
     
     static func setupDefaultRealmConfiguration(encryptionKey: Data? = nil) throws {
