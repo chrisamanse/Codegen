@@ -40,6 +40,8 @@
 		DFE7F0A61D953A6300B8E15B /* OTPKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFE7F09F1D95397C00B8E15B /* OTPKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DFE7F0AB1D953AC000B8E15B /* CryptoKit.framework.dSYM in Carthage Copy Debug Symbols */ = {isa = PBXBuildFile; fileRef = DFE7F0A91D953AC000B8E15B /* CryptoKit.framework.dSYM */; };
 		DFE7F0AC1D953AC000B8E15B /* OTPKit.framework.dSYM in Carthage Copy Debug Symbols */ = {isa = PBXBuildFile; fileRef = DFE7F0AA1D953AC000B8E15B /* OTPKit.framework.dSYM */; };
+		DFF9EFAD1D9D05DA00EF36C6 /* OTPURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFAC1D9D05DA00EF36C6 /* OTPURL.swift */; };
+		DFF9EFAE1D9D05DA00EF36C6 /* OTPURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFAC1D9D05DA00EF36C6 /* OTPURL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +128,7 @@
 		DFE7F09F1D95397C00B8E15B /* OTPKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OTPKit.framework; path = Carthage/Build/Mac/OTPKit.framework; sourceTree = "<group>"; };
 		DFE7F0A91D953AC000B8E15B /* CryptoKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = CryptoKit.framework.dSYM; path = Carthage/Build/Mac/CryptoKit.framework.dSYM; sourceTree = "<group>"; };
 		DFE7F0AA1D953AC000B8E15B /* OTPKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = OTPKit.framework.dSYM; path = Carthage/Build/Mac/OTPKit.framework.dSYM; sourceTree = "<group>"; };
+		DFF9EFAC1D9D05DA00EF36C6 /* OTPURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPURL.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				DF61E53B1D9A15E800DA2607 /* Realm */,
+				DFF9EFAC1D9D05DA00EF36C6 /* OTPURL.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -493,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFE7F05C1D9534A000B8E15B /* ViewController.swift in Sources */,
+				DFF9EFAD1D9D05DA00EF36C6 /* OTPURL.swift in Sources */,
 				DF1A78AC1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */,
 				DF61E54D1D9A268900DA2607 /* RealmKey.swift in Sources */,
 				DF61E53D1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */,
@@ -513,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFE7F0801D95353F00B8E15B /* ViewController.swift in Sources */,
+				DFF9EFAE1D9D05DA00EF36C6 /* OTPURL.swift in Sources */,
 				DF1A78AD1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */,
 				DF61E54E1D9A268900DA2607 /* RealmKey.swift in Sources */,
 				DF61E53E1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */,
