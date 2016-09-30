@@ -189,6 +189,13 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		DF0E35FE1D9E6FAB00C66351 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		DF1A78AA1D9A7C1100CEDE7C /* Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +255,7 @@
 			children = (
 				DF61E54F1D9A2F2700DA2607 /* Codegen iOS.entitlements */,
 				DFE7F0591D9534A000B8E15B /* AppDelegate.swift */,
+				DF0E35FE1D9E6FAB00C66351 /* Views */,
 				DF0E35FB1D9E6D6800C66351 /* ViewControllers */,
 				DFE7F05D1D9534A000B8E15B /* Main.storyboard */,
 				DFE7F0601D9534A000B8E15B /* Assets.xcassets */,
