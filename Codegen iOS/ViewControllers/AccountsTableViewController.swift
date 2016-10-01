@@ -63,6 +63,8 @@ class AccountsTableViewController: UITableViewController {
         
         account.issuer = "Apple \(Date())"
         account.account = "chris@chrisamanse.xyz"
+        account.timeBased = true
+        account.period = 30
         
         do {
             try realm.write {
