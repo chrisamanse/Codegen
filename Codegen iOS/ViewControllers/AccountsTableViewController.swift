@@ -11,23 +11,41 @@ import RealmSwift
 
 class AccountsTableViewController: UITableViewController {
     
-    var realm: Realm?
-    var accounts: Results<OTPAccount>?
+    var _realm: Realm?
+    var realm: Realm {
+        guard let realm = self._realm else {
+            fatalError("Realm has not yet been set up.")
+        }
+        
+        return realm
+    }
+    
+    var _store: OTPAccountStore?
+    var store: OTPAccountStore {
+        guard let store = self._store else {
+            fatalError("There is no OTPAccountStore yet.")
+        }
+        
+        return store
+    }
+    
     var token: NotificationToken?
+    
+    var shouldIgnoreRealmNotification = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
         
         do {
-            realm = try Realm()
-            accounts = realm?.objects(OTPAccount.self)
-            token = accounts?.addNotificationBlock(self.realmDidChange(change:))
+            let realm = try Realm()
+            _realm = realm
+            
+            let store = try OTPAccountStore.defaultStore(in: realm)
+            _store = store
+            
+            token = store.accounts.addNotificationBlock(accountsDidChange(change:))
             
             tableView.reloadData()
         } catch let error {
@@ -46,16 +64,27 @@ class AccountsTableViewController: UITableViewController {
         account.issuer = "Apple \(Date())"
         account.account = "chris@chrisamanse.xyz"
         
-        try? realm?.write {
-            realm?.add(account)
+        do {
+            try realm.write {
+                store.accounts.insert(account, at: 0)
+            }
+        } catch let error {
+            print("Failed to add account: \(error)")
         }
     }
     
-    func realmDidChange(change: RealmCollectionChange<Results<OTPAccount>>) {
+    
+    func accountsDidChange(change: RealmCollectionChange<List<OTPAccount>>) {
         switch change {
         case .initial(_):
-            break
+            print("Initial query")
         case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
+            if shouldIgnoreRealmNotification {
+                print("Ignoring Realm notification")
+                shouldIgnoreRealmNotification = false
+                break
+            }
+            
             print("Deletions: \(deletions)")
             print("Insertions: \(insertions)")
             print("Modifications: \(modifications)")
@@ -79,7 +108,7 @@ class AccountsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return accounts?.count ?? 0
+        return store.accounts.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -87,11 +116,15 @@ class AccountsTableViewController: UITableViewController {
             fatalError("Cell is not an AccountTableViewCell.")
         }
         
-        // Configure the cell...
-        guard let account = accounts?[indexPath.row] else {
+        // Get object
+        let index = indexPath.row
+        guard (0 ..< store.accounts.count).contains(index) else {
             fatalError("Unexpected cell!")
         }
         
+        let account = store.accounts[index]
+        
+        // Configure the cell...
         cell.issuerLabel.text = account.issuer
         cell.accountLabel.text = account.account
         
@@ -109,25 +142,45 @@ class AccountsTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            guard let account = accounts?[indexPath.row] else {
-                return
+            // Get object
+            let index = indexPath.row
+            guard (0 ..< store.accounts.count).contains(index) else {
+                fatalError("Unexpected cell!")
             }
             
-            try? realm?.write {
-                realm?.delete(account)
+            let account = store.accounts[index]
+            
+            // Delete object
+            do {
+                try realm.write {
+                    realm.delete(account)
+                }
+            } catch let error {
+                print("Failed to delete account: \(error)")
             }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
     
-    /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        let fromRow = fromIndexPath.row
+        let toRow = to.row
+        
+        // Move Object
+        
+        shouldIgnoreRealmNotification = true // Ignore this Realm update
+        
+        do {
+            try realm.write {
+                store.accounts.move(from: fromRow, to: toRow)
+            }
+        } catch let error {
+            print("Failed to move: \(error)")
+        }
     }
-    */
-
+    
     /*
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
