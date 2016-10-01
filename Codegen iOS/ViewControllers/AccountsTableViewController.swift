@@ -130,6 +130,11 @@ class AccountsTableViewController: UITableViewController {
         cell.issuerLabel.text = account.issuer
         cell.accountLabel.text = account.account
         
+        // Format password
+        let password = (try? account.currentPassword()) ?? String(repeating: "•", count: account.digits)
+        
+        cell.codeLabel.text = password.split(by: 3).joined(separator: " ")
+        
         return cell
     }
 
