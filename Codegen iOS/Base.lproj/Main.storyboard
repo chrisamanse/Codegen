@@ -29,23 +29,18 @@
         <scene sceneID="JNz-6B-0yH">
             <objects>
                 <tableViewController id="nGE-24-ukb" customClass="AccountsTableViewController" customModule="Codegen_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="123" sectionHeaderHeight="28" sectionFooterHeight="28" id="aQf-P7-a0s">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="126" sectionHeaderHeight="28" sectionFooterHeight="28" id="aQf-P7-a0s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="accountCell" id="0vl-4h-1cy" customClass="AccountTableViewCell" customModule="Codegen_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="375" height="123"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="126"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0vl-4h-1cy" id="YWd-Jh-W6a">
-                                    <frame key="frameInset" width="375" height="123"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="0vl-4h-1cy" id="YWd-Jh-W6a">
+                                    <frame key="frameInset" width="375" height="125"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="account@example.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ws2-Ck-5S0">
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 456" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFK-Ri-hEG">
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="48"/>
                                             <nil key="textColor"/>
@@ -56,19 +51,23 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="account@example.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ws2-Ck-5S0">
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="N6C-9c-yja" firstAttribute="top" secondItem="YWd-Jh-W6a" secondAttribute="topMargin" id="3VO-xP-nJF"/>
-                                        <constraint firstItem="wFK-Ri-hEG" firstAttribute="leading" secondItem="N6C-9c-yja" secondAttribute="leading" id="EMP-sE-v68"/>
-                                        <constraint firstItem="wFK-Ri-hEG" firstAttribute="top" secondItem="N6C-9c-yja" secondAttribute="bottom" constant="8" id="Xxg-gz-mR2"/>
-                                        <constraint firstItem="Ws2-Ck-5S0" firstAttribute="top" secondItem="wFK-Ri-hEG" secondAttribute="bottom" constant="9" id="glh-QQ-Tgq"/>
-                                        <constraint firstItem="Ws2-Ck-5S0" firstAttribute="leading" secondItem="wFK-Ri-hEG" secondAttribute="leading" id="gy9-Ne-7KV"/>
-                                        <constraint firstItem="Ws2-Ck-5S0" firstAttribute="bottom" secondItem="YWd-Jh-W6a" secondAttribute="bottomMargin" id="sg4-Ku-Hqy"/>
+                                        <constraint firstItem="Ws2-Ck-5S0" firstAttribute="leading" secondItem="YWd-Jh-W6a" secondAttribute="leadingMargin" id="Ef9-cj-ngi"/>
+                                        <constraint firstItem="Ws2-Ck-5S0" firstAttribute="bottom" secondItem="YWd-Jh-W6a" secondAttribute="bottomMargin" id="Jh0-fa-1FY"/>
+                                        <constraint firstItem="N6C-9c-yja" firstAttribute="leading" secondItem="YWd-Jh-W6a" secondAttribute="leadingMargin" id="NCh-9N-zMC"/>
+                                        <constraint firstItem="wFK-Ri-hEG" firstAttribute="leading" secondItem="YWd-Jh-W6a" secondAttribute="leadingMargin" id="Yli-5c-Q55"/>
+                                        <constraint firstItem="N6C-9c-yja" firstAttribute="top" secondItem="YWd-Jh-W6a" secondAttribute="topMargin" id="bdL-qf-YL2"/>
+                                        <constraint firstItem="wFK-Ri-hEG" firstAttribute="top" secondItem="N6C-9c-yja" secondAttribute="bottom" constant="8" id="cdm-fe-MPR"/>
+                                        <constraint firstItem="Ws2-Ck-5S0" firstAttribute="top" secondItem="wFK-Ri-hEG" secondAttribute="bottom" constant="8" id="xc4-ta-kTF"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <constraints>
-                                    <constraint firstAttribute="leadingMargin" secondItem="N6C-9c-yja" secondAttribute="leading" id="66k-gb-44M"/>
-                                </constraints>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <connections>
                                     <outlet property="accountLabel" destination="Ws2-Ck-5S0" id="goJ-y9-6lf"/>
                                     <outlet property="codeLabel" destination="wFK-Ri-hEG" id="R9D-jJ-ylJ"/>
