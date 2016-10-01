@@ -59,11 +59,17 @@ class AccountsTableViewController: UITableViewController {
             print("Deletions: \(deletions)")
             print("Insertions: \(insertions)")
             print("Modifications: \(modifications)")
+            
+            tableView.beginUpdates()
+            
+            tableView.deleteRows(at: deletions.map { IndexPath(row: $0, section: 0) }, with: UITableViewRowAnimation.automatic)
+            tableView.insertRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: UITableViewRowAnimation.automatic)
+            tableView.reloadRows(at: modifications.map { IndexPath(row: $0, section: 0) }, with: UITableViewRowAnimation.automatic)
+            
+            tableView.endUpdates()
         case .error(let error):
             print("Error: \(error)")
         }
-        
-        tableView.reloadData()
     }
 
     // MARK: - Table view data source
