@@ -33,6 +33,8 @@ class AccountsTableViewController: UITableViewController {
     
     var shouldIgnoreRealmNotification = false
     
+    var timer: Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,9 +55,25 @@ class AccountsTableViewController: UITableViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        createTimer()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        destroyTimer()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    deinit {
+        destroyTimer()
     }
     
     @IBAction func didPressAdd(_ sender: UIBarButtonItem) {
@@ -75,6 +93,35 @@ class AccountsTableViewController: UITableViewController {
         }
     }
     
+    func createTimer() {
+        guard self.timer == nil else {
+            return
+        }
+        
+        // Get date for next second for precise tick
+        let now = Date()
+        let incremented = round(now.timeIntervalSince1970) + 1
+        let next = Date(timeIntervalSince1970: incremented)
+        
+        // Create timer with fire date for next second
+        let timer = Timer(fire: next, interval: 1.0, repeats: true, block: self.didTick(timer:))
+        
+        self.timer = timer
+        
+        // Add timer to main run loop for common modes
+        RunLoop.main.add(timer, forMode: .commonModes)
+    }
+    
+    func destroyTimer() {
+        timer?.invalidate()
+        
+        timer = nil
+    }
+    
+    func didTick(timer: Timer) {
+        let now = Date()
+        print("Did tick:\n  - \(now)\n  - \(now.timeIntervalSince1970)")
+    }
     
     func accountsDidChange(change: RealmCollectionChange<List<OTPAccount>>) {
         switch change {
