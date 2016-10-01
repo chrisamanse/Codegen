@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="123"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0vl-4h-1cy" id="YWd-Jh-W6a">
-                                    <frame key="frameInset" width="375" height="122"/>
+                                    <frame key="frameInset" width="375" height="123"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="account@example.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ws2-Ck-5S0">
@@ -81,7 +81,13 @@
                             <outlet property="delegate" destination="nGE-24-ukb" id="798-yM-U2A"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Codegen" id="pbU-4g-L8E"/>
+                    <navigationItem key="navigationItem" title="Codegen" id="pbU-4g-L8E">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="xc1-TR-n5d">
+                            <connections>
+                                <action selector="didPressAdd:" destination="nGE-24-ukb" id="Xfw-1U-bKa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvZ-8m-r56" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

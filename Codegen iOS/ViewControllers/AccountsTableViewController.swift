@@ -40,6 +40,17 @@ class AccountsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func didPressAdd(_ sender: UIBarButtonItem) {
+        let account = OTPAccount()
+        
+        account.issuer = "Apple \(Date())"
+        account.account = "chris@chrisamanse.xyz"
+        
+        try? realm?.write {
+            realm?.add(account)
+        }
+    }
+    
     func realmDidChange(change: RealmCollectionChange<Results<OTPAccount>>) {
         switch change {
         case .initial(_):
