@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AccountsTableViewController: UITableViewController {
-
+    
+    var realm: Realm?
+    var accounts: Results<OTPAccount>?
+    var token: NotificationToken?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,23 +23,46 @@ class AccountsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        do {
+            realm = try Realm()
+            accounts = realm?.objects(OTPAccount.self)
+            token = accounts?.addNotificationBlock(self.realmDidChange(change:))
+            
+            tableView.reloadData()
+        } catch let error {
+            fatalError("Failed to open to Realm file: \(error)")
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func realmDidChange(change: RealmCollectionChange<Results<OTPAccount>>) {
+        switch change {
+        case .initial(_):
+            break
+        case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
+            print("Deletions: \(deletions)")
+            print("Insertions: \(insertions)")
+            print("Modifications: \(modifications)")
+        case .error(let error):
+            print("Error: \(error)")
+        }
+        
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 10
+        return accounts?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,6 +71,12 @@ class AccountsTableViewController: UITableViewController {
         }
         
         // Configure the cell...
+        guard let account = accounts?[indexPath.row] else {
+            fatalError("Unexpected cell!")
+        }
+        
+        cell.issuerLabel.text = account.issuer
+        cell.accountLabel.text = account.account
         
         return cell
     }
