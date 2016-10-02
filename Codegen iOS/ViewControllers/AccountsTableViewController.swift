@@ -119,7 +119,7 @@ class AccountsTableViewController: UITableViewController {
     }
     
     func didTick(timer: Timer) {
-        let now = Date()
+        let now = timer.fireDate
         print("Did tick:\n  - \(now)\n  - \(now.timeIntervalSince1970)")
     }
     
