@@ -88,6 +88,10 @@ class OTPAccount: Object {
         }
     }
     
+    func formattedPassword() -> String {
+        return ((try? currentPassword()) ?? String(repeating: "•", count: digits)).split(by: 3).joined(separator: " ")
+    }
+    
     override class func primaryKey() -> String {
         return "id"
     }
