@@ -124,10 +124,17 @@ class AccountsTableViewController: UITableViewController {
         
         let timeInterval = UInt64(round(now.timeIntervalSince1970))
         let timeLeft = 30 - (timeInterval % 30)
-        let shouldUpdatePasswords = timeLeft == 30
         
         print("Time left: \(timeLeft)")
         
+        // Update progress views
+        let progress = Float(timeLeft) / 30
+        (tableView.visibleCells as! [AccountTableViewCell]).forEach {
+            $0.progressView.progress = progress
+        }
+        
+        // Update passwords if needed
+        let shouldUpdatePasswords = timeLeft == 30
         if shouldUpdatePasswords {
             print("Updating passwords...")
             tableView.beginUpdates()
@@ -196,6 +203,13 @@ class AccountsTableViewController: UITableViewController {
         let password = (try? account.currentPassword()) ?? String(repeating: "•", count: account.digits)
         
         cell.codeLabel.text = password.split(by: 3).joined(separator: " ")
+        
+        // Set progress
+        let timeInterval = UInt64(round(Date().timeIntervalSince1970))
+        let timeLeft = 30 - (timeInterval % 30)
+        let progress = Float(timeLeft) / 30
+        
+        cell.progressView.progress = progress
         
         return cell
     }
