@@ -38,10 +38,10 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="126"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="0vl-4h-1cy" id="YWd-Jh-W6a">
-                                    <frame key="frameInset" width="375" height="126"/>
+                                    <frame key="frameInset" width="375" height="125.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 456" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFK-Ri-hEG">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 456" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wFK-Ri-hEG">
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="JQH-1G-wkQ"/>
                                             </constraints>
@@ -82,6 +82,7 @@
                                         </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Ieu-d6-dwc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wFK-Ri-hEG" secondAttribute="trailing" constant="8" id="7OM-kw-eb2"/>
                                         <constraint firstItem="Ws2-Ck-5S0" firstAttribute="leading" secondItem="YWd-Jh-W6a" secondAttribute="leadingMargin" id="Ef9-cj-ngi"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Ieu-d6-dwc" secondAttribute="trailing" id="Es0-4X-MoJ"/>
                                         <constraint firstItem="Ws2-Ck-5S0" firstAttribute="bottom" secondItem="YWd-Jh-W6a" secondAttribute="bottomMargin" id="Jh0-fa-1FY"/>
