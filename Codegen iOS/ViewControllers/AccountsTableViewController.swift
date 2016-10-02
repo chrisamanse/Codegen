@@ -123,25 +123,62 @@ class AccountsTableViewController: UITableViewController {
         print("Did tick:\n  - \(now)\n  - \(now.timeIntervalSince1970)")
         
         let timeInterval = UInt64(round(now.timeIntervalSince1970))
-        let timeLeft = 30 - (timeInterval % 30)
         
-        print("Time left: \(timeLeft)")
+        print("Time left (30s period): \(30 - (timeInterval % 30))")
         
         // Update progress views
-        let progress = Float(timeLeft) / 30
-        (tableView.visibleCells as! [AccountTableViewCell]).forEach {
-            $0.progressView.progress = progress
-        }
+        var progressForPeriod = [TimeInterval: Float]() // Cached progresses
         
-        // Update passwords if needed
-        let shouldUpdatePasswords = timeLeft == 30
-        if shouldUpdatePasswords {
-            print("Updating passwords...")
-            tableView.beginUpdates()
+        let indexPaths = tableView.indexPathsForVisibleRows ?? []
+        let lazy = indexPaths.lazy
+        let accounts = lazy.map { indexPath -> OTPAccount? in
+            let index = indexPath.row
+            guard (0 ..< self.store.accounts.count).contains(index) else {
+                return nil
+            }
             
-            tableView.reloadRows(at: tableView.indexPathsForVisibleRows ?? [], with: .automatic)
+            return self.store.accounts[index]
+        }
+        let cells = lazy.map { self.tableView.cellForRow(at: $0) as? AccountTableViewCell }
+        
+        for i in 0 ..< indexPaths.count {
+            guard let account = accounts[i] else {
+                print("NO ACCOUNT IN VISIBLE INDEXPATH")
+                continue
+            }
+            guard account.timeBased else {
+                print("Not a time based, skip update")
+                continue
+            }
+            guard let period = account.period else {
+                fatalError("NO PERIOD SET")
+                continue
+            }
+            guard let cell = cells[i] else {
+                print("NO CELL IN VISIBLE INDEXPATH")
+                continue
+            }
             
-            tableView.endUpdates()
+            let progress: Float
+            
+            // Check cached progress for a period to skip recomputation
+            if let cachedProgress = progressForPeriod[period] {
+                progress = cachedProgress
+            } else {
+                let timeLeft = UInt64(period) - (timeInterval % UInt64(period))
+                progress = Float(Double(timeLeft) / period)
+                
+                // Save to cache
+                progressForPeriod[period] = progress
+            }
+            
+            // Update progress view
+            cell.progressView.progress = progress
+            
+            // If progress is 1, it means password has changed
+            if progress == 1 {
+                cell.codeLabel.text = account.formattedPassword()
+            }
         }
     }
     
@@ -171,7 +208,7 @@ class AccountsTableViewController: UITableViewController {
             print("Error: \(error)")
         }
     }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -198,18 +235,19 @@ class AccountsTableViewController: UITableViewController {
         // Configure the cell...
         cell.issuerLabel.text = account.issuer
         cell.accountLabel.text = account.account
-        
-        // Format password
-        let password = (try? account.currentPassword()) ?? String(repeating: "•", count: account.digits)
-        
-        cell.codeLabel.text = password.split(by: 3).joined(separator: " ")
+        cell.codeLabel.text = account.formattedPassword()
         
         // Set progress
-        let timeInterval = UInt64(round(Date().timeIntervalSince1970))
-        let timeLeft = 30 - (timeInterval % 30)
-        let progress = Float(timeLeft) / 30
-        
-        cell.progressView.progress = progress
+        if account.timeBased {
+            guard let period = account.period else {
+                fatalError("NO PERIOD SET")
+            }
+            
+            let timeInterval = UInt64(round(Date().timeIntervalSince1970))
+            let timeLeft = UInt64(period) - (timeInterval % UInt64(period))
+            
+            cell.progressView.progress = Float(Double(timeLeft) / period)
+        }
         
         return cell
     }
