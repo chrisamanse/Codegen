@@ -121,6 +121,18 @@ class AccountsTableViewController: UITableViewController {
     func didTick(timer: Timer) {
         let now = timer.fireDate
         print("Did tick:\n  - \(now)\n  - \(now.timeIntervalSince1970)")
+        
+        let timeInterval = UInt64(now.timeIntervalSince1970)
+        let shouldUpdatePasswords = timeInterval % 30 == 0
+        
+        if shouldUpdatePasswords {
+            print("Updating passwords...")
+            tableView.beginUpdates()
+            
+            tableView.reloadRows(at: tableView.indexPathsForVisibleRows ?? [], with: .automatic)
+            
+            tableView.endUpdates()
+        }
     }
     
     func accountsDidChange(change: RealmCollectionChange<List<OTPAccount>>) {
