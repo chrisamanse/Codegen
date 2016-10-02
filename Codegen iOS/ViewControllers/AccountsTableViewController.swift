@@ -122,8 +122,11 @@ class AccountsTableViewController: UITableViewController {
         let now = timer.fireDate
         print("Did tick:\n  - \(now)\n  - \(now.timeIntervalSince1970)")
         
-        let timeInterval = UInt64(now.timeIntervalSince1970)
-        let shouldUpdatePasswords = timeInterval % 30 == 0
+        let timeInterval = UInt64(round(now.timeIntervalSince1970))
+        let timeLeft = 30 - (timeInterval % 30)
+        let shouldUpdatePasswords = timeLeft == 30
+        
+        print("Time left: \(timeLeft)")
         
         if shouldUpdatePasswords {
             print("Updating passwords...")
