@@ -65,14 +65,23 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ieu-d6-dwc">
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="8" id="Diy-pf-Vf2"/>
+                                                <constraint firstAttribute="height" constant="56" id="qjw-Ak-Rmf"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Ws2-Ck-5S0" firstAttribute="leading" secondItem="YWd-Jh-W6a" secondAttribute="leadingMargin" id="Ef9-cj-ngi"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ieu-d6-dwc" secondAttribute="trailing" id="Es0-4X-MoJ"/>
                                         <constraint firstItem="Ws2-Ck-5S0" firstAttribute="bottom" secondItem="YWd-Jh-W6a" secondAttribute="bottomMargin" id="Jh0-fa-1FY"/>
                                         <constraint firstItem="N6C-9c-yja" firstAttribute="leading" secondItem="YWd-Jh-W6a" secondAttribute="leadingMargin" id="NCh-9N-zMC"/>
                                         <constraint firstItem="wFK-Ri-hEG" firstAttribute="leading" secondItem="YWd-Jh-W6a" secondAttribute="leadingMargin" id="Yli-5c-Q55"/>
                                         <constraint firstItem="N6C-9c-yja" firstAttribute="top" secondItem="YWd-Jh-W6a" secondAttribute="topMargin" id="bdL-qf-YL2"/>
                                         <constraint firstItem="wFK-Ri-hEG" firstAttribute="top" secondItem="N6C-9c-yja" secondAttribute="bottom" constant="8" id="cdm-fe-MPR"/>
+                                        <constraint firstItem="Ieu-d6-dwc" firstAttribute="centerY" secondItem="wFK-Ri-hEG" secondAttribute="centerY" id="hgT-pG-I6M"/>
                                         <constraint firstItem="Ws2-Ck-5S0" firstAttribute="top" secondItem="wFK-Ri-hEG" secondAttribute="bottom" constant="8" id="xc4-ta-kTF"/>
                                     </constraints>
                                 </tableViewCellContentView>
