@@ -13,6 +13,7 @@ class AccountTableViewCell: UITableViewCell {
     @IBOutlet weak var issuerLabel: UILabel!
     @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var accountLabel: UILabel!
+    @IBOutlet weak var progressView: VerticalProgressView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
