@@ -13,7 +13,6 @@ class OTPAccountStore: Object {
     let accounts = List<OTPAccount>()
     
     static func defaultStore(in realm: Realm) throws -> OTPAccountStore {
-        print("defaultStore")
         // Fetch store
         let result = realm.objects(self)
         
