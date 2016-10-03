@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="126"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="0vl-4h-1cy" id="YWd-Jh-W6a">
-                                    <frame key="frameInset" width="375" height="125.5"/>
+                                    <frame key="frameInset" width="375" height="126"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 456" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wFK-Ri-hEG">
@@ -80,6 +80,12 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0L-Qz-LNR">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="didPressIncrement:" destination="0vl-4h-1cy" eventType="touchUpInside" id="wSG-7L-BGA"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Ieu-d6-dwc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wFK-Ri-hEG" secondAttribute="trailing" constant="8" id="7OM-kw-eb2"/>
@@ -91,6 +97,9 @@
                                         <constraint firstItem="N6C-9c-yja" firstAttribute="top" secondItem="YWd-Jh-W6a" secondAttribute="topMargin" id="bdL-qf-YL2"/>
                                         <constraint firstItem="wFK-Ri-hEG" firstAttribute="top" secondItem="N6C-9c-yja" secondAttribute="bottom" constant="8" id="cdm-fe-MPR"/>
                                         <constraint firstItem="Ieu-d6-dwc" firstAttribute="centerY" secondItem="wFK-Ri-hEG" secondAttribute="centerY" id="hgT-pG-I6M"/>
+                                        <constraint firstItem="O0L-Qz-LNR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wFK-Ri-hEG" secondAttribute="trailing" constant="8" id="ihy-gf-1lv"/>
+                                        <constraint firstItem="O0L-Qz-LNR" firstAttribute="trailing" secondItem="YWd-Jh-W6a" secondAttribute="trailingMargin" id="uPV-hW-L2c"/>
+                                        <constraint firstItem="O0L-Qz-LNR" firstAttribute="centerY" secondItem="wFK-Ri-hEG" secondAttribute="centerY" id="uad-AQ-4nQ"/>
                                         <constraint firstItem="Ws2-Ck-5S0" firstAttribute="top" secondItem="wFK-Ri-hEG" secondAttribute="bottom" constant="8" id="xc4-ta-kTF"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -98,6 +107,7 @@
                                 <connections>
                                     <outlet property="accountLabel" destination="Ws2-Ck-5S0" id="goJ-y9-6lf"/>
                                     <outlet property="codeLabel" destination="wFK-Ri-hEG" id="R9D-jJ-ylJ"/>
+                                    <outlet property="incrementButton" destination="O0L-Qz-LNR" id="jcD-eD-nKf"/>
                                     <outlet property="issuerLabel" destination="N6C-9c-yja" id="hNE-kS-LUt"/>
                                     <outlet property="progressView" destination="Ieu-d6-dwc" id="Dpq-R7-84v"/>
                                 </connections>

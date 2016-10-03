@@ -14,6 +14,9 @@ class AccountTableViewCell: UITableViewCell {
     @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var progressView: VerticalProgressView!
+    @IBOutlet weak var incrementButton: UIButton!
+    
+    var pressIncrementHandler: () -> Void = {}
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,5 +27,9 @@ class AccountTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+    }
+    
+    @IBAction func didPressIncrement(_ sender: UIButton) {
+        self.pressIncrementHandler()
     }
 }
