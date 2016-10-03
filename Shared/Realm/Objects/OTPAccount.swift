@@ -64,6 +64,10 @@ class OTPAccount: Object {
         }
     }
     
+    var obfuscatedPassword: String {
+        return String(repeating: "•", count: digits)
+    }
+    
     func currentPassword() throws -> String {
         if timeBased {
             guard let period = self.period else {
@@ -88,8 +92,15 @@ class OTPAccount: Object {
         }
     }
     
-    func formattedPassword() -> String {
-        return ((try? currentPassword()) ?? String(repeating: "•", count: digits)).split(by: 3).joined(separator: " ")
+    func formattedPassword(obfuscated: Bool = false) -> String {
+        let password: String
+        if obfuscated {
+            password = obfuscatedPassword
+        } else {
+            password = (try? currentPassword()) ?? obfuscatedPassword
+        }
+        
+        return password.split(by: 3).joined(separator: " ")
     }
     
     override class func primaryKey() -> String {
