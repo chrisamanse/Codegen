@@ -267,6 +267,12 @@ class AccountsTableViewController: UITableViewController {
                 }
             }
             
+            // Only enable the increment counter button after 1 second
+            cell.incrementButton.isEnabled = false
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+                cell.incrementButton.isEnabled = true
+            }
+            
             isHidden.progressView = true
             isHidden.incrementButton = false
         }
