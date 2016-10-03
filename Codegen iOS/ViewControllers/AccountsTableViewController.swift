@@ -207,6 +207,91 @@ class AccountsTableViewController: UITableViewController {
         }
     }
     
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        let timeInterval = UInt64(round(Date().timeIntervalSince1970))
+        
+        super.setEditing(editing, animated: animated)
+        
+        if editing {
+            // Did start editing
+            destroyTimer()
+        } else {
+            // Did end editing
+            createTimer()
+        }
+        
+        let indexPaths = tableView.indexPathsForVisibleRows ?? []
+        
+        let lazy = indexPaths.lazy
+        let accounts = lazy.map { indexPath -> OTPAccount? in
+            let index = indexPath.row
+            guard (0 ..< self.store.accounts.count).contains(index) else {
+                return nil
+            }
+            
+            return self.store.accounts[index]
+        }
+        let cells = lazy.map { self.tableView.cellForRow(at: $0) as? AccountTableViewCell }
+        
+        // Update progress views
+        var progressForPeriod = [TimeInterval: Float]() // Cached progresses
+        
+        // Show/Hide progress view and increment counter button, and obfuscate code
+        for i in 0 ..< indexPaths.count {
+            guard let account = accounts[i] else {
+                print("NO ACCOUNT IN VISIBLE INDEXPATH")
+                continue
+            }
+            guard let cell = cells[i] else {
+                print("NO CELL IN VISIBLE INDEXPATH")
+                continue
+            }
+            
+            let isHidden: (progressView: Bool, incrementButton: Bool)
+            
+            switch (editing, account.timeBased) {
+            case (true, _):
+                // Editing - hide
+                isHidden.progressView = true
+                isHidden.incrementButton = true
+            case (false, true):
+                // Ended editing AND time based - show progress view and hide increment button
+                isHidden.progressView = false
+                isHidden.incrementButton = true
+                
+                // Update progress views
+                let progress: Float
+                
+                guard let period = account.period else {
+                    fatalError("NO PERIOD SET")
+                    continue
+                }
+                
+                // Check cached progress for a period to skip recomputation
+                if let cachedProgress = progressForPeriod[period] {
+                    progress = cachedProgress
+                } else {
+                    let timeLeft = UInt64(period) - (timeInterval % UInt64(period))
+                    progress = Float(Double(timeLeft) / period)
+                    
+                    // Save to cache
+                    progressForPeriod[period] = progress
+                }
+                
+                // Update progress view
+                cell.progressView.progress = progress
+            case (false, false):
+                // Ended editing AND counter based - hide progress view and show increment button
+                isHidden.progressView = true
+                isHidden.incrementButton = false
+            }
+            
+            cell.progressView.isHidden = isHidden.progressView
+            cell.incrementButton.isHidden = isHidden.incrementButton
+            cell.codeLabel.text = account.formattedPassword(obfuscated: editing)
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -233,7 +318,7 @@ class AccountsTableViewController: UITableViewController {
         // Configure the cell...
         cell.issuerLabel.text = account.issuer
         cell.accountLabel.text = account.account
-        cell.codeLabel.text = account.formattedPassword()
+        cell.codeLabel.text = account.formattedPassword(obfuscated: cell.isEditing)
         
         let isHidden: (progressView: Bool, incrementButton: Bool)
         // Set progress
@@ -275,19 +360,25 @@ class AccountsTableViewController: UITableViewController {
             isHidden.incrementButton = false
         }
         
-        cell.progressView.isHidden = isHidden.progressView
-        cell.incrementButton.isHidden = isHidden.incrementButton
+        if isEditing {
+            // Hide both when editing
+            cell.progressView.isHidden = true
+            cell.incrementButton.isHidden = true
+        } else {
+            cell.progressView.isHidden = isHidden.progressView
+            cell.incrementButton.isHidden = isHidden.incrementButton
+        }
         
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        if tableView.isEditing {
+            return .delete
+        }
+        
+        return .none
     }
-    */
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -330,23 +421,4 @@ class AccountsTableViewController: UITableViewController {
             print("Failed to move: \(error)")
         }
     }
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
