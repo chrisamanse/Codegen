@@ -237,6 +237,7 @@ class AccountsTableViewController: UITableViewController {
         cell.accountLabel.text = account.account
         cell.codeLabel.text = account.formattedPassword()
         
+        let isHidden: (progressView: Bool, incrementButton: Bool)
         // Set progress
         if account.timeBased {
             guard let period = account.period else {
@@ -247,7 +248,31 @@ class AccountsTableViewController: UITableViewController {
             let timeLeft = UInt64(period) - (timeInterval % UInt64(period))
             
             cell.progressView.progress = Float(Double(timeLeft) / period)
+            
+            isHidden.progressView = false
+            isHidden.incrementButton = true
+        } else {
+            // Counter based
+            cell.pressIncrementHandler = {
+                guard let counter = account.counter else {
+                    fatalError("NO COUNTER SET")
+                }
+                
+                do {
+                    try self.realm.write {
+                        account.counter = counter &+ 1
+                    }
+                } catch let error {
+                    print("Failed to increment counter: \(error)")
+                }
+            }
+            
+            isHidden.progressView = true
+            isHidden.incrementButton = false
         }
+        
+        cell.progressView.isHidden = isHidden.progressView
+        cell.incrementButton.isHidden = isHidden.incrementButton
         
         return cell
     }
