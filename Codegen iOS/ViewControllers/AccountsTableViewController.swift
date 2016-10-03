@@ -48,8 +48,6 @@ class AccountsTableViewController: UITableViewController {
             _store = store
             
             token = store.accounts.addNotificationBlock(accountsDidChange(change:))
-            
-            tableView.reloadData()
         } catch let error {
             fatalError("Failed to open to Realm file: \(error)")
         }
@@ -185,7 +183,7 @@ class AccountsTableViewController: UITableViewController {
     func accountsDidChange(change: RealmCollectionChange<List<OTPAccount>>) {
         switch change {
         case .initial(_):
-            print("Initial query")
+            tableView.reloadData()
         case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
             if shouldIgnoreRealmNotification {
                 print("Ignoring Realm notification")
