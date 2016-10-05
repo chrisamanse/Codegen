@@ -350,7 +350,7 @@ class AccountsTableViewController: UITableViewController {
             isHidden.incrementButton = false
         }
         
-        if isEditing {
+        if tableView.isEditing {
             // Hide both when editing
             cell.progressView.isHidden = true
             cell.incrementButton.isHidden = true
