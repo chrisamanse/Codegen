@@ -116,6 +116,34 @@ class AccountsTableViewController: UITableViewController {
         timer = nil
     }
     
+    func forEachVisibleCell(body: (AccountTableViewCell, OTPAccount) throws -> Void) rethrows {
+        let indexPaths = tableView.indexPathsForVisibleRows ?? []
+        let lazy = indexPaths.lazy
+        let accounts = lazy.map { indexPath -> OTPAccount? in
+            let index = indexPath.row
+            guard (0 ..< self.store.accounts.count).contains(index) else {
+                return nil
+            }
+            
+            return self.store.accounts[index]
+        }
+        
+        let cells = lazy.map { self.tableView.cellForRow(at: $0) as? AccountTableViewCell }
+        
+        for i in 0 ..< indexPaths.count {
+            guard let account = accounts[i] else {
+                print("NO ACCOUNT IN VISIBLE INDEXPATH")
+                continue
+            }
+            guard let cell = cells[i] else {
+                print("NO CELL IN VISIBLE INDEXPATH")
+                continue
+            }
+            
+            try body(cell, account)
+        }
+    }
+    
     func didTick(timer: Timer) {
         let now = timer.fireDate
         print("Did tick:\n  - \(now)\n  - \(now.timeIntervalSince1970)")
@@ -127,34 +155,13 @@ class AccountsTableViewController: UITableViewController {
         // Update progress views
         var progressForPeriod = [TimeInterval: Float]() // Cached progresses
         
-        let indexPaths = tableView.indexPathsForVisibleRows ?? []
-        let lazy = indexPaths.lazy
-        let accounts = lazy.map { indexPath -> OTPAccount? in
-            let index = indexPath.row
-            guard (0 ..< self.store.accounts.count).contains(index) else {
-                return nil
-            }
-            
-            return self.store.accounts[index]
-        }
-        let cells = lazy.map { self.tableView.cellForRow(at: $0) as? AccountTableViewCell }
-        
-        for i in 0 ..< indexPaths.count {
-            guard let account = accounts[i] else {
-                print("NO ACCOUNT IN VISIBLE INDEXPATH")
-                continue
-            }
+        self.forEachVisibleCell { (cell, account) in
             guard account.timeBased else {
                 print("Not a time based, skip update")
-                continue
+                return
             }
             guard let period = account.period else {
                 fatalError("NO PERIOD SET")
-                continue
-            }
-            guard let cell = cells[i] else {
-                print("NO CELL IN VISIBLE INDEXPATH")
-                continue
             }
             
             let progress: Float
@@ -220,33 +227,10 @@ class AccountsTableViewController: UITableViewController {
             createTimer()
         }
         
-        let indexPaths = tableView.indexPathsForVisibleRows ?? []
-        
-        let lazy = indexPaths.lazy
-        let accounts = lazy.map { indexPath -> OTPAccount? in
-            let index = indexPath.row
-            guard (0 ..< self.store.accounts.count).contains(index) else {
-                return nil
-            }
-            
-            return self.store.accounts[index]
-        }
-        let cells = lazy.map { self.tableView.cellForRow(at: $0) as? AccountTableViewCell }
-        
         // Update progress views
         var progressForPeriod = [TimeInterval: Float]() // Cached progresses
         
-        // Show/Hide progress view and increment counter button, and obfuscate code
-        for i in 0 ..< indexPaths.count {
-            guard let account = accounts[i] else {
-                print("NO ACCOUNT IN VISIBLE INDEXPATH")
-                continue
-            }
-            guard let cell = cells[i] else {
-                print("NO CELL IN VISIBLE INDEXPATH")
-                continue
-            }
-            
+        self.forEachVisibleCell { (cell, account) in
             let isHidden: (progressView: Bool, incrementButton: Bool)
             
             switch (editing, account.timeBased) {
@@ -264,7 +248,6 @@ class AccountsTableViewController: UITableViewController {
                 
                 guard let period = account.period else {
                     fatalError("NO PERIOD SET")
-                    continue
                 }
                 
                 // Check cached progress for a period to skip recomputation
