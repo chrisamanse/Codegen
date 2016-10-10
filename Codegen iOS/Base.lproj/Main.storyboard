@@ -137,7 +137,7 @@
         <!--Add Account-->
         <scene sceneID="w6r-Ie-Bvi">
             <objects>
-                <tableViewController id="vrK-bX-5eV" sceneMemberID="viewController">
+                <tableViewController id="vrK-bX-5eV" customClass="AddManualViewController" customModule="Codegen_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="dpx-At-DPA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -224,9 +224,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Account" id="CUU-Jf-5Mq">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="WPe-Ap-VEe"/>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="44B-P9-JMt"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="WPe-Ap-VEe">
+                            <connections>
+                                <action selector="didPressCancel:" destination="vrK-bX-5eV" id="Gwt-gK-nqL"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="44B-P9-JMt">
+                            <connections>
+                                <action selector="didPressAdd:" destination="vrK-bX-5eV" id="WhY-rk-C13"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="accountTextField" destination="Lbm-bp-XvA" id="8F9-RL-Zkq"/>
+                        <outlet property="issuerTextField" destination="XZb-jF-BXa" id="gzv-Wz-v9t"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Be-hE-sg3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
