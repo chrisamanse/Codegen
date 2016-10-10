@@ -54,6 +54,7 @@
 		DFF9EFB11D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFAF1D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift */; };
 		DFF9EFB31D9D093000EF36C6 /* HashFunction+Raw.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFB21D9D093000EF36C6 /* HashFunction+Raw.swift */; };
 		DFF9EFB41D9D093000EF36C6 /* HashFunction+Raw.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFB21D9D093000EF36C6 /* HashFunction+Raw.swift */; };
+		DFFB27A51DAB1C74009C3088 /* AddManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFB27A41DAB1C74009C3088 /* AddManualViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,7 @@
 		DFF9EFAC1D9D05DA00EF36C6 /* OTPURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPURL.swift; sourceTree = "<group>"; };
 		DFF9EFAF1D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OTPAccount+OTPURL.swift"; sourceTree = "<group>"; };
 		DFF9EFB21D9D093000EF36C6 /* HashFunction+Raw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HashFunction+Raw.swift"; sourceTree = "<group>"; };
+		DFFB27A41DAB1C74009C3088 /* AddManualViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddManualViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				DF544A911D9DE5E0005F7D9E /* AccountsTableViewController.swift */,
+				DFFB27A41DAB1C74009C3088 /* AddManualViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				DF2B75691D9F9E05003B9242 /* OTPAccountStore.swift in Sources */,
 				DF61E54D1D9A268900DA2607 /* RealmKey.swift in Sources */,
 				DF37B49D1DA138E900A655D1 /* VerticalProgressView.swift in Sources */,
+				DFFB27A51DAB1C74009C3088 /* AddManualViewController.swift in Sources */,
 				DF61E53D1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */,
 				DF2B756C1D9FBFB1003B9242 /* Collection+Split.swift in Sources */,
 				DF544A921D9DE5E0005F7D9E /* AccountsTableViewController.swift in Sources */,
