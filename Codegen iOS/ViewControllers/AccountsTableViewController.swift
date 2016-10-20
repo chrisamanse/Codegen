@@ -75,20 +75,7 @@ class AccountsTableViewController: UITableViewController {
     }
     
     @IBAction func didPressAdd(_ sender: UIBarButtonItem) {
-        let account = OTPAccount()
-        
-        account.issuer = "Apple \(Date())"
-        account.account = "chris@chrisamanse.xyz"
-        account.timeBased = true
-        account.period = 30
-        
-        do {
-            try realm.write {
-                store.accounts.insert(account, at: 0)
-            }
-        } catch let error {
-            print("Failed to add account: \(error)")
-        }
+        performSegue(withIdentifier: "presentAddManual", sender: nil)
     }
     
     func createTimer() {
