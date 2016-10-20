@@ -47,7 +47,9 @@ class AccountsTableViewController: UITableViewController {
             let store = try OTPAccountStore.defaultStore(in: realm)
             _store = store
             
-            token = store.accounts.addNotificationBlock(accountsDidChange(change:))
+            token = store.accounts.addNotificationBlock{ [weak self] in
+                self?.accountsDidChange(change: $0)
+            }
         } catch let error {
             fatalError("Failed to open to Realm file: \(error)")
         }
