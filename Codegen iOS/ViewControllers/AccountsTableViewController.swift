@@ -392,6 +392,9 @@ class AccountsTableViewController: UITableViewController {
             try realm.commitWrite(withoutNotifying: tokens)
         } catch let error {
             print("Failed to move: \(error)")
+            
+            // Reload data in view when model failed to update
+            tableView.reloadData()
         }
     }
 }
