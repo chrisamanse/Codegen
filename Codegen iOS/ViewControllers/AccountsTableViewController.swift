@@ -31,13 +31,11 @@ class AccountsTableViewController: UITableViewController {
     
     var token: NotificationToken?
     
-    var shouldIgnoreRealmNotification = false
-    
     var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
         do {
@@ -181,12 +179,6 @@ class AccountsTableViewController: UITableViewController {
         case .initial(_):
             tableView.reloadData()
         case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
-            if shouldIgnoreRealmNotification {
-                print("Ignoring Realm notification")
-                shouldIgnoreRealmNotification = false
-                break
-            }
-            
             print("Deletions: \(deletions)")
             print("Insertions: \(insertions)")
             print("Modifications: \(modifications)")
@@ -390,12 +382,14 @@ class AccountsTableViewController: UITableViewController {
         
         // Move Object
         
-        shouldIgnoreRealmNotification = true // Ignore this Realm update
-        
         do {
-            try realm.write {
-                store.accounts.move(from: fromRow, to: toRow)
-            }
+            realm.beginWrite()
+            
+            store.accounts.move(from: fromRow, to: toRow)
+            
+            // Commit write transaction without notifying token
+            let tokens = token.map { [$0] } ?? []
+            try realm.commitWrite(withoutNotifying: tokens)
         } catch let error {
             print("Failed to move: \(error)")
         }
