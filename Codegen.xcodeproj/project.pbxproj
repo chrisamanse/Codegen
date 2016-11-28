@@ -16,6 +16,8 @@
 		DF2B756D1D9FBFB1003B9242 /* Collection+Split.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B756B1D9FBFB1003B9242 /* Collection+Split.swift */; };
 		DF37B49D1DA138E900A655D1 /* VerticalProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF37B49C1DA138E900A655D1 /* VerticalProgressView.swift */; };
 		DF544A921D9DE5E0005F7D9E /* AccountsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF544A911D9DE5E0005F7D9E /* AccountsTableViewController.swift */; };
+		DF591CD21DEC08C700F6B0BC /* AppRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF591CD11DEC08C700F6B0BC /* AppRealm.swift */; };
+		DF591CD31DEC08C700F6B0BC /* AppRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF591CD11DEC08C700F6B0BC /* AppRealm.swift */; };
 		DF61E52F1D9A144F00DA2607 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF61E52D1D9A144F00DA2607 /* Realm.framework */; };
 		DF61E5301D9A144F00DA2607 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF61E52E1D9A144F00DA2607 /* RealmSwift.framework */; };
 		DF61E5331D9A150100DA2607 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF61E5311D9A150100DA2607 /* Realm.framework */; };
@@ -112,6 +114,7 @@
 		DF2B756B1D9FBFB1003B9242 /* Collection+Split.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Split.swift"; sourceTree = "<group>"; };
 		DF37B49C1DA138E900A655D1 /* VerticalProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalProgressView.swift; sourceTree = "<group>"; };
 		DF544A911D9DE5E0005F7D9E /* AccountsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsTableViewController.swift; sourceTree = "<group>"; };
+		DF591CD11DEC08C700F6B0BC /* AppRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRealm.swift; sourceTree = "<group>"; };
 		DF61E52D1D9A144F00DA2607 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		DF61E52E1D9A144F00DA2607 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		DF61E5311D9A150100DA2607 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/Mac/Realm.framework; sourceTree = "<group>"; };
@@ -272,6 +275,7 @@
 			children = (
 				DF61E54F1D9A2F2700DA2607 /* Codegen iOS.entitlements */,
 				DFE7F0591D9534A000B8E15B /* AppDelegate.swift */,
+				DF591CD11DEC08C700F6B0BC /* AppRealm.swift */,
 				DF0E35FE1D9E6FAB00C66351 /* Views */,
 				DF0E35FB1D9E6D6800C66351 /* ViewControllers */,
 				DFE7F05D1D9534A000B8E15B /* Main.storyboard */,
@@ -553,6 +557,7 @@
 				DFF9EFAD1D9D05DA00EF36C6 /* OTPURL.swift in Sources */,
 				DF0E36001D9E6FED00C66351 /* AccountTableViewCell.swift in Sources */,
 				DF1A78AC1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */,
+				DF591CD21DEC08C700F6B0BC /* AppRealm.swift in Sources */,
 				DF2B75691D9F9E05003B9242 /* OTPAccountStore.swift in Sources */,
 				DF61E54D1D9A268900DA2607 /* RealmKey.swift in Sources */,
 				DF37B49D1DA138E900A655D1 /* VerticalProgressView.swift in Sources */,
@@ -588,6 +593,7 @@
 				DFF9EFB11D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift in Sources */,
 				DFE7F07E1D95353F00B8E15B /* AppDelegate.swift in Sources */,
 				DF2B756A1D9F9E05003B9242 /* OTPAccountStore.swift in Sources */,
+				DF591CD31DEC08C700F6B0BC /* AppRealm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
