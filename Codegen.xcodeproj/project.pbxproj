@@ -240,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				DF1A78AA1D9A7C1100CEDE7C /* Objects */,
+				DF591CD11DEC08C700F6B0BC /* AppRealm.swift */,
 				DF61E53C1D9A18DA00DA2607 /* RealmDefaults.swift */,
 				DF61E54C1D9A268900DA2607 /* RealmKey.swift */,
 			);
@@ -275,7 +276,6 @@
 			children = (
 				DF61E54F1D9A2F2700DA2607 /* Codegen iOS.entitlements */,
 				DFE7F0591D9534A000B8E15B /* AppDelegate.swift */,
-				DF591CD11DEC08C700F6B0BC /* AppRealm.swift */,
 				DF0E35FE1D9E6FAB00C66351 /* Views */,
 				DF0E35FB1D9E6D6800C66351 /* ViewControllers */,
 				DFE7F05D1D9534A000B8E15B /* Main.storyboard */,
