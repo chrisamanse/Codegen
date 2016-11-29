@@ -131,47 +131,51 @@ class AccountsTableViewController: UITableViewController {
         }
     }
     
-    func didTick(timer: Timer) {
-        let now = timer.fireDate
-        print("Did tick:\n  - \(now)\n  - \(now.timeIntervalSince1970)")
+    func updateProgressViews(for date: Date) {
+        let timeInterval = UInt64(round(date.timeIntervalSince1970))
         
-        let timeInterval = UInt64(round(now.timeIntervalSince1970))
+        #if DEBUG
+            print("Did tick:\n  - \(date)\n  - \(date.timeIntervalSince1970)")
+            print("Time left (30s period): \(30 - (timeInterval % 30))")
+        #endif
         
-        print("Time left (30s period): \(30 - (timeInterval % 30))")
+        // Cache progress for period to avoid recomputation
+        var progressForPeriod = [TimeInterval: Float]()
         
-        // Update progress views
-        var progressForPeriod = [TimeInterval: Float]() // Cached progresses
-        
-        self.forEachVisibleCell { (cell, account) in
+        forEachVisibleCell { (cell, account) in
+            // Skip cell if not time based
             guard account.timeBased else {
-                print("Not a time based, skip update")
                 return
             }
             guard let period = account.period else {
                 fatalError("NO PERIOD SET")
             }
             
+            // Compute progress
             let progress: Float
             
-            // Check cached progress for a period to skip recomputation
             if let cachedProgress = progressForPeriod[period] {
                 progress = cachedProgress
             } else {
                 let timeLeft = UInt64(period) - (timeInterval % UInt64(period))
                 progress = Float(Double(timeLeft) / period)
                 
-                // Save to cache
+                // Save progress to cache
                 progressForPeriod[period] = progress
             }
             
-            // Update progress view
+            // Update cell
             cell.progressView.progress = progress
             
-            // If progress is 1, it means password has changed
+            // Password is now different
             if progress == 1 {
                 cell.codeLabel.text = account.formattedPassword()
             }
         }
+    }
+    
+    func didTick(timer: Timer) {
+        updateProgressViews(for: timer.fireDate)
     }
     
     func accountsDidChange(change: RealmCollectionChange<List<OTPAccount>>) {
