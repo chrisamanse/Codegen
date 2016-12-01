@@ -267,12 +267,7 @@ class AccountsTableViewController: UITableViewController {
         }
         
         // Get object
-        let index = indexPath.row
-        guard (0 ..< store.accounts.count).contains(index) else {
-            fatalError("Unexpected cell!")
-        }
-        
-        let account = store.accounts[index]
+        let account = store.accounts[indexPath.row]
         
         // Configure the cell...
         cell.issuerLabel.text = account.issuer
@@ -316,18 +311,10 @@ class AccountsTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Get object
-            let index = indexPath.row
-            guard (0 ..< store.accounts.count).contains(index) else {
-                fatalError("Unexpected cell!")
-            }
-            
-            let account = store.accounts[index]
-            
             // Delete object
             do {
                 try realm.write {
-                    realm.delete(account)
+                    realm.delete(store.accounts[indexPath.row])
                 }
             } catch let error {
                 print("Failed to delete account: \(error)")
