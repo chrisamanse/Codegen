@@ -200,8 +200,6 @@ class AccountsTableViewController: UITableViewController {
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
-        let timeInterval = UInt64(round(Date().timeIntervalSince1970))
-        
         super.setEditing(editing, animated: animated)
         
         if editing {
@@ -212,51 +210,23 @@ class AccountsTableViewController: UITableViewController {
             createTimer()
         }
         
-        // Update progress views
-        var progressForPeriod = [TimeInterval: Float]() // Cached progresses
-        
-        self.forEachVisibleCell { (cell, account) in
-            let isHidden: (progressView: Bool, incrementButton: Bool)
-            
-            switch (editing, account.timeBased) {
-            case (true, _):
-                // Editing - hide
-                isHidden.progressView = true
-                isHidden.incrementButton = true
-            case (false, true):
-                // Ended editing AND time based - show progress view and hide increment button
-                isHidden.progressView = false
-                isHidden.incrementButton = true
-                
-                // Update progress views
-                let progress: Float
-                
-                guard let period = account.period else {
-                    fatalError("NO PERIOD SET")
-                }
-                
-                // Check cached progress for a period to skip recomputation
-                if let cachedProgress = progressForPeriod[period] {
-                    progress = cachedProgress
-                } else {
-                    let timeLeft = UInt64(period) - (timeInterval % UInt64(period))
-                    progress = Float(Double(timeLeft) / period)
-                    
-                    // Save to cache
-                    progressForPeriod[period] = progress
-                }
-                
-                // Update progress view
-                cell.progressView.progress = progress
-            case (false, false):
-                // Ended editing AND counter based - hide progress view and show increment button
-                isHidden.progressView = true
-                isHidden.incrementButton = false
+        if isEditing {
+            // Editing - hide progress view and increment button
+            forEachVisibleCell { (cell, account) in
+                cell.progressView.isHidden = true
+                cell.incrementButton.isHidden = true
+                cell.codeLabel.text = account.formattedPassword(obfuscated: true)
+            }
+        } else {
+            // Not editing - show controls and code
+            forEachVisibleCell { (cell, account) in
+                cell.progressView.isHidden = !account.timeBased
+                cell.incrementButton.isHidden = account.timeBased
+                cell.codeLabel.text = account.formattedPassword()
             }
             
-            cell.progressView.isHidden = isHidden.progressView
-            cell.incrementButton.isHidden = isHidden.incrementButton
-            cell.codeLabel.text = account.formattedPassword(obfuscated: editing)
+            // Update progress views
+            updateProgressViews(for: Date())
         }
     }
     
