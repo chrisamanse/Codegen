@@ -310,11 +310,7 @@ class AccountsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        if tableView.isEditing {
-            return .delete
-        }
-        
-        return .none
+        return tableView.isEditing ? .delete : .none
     }
     
     // Override to support editing the table view.
