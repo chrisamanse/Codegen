@@ -10,25 +10,8 @@ import UIKit
 import RealmSwift
 
 class AccountsTableViewController: UITableViewController {
-    
-    var _realm: Realm?
-    var realm: Realm {
-        guard let realm = self._realm else {
-            fatalError("Realm has not yet been set up.")
-        }
-        
-        return realm
-    }
-    
-    var _store: OTPAccountStore?
-    var store: OTPAccountStore {
-        guard let store = self._store else {
-            fatalError("There is no OTPAccountStore yet.")
-        }
-        
-        return store
-    }
-    
+    var realm: Realm!
+    var store: OTPAccountStore!
     var token: NotificationToken?
     
     var timer: Timer?
@@ -39,11 +22,8 @@ class AccountsTableViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
         do {
-            let realm = try Realm()
-            _realm = realm
-            
-            let store = try OTPAccountStore.defaultStore(in: realm)
-            _store = store
+            realm = try Realm()
+            store = try OTPAccountStore.defaultStore(in: realm)
             
             token = store.accounts.addNotificationBlock{ [weak self] in
                 self?.accountsDidChange(change: $0)
