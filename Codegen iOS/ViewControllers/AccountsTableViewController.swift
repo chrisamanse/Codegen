@@ -265,7 +265,6 @@ class AccountsTableViewController: UITableViewController {
         cell.accountLabel.text = account.account
         cell.codeLabel.text = account.formattedPassword(obfuscated: cell.isEditing)
         
-        let isHidden: (progressView: Bool, incrementButton: Bool)
         // Set progress
         if account.timeBased {
             guard let period = account.period else {
@@ -276,9 +275,6 @@ class AccountsTableViewController: UITableViewController {
             let timeLeft = UInt64(period) - (timeInterval % UInt64(period))
             
             cell.progressView.progress = Float(Double(timeLeft) / period)
-            
-            isHidden.progressView = false
-            isHidden.incrementButton = true
         } else {
             // Counter based
             cell.pressIncrementHandler = {
@@ -300,19 +296,11 @@ class AccountsTableViewController: UITableViewController {
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
                 cell.incrementButton.isEnabled = true
             }
-            
-            isHidden.progressView = true
-            isHidden.incrementButton = false
         }
         
-        if tableView.isEditing {
-            // Hide both when editing
-            cell.progressView.isHidden = true
-            cell.incrementButton.isHidden = true
-        } else {
-            cell.progressView.isHidden = isHidden.progressView
-            cell.incrementButton.isHidden = isHidden.incrementButton
-        }
+        // Hide both when editing
+        cell.progressView.isHidden = tableView.isEditing ? true : !account.timeBased
+        cell.incrementButton.isHidden = tableView.isEditing ? true : account.timeBased
         
         return cell
     }
