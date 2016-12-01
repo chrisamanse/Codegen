@@ -178,6 +178,20 @@ class AccountsTableViewController: UITableViewController {
         updateProgressViews(for: timer.fireDate)
     }
     
+    func incrementCounter(of account: OTPAccount) {
+        guard let counter = account.counter else {
+            fatalError("NO COUNTER SET")
+        }
+        
+        do {
+            try self.realm.write {
+                account.counter = counter &+ 1
+            }
+        } catch let error {
+            print("Failed to increment counter: \(error)")
+        }
+    }
+    
     func accountsDidChange(change: RealmCollectionChange<List<OTPAccount>>) {
         switch change {
         case .initial(_):
@@ -277,18 +291,8 @@ class AccountsTableViewController: UITableViewController {
             cell.progressView.progress = Float(Double(timeLeft) / period)
         } else {
             // Counter based
-            cell.pressIncrementHandler = {
-                guard let counter = account.counter else {
-                    fatalError("NO COUNTER SET")
-                }
-                
-                do {
-                    try self.realm.write {
-                        account.counter = counter &+ 1
-                    }
-                } catch let error {
-                    print("Failed to increment counter: \(error)")
-                }
+            cell.pressIncrementHandler = { [unowned self] in
+                self.incrementCounter(of: account)
             }
             
             // Only enable the increment counter button after 1 second
