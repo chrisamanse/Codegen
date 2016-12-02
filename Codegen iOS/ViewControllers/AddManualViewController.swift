@@ -23,11 +23,6 @@ class AddManualViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction func didPressCancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
