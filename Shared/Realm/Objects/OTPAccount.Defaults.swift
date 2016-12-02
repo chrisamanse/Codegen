@@ -11,7 +11,7 @@ import CryptoKit
 
 extension OTPAccount {
     enum Defaults {
-        static var       digits: Int { return 6 }
+        static var       digits: Int          { return 6 }
         static var hashFunction: HashFunction { return .sha1 }
         static var       period: TimeInterval { return 30 }
     }
