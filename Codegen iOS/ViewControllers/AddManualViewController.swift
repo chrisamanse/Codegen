@@ -29,7 +29,7 @@ class AddManualViewController: UITableViewController {
     
     @IBAction func didPressAdd(_ sender: UIBarButtonItem) {
         do {
-            guard let account = accountTextField.text else {
+            guard let account = accountTextField.text, !account.isEmpty else {
                 throw AddManualError.noAccount
             }
             
