@@ -40,6 +40,7 @@ class AddManualViewController: UITableViewController {
             let newAccount = OTPAccount()
             newAccount.account = account
             newAccount.issuer = issuer
+            newAccount.counter = 1
             
             let store = try OTPAccountStore.defaultStore(in: realm)
             
