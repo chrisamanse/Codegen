@@ -199,22 +199,15 @@ class AccountsTableViewController: UITableViewController {
             createTimer()
         }
         
-        if isEditing {
-            // Editing - hide progress view and increment button
-            forEachVisibleCell { (cell, account) in
-                cell.progressView.isHidden = true
-                cell.incrementButton.isHidden = true
-                cell.codeLabel.text = account.formattedPassword(obfuscated: true)
-            }
-        } else {
-            // Not editing - show controls and code
-            forEachVisibleCell { (cell, account) in
-                cell.progressView.isHidden = !account.timeBased
-                cell.incrementButton.isHidden = account.timeBased
-                cell.codeLabel.text = account.formattedPassword()
-            }
-            
-            // Update progress views
+        // Show/Hide controls based on editing and time based
+        forEachVisibleCell { (cell, account) in
+            cell.progressView.isHidden = editing ? true : !account.timeBased
+            cell.incrementButton.isHidden = editing ? true : account.timeBased
+            cell.codeLabel.text = account.formattedPassword(obfuscated: editing)
+        }
+        
+        if !editing {
+            // Update progress views if done editing
             updateProgressViews(for: Date())
         }
     }
