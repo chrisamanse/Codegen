@@ -14,8 +14,13 @@ class AddManualViewController: UITableViewController {
     @IBOutlet weak var issuerTextField: UITextField!
     @IBOutlet weak var accountTextField: UITextField!
     
+    let estimatedRowHeight: CGFloat = 50
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.estimatedRowHeight = estimatedRowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     override func didReceiveMemoryWarning() {
