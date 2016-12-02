@@ -12,7 +12,13 @@ import RealmSwift
 class AddManualViewController: UITableViewController {
     
     @IBOutlet weak var issuerTextField: UITextField!
+    @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var accountTextField: UITextField!
+    
+    @IBOutlet weak var keyTextField: UITextField!
+    @IBOutlet weak var digitsLabel: UILabel!
+    @IBOutlet weak var digitsStepper: UIStepper!
+    @IBOutlet weak var timeBasedSwitch: UISwitch!
     
     let estimatedRowHeight: CGFloat = 50
     
@@ -40,7 +46,14 @@ class AddManualViewController: UITableViewController {
             let newAccount = OTPAccount()
             newAccount.account = account
             newAccount.issuer = issuer
-            newAccount.counter = 1
+            newAccount.digits = Int(digitsStepper.value)
+            
+            if timeBasedSwitch.isOn {
+                newAccount.timeBased = true
+                newAccount.period = 30
+            } else {
+                newAccount.counter = 1
+            }
             
             let store = try OTPAccountStore.defaultStore(in: realm)
             
@@ -66,6 +79,16 @@ class AddManualViewController: UITableViewController {
         alertController.addAction(okAction)
         
         present(alertController, animated: true)
+    }
+    
+    @IBAction func didChangeStepperValue(_ sender: UIStepper) {
+        let digits = Int(sender.value)
+        digitsLabel.text = String(digits)
+        
+        let dummyAccount = OTPAccount()
+        dummyAccount.digits = digits
+        
+        codeLabel.text = dummyAccount.formattedPassword(obfuscated: true)
     }
 }
 

@@ -157,7 +157,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="S0S-I3-h17" id="pg2-If-oPT">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="133"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="••• •••" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2bK-h4-Zag">
@@ -173,7 +173,7 @@
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XZb-jF-BXa">
                                                     <rect key="frame" x="15" y="11" width="345" height="20"/>
@@ -182,7 +182,7 @@
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -205,17 +205,17 @@
                             <tableViewSection headerTitle="Key" id="zbL-dn-QWe">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="accountCell" id="fpJ-nH-uZc">
-                                        <rect key="frame" x="0.0" y="226" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="225" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="fpJ-nH-uZc" id="dRy-P2-cwK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="abcd efgh ijkl mnop" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0yZ-7p-u3E">
                                                     <rect key="frame" x="15" y="11" width="345" height="22"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="next"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -228,10 +228,10 @@
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="accountCell" rowHeight="52" id="xVi-ic-oub">
-                                        <rect key="frame" x="0.0" y="270" width="375" height="52"/>
+                                        <rect key="frame" x="0.0" y="269" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="xVi-ic-oub" id="ahA-k6-okQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Digits" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCt-9K-aqG">
@@ -242,6 +242,9 @@
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" autorepeat="NO" value="6" minimumValue="6" maximumValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="yJd-mc-HWy">
                                                     <rect key="frame" x="266" y="11" width="94" height="29"/>
+                                                    <connections>
+                                                        <action selector="didChangeStepperValue:" destination="vrK-bX-5eV" eventType="valueChanged" id="aXI-7P-cQ7"/>
+                                                    </connections>
                                                 </stepper>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YY7-Rs-nqk">
                                                     <rect key="frame" x="248" y="16.5" width="10" height="19.5"/>
@@ -266,10 +269,10 @@
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="accountCell" rowHeight="52" id="wnx-zF-h1w">
-                                        <rect key="frame" x="0.0" y="322" width="375" height="52"/>
+                                        <rect key="frame" x="0.0" y="321" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="wnx-zF-h1w" id="Vdg-5i-mz1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Time-Based" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPg-oH-udb">
@@ -317,7 +320,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="accountTextField" destination="Lbm-bp-XvA" id="8F9-RL-Zkq"/>
+                        <outlet property="codeLabel" destination="2bK-h4-Zag" id="ai6-Eb-cc0"/>
+                        <outlet property="digitsLabel" destination="YY7-Rs-nqk" id="Jpm-JX-qGG"/>
+                        <outlet property="digitsStepper" destination="yJd-mc-HWy" id="bId-4N-7S5"/>
                         <outlet property="issuerTextField" destination="XZb-jF-BXa" id="gzv-Wz-v9t"/>
+                        <outlet property="keyTextField" destination="0yZ-7p-u3E" id="dy8-OI-1yn"/>
+                        <outlet property="timeBasedSwitch" destination="tBv-of-z4U" id="L3U-Ed-iCi"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Be-hE-sg3" userLabel="First Responder" sceneMemberID="firstResponder"/>
