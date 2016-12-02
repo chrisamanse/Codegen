@@ -292,15 +292,11 @@ class AccountsTableViewController: UITableViewController {
     
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        let fromRow = fromIndexPath.row
-        let toRow = to.row
-        
         // Move Object
-        
         do {
             realm.beginWrite()
             
-            store.accounts.move(from: fromRow, to: toRow)
+            store.accounts.move(from: fromIndexPath.row, to: to.row)
             
             // Commit write transaction without notifying token
             let tokens = token.map { [$0] } ?? []
