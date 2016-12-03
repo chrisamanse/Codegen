@@ -308,4 +308,18 @@ class AccountsTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let account = store.accounts[indexPath.row]
+        
+        do {
+            let password = try account.currentPassword()
+            
+            UIPasteboard.general.string = password
+        } catch let error {
+            print("Failed to get password: \(error)")
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
