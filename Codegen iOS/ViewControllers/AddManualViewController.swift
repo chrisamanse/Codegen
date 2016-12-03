@@ -59,6 +59,16 @@ class AddManualViewController: UITableViewController {
         }
     }
     
+    @IBAction func didChangeStepperValue(_ sender: UIStepper) {
+        let digits = Int(sender.value)
+        digitsLabel.text = String(digits)
+        
+        let dummyAccount = OTPAccount()
+        dummyAccount.digits = digits
+        
+        codeLabel.text = dummyAccount.formattedPassword(obfuscated: true)
+    }
+    
     func presentErrorAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -107,15 +117,5 @@ class AddManualViewController: UITableViewController {
         }
         
         return newAccount
-    }
-    
-    @IBAction func didChangeStepperValue(_ sender: UIStepper) {
-        let digits = Int(sender.value)
-        digitsLabel.text = String(digits)
-        
-        let dummyAccount = OTPAccount()
-        dummyAccount.digits = digits
-        
-        codeLabel.text = dummyAccount.formattedPassword(obfuscated: true)
     }
 }
