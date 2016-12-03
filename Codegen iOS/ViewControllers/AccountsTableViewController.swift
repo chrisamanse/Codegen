@@ -315,7 +315,7 @@ class AccountsTableViewController: UITableViewController {
         do {
             let password = try account.currentPassword()
             
-            UIPasteboard.general.string = password
+            Pasteboard.general.string = password
         } catch let error {
             print("Failed to get password: \(error)")
         }

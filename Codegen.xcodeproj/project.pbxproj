@@ -11,6 +11,8 @@
 		DF18E71F1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF18E71E1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift */; };
 		DF18E7201DF3651C00C5AEF6 /* AddAccountInvalidInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF18E71E1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift */; };
 		DF18E7221DF371A500C5AEF6 /* AddManualViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF18E7211DF371A500C5AEF6 /* AddManualViewController+UITextFieldDelegate.swift */; };
+		DF18E7241DF37FA700C5AEF6 /* Pasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF18E7231DF37FA700C5AEF6 /* Pasteboard.swift */; };
+		DF18E7251DF37FA700C5AEF6 /* Pasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF18E7231DF37FA700C5AEF6 /* Pasteboard.swift */; };
 		DF1A78AC1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A78AB1D9A7C3D00CEDE7C /* OTPAccount.swift */; };
 		DF1A78AD1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A78AB1D9A7C3D00CEDE7C /* OTPAccount.swift */; };
 		DF2B75691D9F9E05003B9242 /* OTPAccountStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B75681D9F9E05003B9242 /* OTPAccountStore.swift */; };
@@ -114,6 +116,7 @@
 		DF0E35FF1D9E6FED00C66351 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		DF18E71E1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAccountInvalidInput.swift; sourceTree = "<group>"; };
 		DF18E7211DF371A500C5AEF6 /* AddManualViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddManualViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		DF18E7231DF37FA700C5AEF6 /* Pasteboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pasteboard.swift; sourceTree = "<group>"; };
 		DF1A78AB1D9A7C3D00CEDE7C /* OTPAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPAccount.swift; sourceTree = "<group>"; };
 		DF2B75681D9F9E05003B9242 /* OTPAccountStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPAccountStore.swift; sourceTree = "<group>"; };
 		DF2B756B1D9FBFB1003B9242 /* Collection+Split.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Split.swift"; sourceTree = "<group>"; };
@@ -239,6 +242,7 @@
 				DFF9EFB21D9D093000EF36C6 /* HashFunction+Raw.swift */,
 				DF2B756B1D9FBFB1003B9242 /* Collection+Split.swift */,
 				DF18E71E1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift */,
+				DF18E7231DF37FA700C5AEF6 /* Pasteboard.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -573,6 +577,7 @@
 				DFFB27A51DAB1C74009C3088 /* AddManualViewController.swift in Sources */,
 				DF61E53D1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */,
 				DF2B756C1D9FBFB1003B9242 /* Collection+Split.swift in Sources */,
+				DF18E7241DF37FA700C5AEF6 /* Pasteboard.swift in Sources */,
 				DF544A921D9DE5E0005F7D9E /* AccountsTableViewController.swift in Sources */,
 				DFF9EFB01D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift in Sources */,
 				DFE7F05A1D9534A000B8E15B /* AppDelegate.swift in Sources */,
@@ -595,6 +600,7 @@
 				DFE7F0801D95353F00B8E15B /* ViewController.swift in Sources */,
 				DFEB3FE31D9D2AA800A65A48 /* OTPAccount.Defaults.swift in Sources */,
 				DF18E7201DF3651C00C5AEF6 /* AddAccountInvalidInput.swift in Sources */,
+				DF18E7251DF37FA700C5AEF6 /* Pasteboard.swift in Sources */,
 				DFF9EFAE1D9D05DA00EF36C6 /* OTPURL.swift in Sources */,
 				DF1A78AD1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */,
 				DF61E54E1D9A268900DA2607 /* RealmKey.swift in Sources */,
