@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import OTPKit
 
 class AddManualViewController: UITableViewController {
     
@@ -22,6 +23,9 @@ class AddManualViewController: UITableViewController {
     
     let estimatedRowHeight: CGFloat = 50
     
+    let defaultPeriod: TimeInterval = 30
+    let defaultCounter: UInt64 = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,35 +39,19 @@ class AddManualViewController: UITableViewController {
     
     @IBAction func didPressAdd(_ sender: UIBarButtonItem) {
         do {
-            guard let account = accountTextField.text, !account.isEmpty else {
-                throw AddManualError.noAccount
-            }
+            let account = try createOTPAccount()
             
             let realm = try Realm()
-            
-            let issuer = issuerTextField.text ?? ""
-            
-            let newAccount = OTPAccount()
-            newAccount.account = account
-            newAccount.issuer = issuer
-            newAccount.digits = Int(digitsStepper.value)
-            
-            if timeBasedSwitch.isOn {
-                newAccount.timeBased = true
-                newAccount.period = 30
-            } else {
-                newAccount.counter = 1
-            }
-            
             let store = try OTPAccountStore.defaultStore(in: realm)
             
             try realm.write {
-                store.accounts.insert(newAccount, at: 0)
+                store.accounts.insert(account, at: 0)
             }
             
             dismiss(animated: true)
-        } catch AddManualError.noAccount {
-            presentErrorAlert(title: "Failed to Add", message: "Account can't be left blank.")
+        } catch let error as AddAccountInvalidInput {
+            let alertMessage = "Please fix the following errors:\n" + error.errorMessages.joined(separator: "\n")
+            presentErrorAlert(title: "Failed to Add Account", message: alertMessage)
         } catch let error {
             print("Failed to add: \(error)")
             
@@ -81,6 +69,46 @@ class AddManualViewController: UITableViewController {
         present(alertController, animated: true)
     }
     
+    func createOTPAccount() throws -> OTPAccount {
+        let account = accountTextField.text ?? ""
+        let key = keyTextField.text ?? ""
+        let data = try? Base32.decode(key.uppercased())
+        
+        var errors: AddAccountInvalidInput = []
+        
+        if account.isEmpty {
+            errors.insert(.noAccount)
+        }
+        
+        if key.isEmpty {
+            errors.insert(.noKey)
+        }
+        
+        if data == nil {
+            errors.insert(.invalidKey)
+        }
+        
+        guard errors.isEmpty else {
+            throw errors
+        }
+        
+        let newAccount = OTPAccount()
+        
+        newAccount.account = account
+        newAccount.issuer = issuerTextField.text ?? ""
+        newAccount.digits = Int(digitsStepper.value)
+        newAccount.key = data!
+        
+        if timeBasedSwitch.isOn {
+            newAccount.timeBased = true
+            newAccount.period = defaultPeriod
+        } else {
+            newAccount.counter = defaultCounter
+        }
+        
+        return newAccount
+    }
+    
     @IBAction func didChangeStepperValue(_ sender: UIStepper) {
         let digits = Int(sender.value)
         digitsLabel.text = String(digits)
@@ -90,8 +118,4 @@ class AddManualViewController: UITableViewController {
         
         codeLabel.text = dummyAccount.formattedPassword(obfuscated: true)
     }
-}
-
-enum AddManualError: Error {
-    case noAccount
 }
