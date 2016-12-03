@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DF0E36001D9E6FED00C66351 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E35FF1D9E6FED00C66351 /* AccountTableViewCell.swift */; };
+		DF18E71F1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF18E71E1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift */; };
+		DF18E7201DF3651C00C5AEF6 /* AddAccountInvalidInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF18E71E1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift */; };
 		DF1A78AC1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A78AB1D9A7C3D00CEDE7C /* OTPAccount.swift */; };
 		DF1A78AD1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A78AB1D9A7C3D00CEDE7C /* OTPAccount.swift */; };
 		DF2B75691D9F9E05003B9242 /* OTPAccountStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B75681D9F9E05003B9242 /* OTPAccountStore.swift */; };
@@ -109,6 +111,7 @@
 
 /* Begin PBXFileReference section */
 		DF0E35FF1D9E6FED00C66351 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		DF18E71E1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAccountInvalidInput.swift; sourceTree = "<group>"; };
 		DF1A78AB1D9A7C3D00CEDE7C /* OTPAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPAccount.swift; sourceTree = "<group>"; };
 		DF2B75681D9F9E05003B9242 /* OTPAccountStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPAccountStore.swift; sourceTree = "<group>"; };
 		DF2B756B1D9FBFB1003B9242 /* Collection+Split.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Split.swift"; sourceTree = "<group>"; };
@@ -232,6 +235,7 @@
 				DFF9EFAC1D9D05DA00EF36C6 /* OTPURL.swift */,
 				DFF9EFB21D9D093000EF36C6 /* HashFunction+Raw.swift */,
 				DF2B756B1D9FBFB1003B9242 /* Collection+Split.swift */,
+				DF18E71E1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -556,6 +560,7 @@
 				DFEB3FE21D9D2AA800A65A48 /* OTPAccount.Defaults.swift in Sources */,
 				DFF9EFAD1D9D05DA00EF36C6 /* OTPURL.swift in Sources */,
 				DF0E36001D9E6FED00C66351 /* AccountTableViewCell.swift in Sources */,
+				DF18E71F1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift in Sources */,
 				DF1A78AC1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */,
 				DF591CD21DEC08C700F6B0BC /* AppRealm.swift in Sources */,
 				DF2B75691D9F9E05003B9242 /* OTPAccountStore.swift in Sources */,
@@ -585,6 +590,7 @@
 				DFF9EFB41D9D093000EF36C6 /* HashFunction+Raw.swift in Sources */,
 				DFE7F0801D95353F00B8E15B /* ViewController.swift in Sources */,
 				DFEB3FE31D9D2AA800A65A48 /* OTPAccount.Defaults.swift in Sources */,
+				DF18E7201DF3651C00C5AEF6 /* AddAccountInvalidInput.swift in Sources */,
 				DFF9EFAE1D9D05DA00EF36C6 /* OTPURL.swift in Sources */,
 				DF1A78AD1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */,
 				DF61E54E1D9A268900DA2607 /* RealmKey.swift in Sources */,
