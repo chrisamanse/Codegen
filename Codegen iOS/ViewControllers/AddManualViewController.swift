@@ -81,9 +81,8 @@ class AddManualViewController: UITableViewController {
     
     func createOTPAccount() throws -> OTPAccount {
         let account = accountTextField.text ?? ""
-        let key = keyTextField.text ?? ""
-        let data = try? Base32.decode(key.uppercased())
-        
+        let key = formatted(key: keyTextField.text ?? "")
+        let data = try? Base32.decode(key)
         var errors: AddAccountInvalidInput = []
         
         if account.isEmpty {
@@ -117,5 +116,9 @@ class AddManualViewController: UITableViewController {
         }
         
         return newAccount
+    }
+    
+    func formatted(key: String) -> String {
+        return key.components(separatedBy: .whitespaces).joined(separator: "").uppercased()
     }
 }
