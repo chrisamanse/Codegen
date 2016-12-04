@@ -33,8 +33,23 @@ class AccountsTableViewController: UITableViewController {
         }
     }
     
+    func applicationDidBecomeActive(_ notification: NSNotification) {
+        tableView.reloadData()
+        
+        createTimer()
+    }
+    
+    func applicationDidEnterBackground(_ notification: NSNotification) {
+        destroyTimer()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // Add observers
+        registerObservers()
+        
+        tableView.reloadData()
         
         createTimer()
     }
@@ -43,6 +58,9 @@ class AccountsTableViewController: UITableViewController {
         super.viewWillDisappear(animated)
         
         destroyTimer()
+        
+        // Remove observers
+        unregisterObservers()
     }
     
     deinit {
@@ -51,6 +69,15 @@ class AccountsTableViewController: UITableViewController {
     
     @IBAction func didPressAdd(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "presentAddManual", sender: nil)
+    }
+    
+    func registerObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+    }
+    
+    func unregisterObservers() {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func createTimer() {
