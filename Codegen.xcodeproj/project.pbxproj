@@ -132,7 +132,7 @@
 		DF61E53C1D9A18DA00DA2607 /* RealmDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDefaults.swift; sourceTree = "<group>"; };
 		DF61E54C1D9A268900DA2607 /* RealmKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmKey.swift; sourceTree = "<group>"; };
 		DF61E54F1D9A2F2700DA2607 /* Codegen iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Codegen iOS.entitlements"; sourceTree = "<group>"; };
-		DFE7F0561D9534A000B8E15B /* Codegen iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codegen iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFE7F0561D9534A000B8E15B /* Codegen-debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codegen-debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE7F0591D9534A000B8E15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFE7F05E1D9534A000B8E15B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DFE7F0601D9534A000B8E15B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 		DFE7F06A1D9534A000B8E15B /* Codegen iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Codegen iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE7F06E1D9534A000B8E15B /* Codegen_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codegen_iOSUITests.swift; sourceTree = "<group>"; };
 		DFE7F0701D9534A000B8E15B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DFE7F07B1D95353E00B8E15B /* Codegen macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codegen macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFE7F07B1D95353E00B8E15B /* Codegen-debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codegen-debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE7F07D1D95353F00B8E15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFE7F07F1D95353F00B8E15B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DFE7F0811D95353F00B8E15B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -274,9 +274,9 @@
 		DFE7F0571D9534A000B8E15B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DFE7F0561D9534A000B8E15B /* Codegen iOS.app */,
+				DFE7F0561D9534A000B8E15B /* Codegen-debug.app */,
 				DFE7F06A1D9534A000B8E15B /* Codegen iOSUITests.xctest */,
-				DFE7F07B1D95353E00B8E15B /* Codegen macOS.app */,
+				DFE7F07B1D95353E00B8E15B /* Codegen-debug.app */,
 				DFE7F08B1D95353F00B8E15B /* Codegen macOSUITests.xctest */,
 			);
 			name = Products;
@@ -381,7 +381,7 @@
 			);
 			name = "Codegen iOS";
 			productName = "Codegen iOS";
-			productReference = DFE7F0561D9534A000B8E15B /* Codegen iOS.app */;
+			productReference = DFE7F0561D9534A000B8E15B /* Codegen-debug.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DFE7F0691D9534A000B8E15B /* Codegen iOSUITests */ = {
@@ -418,7 +418,7 @@
 			);
 			name = "Codegen macOS";
 			productName = "Codegen macOS";
-			productReference = DFE7F07B1D95353E00B8E15B /* Codegen macOS.app */;
+			productReference = DFE7F07B1D95353E00B8E15B /* Codegen-debug.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DFE7F08A1D95353F00B8E15B /* Codegen macOSUITests */ = {
@@ -766,7 +766,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "xyz.chrisamanse.ios.codegen-debug";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Codegen-debug";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -821,7 +821,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.chrisamanse.ios.codegen;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Codegen;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
@@ -989,7 +989,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "xyz.chrisamanse.macos.codegen-debug";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Codegen-debug";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1044,7 +1044,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.chrisamanse.macos.codegen;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Codegen;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
