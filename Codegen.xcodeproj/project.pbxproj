@@ -35,6 +35,7 @@
 		DF61E53E1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E53C1D9A18DA00DA2607 /* RealmDefaults.swift */; };
 		DF61E54D1D9A268900DA2607 /* RealmKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E54C1D9A268900DA2607 /* RealmKey.swift */; };
 		DF61E54E1D9A268900DA2607 /* RealmKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E54C1D9A268900DA2607 /* RealmKey.swift */; };
+		DF92B7E11DF8F0D300FD82BD /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92B7E01DF8F0D300FD82BD /* ScanViewController.swift */; };
 		DFE7F05A1D9534A000B8E15B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7F0591D9534A000B8E15B /* AppDelegate.swift */; };
 		DFE7F05F1D9534A000B8E15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE7F05D1D9534A000B8E15B /* Main.storyboard */; };
 		DFE7F0611D9534A000B8E15B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE7F0601D9534A000B8E15B /* Assets.xcassets */; };
@@ -132,6 +133,7 @@
 		DF61E53C1D9A18DA00DA2607 /* RealmDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDefaults.swift; sourceTree = "<group>"; };
 		DF61E54C1D9A268900DA2607 /* RealmKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmKey.swift; sourceTree = "<group>"; };
 		DF61E54F1D9A2F2700DA2607 /* Codegen iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Codegen iOS.entitlements"; sourceTree = "<group>"; };
+		DF92B7E01DF8F0D300FD82BD /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		DFE7F0561D9534A000B8E15B /* Codegen-debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codegen-debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE7F0591D9534A000B8E15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFE7F05E1D9534A000B8E15B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				DF544A911D9DE5E0005F7D9E /* AccountsTableViewController.swift */,
 				DFFB27A41DAB1C74009C3088 /* AddManualViewController.swift */,
 				DF18E7211DF371A500C5AEF6 /* AddManualViewController+UITextFieldDelegate.swift */,
+				DF92B7E01DF8F0D300FD82BD /* ScanViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF92B7E11DF8F0D300FD82BD /* ScanViewController.swift in Sources */,
 				DFF9EFB31D9D093000EF36C6 /* HashFunction+Raw.swift in Sources */,
 				DFEB3FE21D9D2AA800A65A48 /* OTPAccount.Defaults.swift in Sources */,
 				DFF9EFAD1D9D05DA00EF36C6 /* OTPURL.swift in Sources */,
