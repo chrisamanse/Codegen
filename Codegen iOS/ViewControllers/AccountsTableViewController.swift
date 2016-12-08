@@ -68,7 +68,21 @@ class AccountsTableViewController: UITableViewController {
     }
     
     @IBAction func didPressAdd(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "presentAddManual", sender: nil)
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let scanAction = UIAlertAction(title: "Scan", style: .default) { _ in
+            print("present scanner")
+        }
+        let manualAction = UIAlertAction(title: "Manual", style: .default) { [unowned self] _ in
+            self.performSegue(withIdentifier: "presentAddManual", sender: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        actionSheet.addAction(scanAction)
+        actionSheet.addAction(manualAction)
+        actionSheet.addAction(cancelAction)
+        
+        self.present(actionSheet, animated: true)
     }
     
     func registerObservers() {
