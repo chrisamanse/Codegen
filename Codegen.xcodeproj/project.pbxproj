@@ -20,6 +20,7 @@
 		DF2B756C1D9FBFB1003B9242 /* Collection+Split.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B756B1D9FBFB1003B9242 /* Collection+Split.swift */; };
 		DF2B756D1D9FBFB1003B9242 /* Collection+Split.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B756B1D9FBFB1003B9242 /* Collection+Split.swift */; };
 		DF37B49D1DA138E900A655D1 /* VerticalProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF37B49C1DA138E900A655D1 /* VerticalProgressView.swift */; };
+		DF3DB2F51DFFC91D004163F9 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3DB2F41DFFC91D004163F9 /* QRCodeScanner.swift */; };
 		DF544A921D9DE5E0005F7D9E /* AccountsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF544A911D9DE5E0005F7D9E /* AccountsTableViewController.swift */; };
 		DF591CD21DEC08C700F6B0BC /* AppRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF591CD11DEC08C700F6B0BC /* AppRealm.swift */; };
 		DF591CD31DEC08C700F6B0BC /* AppRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF591CD11DEC08C700F6B0BC /* AppRealm.swift */; };
@@ -36,6 +37,7 @@
 		DF61E54D1D9A268900DA2607 /* RealmKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E54C1D9A268900DA2607 /* RealmKey.swift */; };
 		DF61E54E1D9A268900DA2607 /* RealmKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E54C1D9A268900DA2607 /* RealmKey.swift */; };
 		DF92B7E11DF8F0D300FD82BD /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92B7E01DF8F0D300FD82BD /* ScanViewController.swift */; };
+		DF92B7E31DF8F2D600FD82BD /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92B7E21DF8F2D600FD82BD /* CameraController.swift */; };
 		DFE7F05A1D9534A000B8E15B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7F0591D9534A000B8E15B /* AppDelegate.swift */; };
 		DFE7F05F1D9534A000B8E15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE7F05D1D9534A000B8E15B /* Main.storyboard */; };
 		DFE7F0611D9534A000B8E15B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE7F0601D9534A000B8E15B /* Assets.xcassets */; };
@@ -122,6 +124,7 @@
 		DF2B75681D9F9E05003B9242 /* OTPAccountStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPAccountStore.swift; sourceTree = "<group>"; };
 		DF2B756B1D9FBFB1003B9242 /* Collection+Split.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Split.swift"; sourceTree = "<group>"; };
 		DF37B49C1DA138E900A655D1 /* VerticalProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalProgressView.swift; sourceTree = "<group>"; };
+		DF3DB2F41DFFC91D004163F9 /* QRCodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		DF544A911D9DE5E0005F7D9E /* AccountsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsTableViewController.swift; sourceTree = "<group>"; };
 		DF591CD11DEC08C700F6B0BC /* AppRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRealm.swift; sourceTree = "<group>"; };
 		DF61E52D1D9A144F00DA2607 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -134,6 +137,7 @@
 		DF61E54C1D9A268900DA2607 /* RealmKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmKey.swift; sourceTree = "<group>"; };
 		DF61E54F1D9A2F2700DA2607 /* Codegen iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Codegen iOS.entitlements"; sourceTree = "<group>"; };
 		DF92B7E01DF8F0D300FD82BD /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		DF92B7E21DF8F2D600FD82BD /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		DFE7F0561D9534A000B8E15B /* Codegen-debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codegen-debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE7F0591D9534A000B8E15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFE7F05E1D9534A000B8E15B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -290,6 +294,8 @@
 			children = (
 				DF61E54F1D9A2F2700DA2607 /* Codegen iOS.entitlements */,
 				DFE7F0591D9534A000B8E15B /* AppDelegate.swift */,
+				DF92B7E21DF8F2D600FD82BD /* CameraController.swift */,
+				DF3DB2F41DFFC91D004163F9 /* QRCodeScanner.swift */,
 				DF0E35FE1D9E6FAB00C66351 /* Views */,
 				DF0E35FB1D9E6D6800C66351 /* ViewControllers */,
 				DFE7F05D1D9534A000B8E15B /* Main.storyboard */,
@@ -577,9 +583,11 @@
 				DF591CD21DEC08C700F6B0BC /* AppRealm.swift in Sources */,
 				DF2B75691D9F9E05003B9242 /* OTPAccountStore.swift in Sources */,
 				DF61E54D1D9A268900DA2607 /* RealmKey.swift in Sources */,
+				DF3DB2F51DFFC91D004163F9 /* QRCodeScanner.swift in Sources */,
 				DF37B49D1DA138E900A655D1 /* VerticalProgressView.swift in Sources */,
 				DFFB27A51DAB1C74009C3088 /* AddManualViewController.swift in Sources */,
 				DF61E53D1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */,
+				DF92B7E31DF8F2D600FD82BD /* CameraController.swift in Sources */,
 				DF2B756C1D9FBFB1003B9242 /* Collection+Split.swift in Sources */,
 				DF18E7241DF37FA700C5AEF6 /* Pasteboard.swift in Sources */,
 				DF544A921D9DE5E0005F7D9E /* AccountsTableViewController.swift in Sources */,
