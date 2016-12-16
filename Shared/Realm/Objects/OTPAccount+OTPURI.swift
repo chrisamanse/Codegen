@@ -15,7 +15,7 @@ extension OTPAccount {
         self.init()
         
         switch url.type.lowercased() {
-        case "totp":
+        case OTPURI.Types.totp:
             // Period
             if let value = url.parameters[OTPURI.Keys.period], let interval = TimeInterval(value) {
                 self.period = interval
@@ -24,7 +24,7 @@ extension OTPAccount {
             }
             
             self.timeBased = true
-        case "hotp":
+        case OTPURI.Types.hotp:
             // Counter
             guard let value = url.parameters[OTPURI.Keys.counter], let counter = UInt64(value) else {
                 return nil
