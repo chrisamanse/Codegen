@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF0365E91E037622007A4D77 /* CameraNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0365E81E037622007A4D77 /* CameraNavigationController.swift */; };
 		DF0E36001D9E6FED00C66351 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E35FF1D9E6FED00C66351 /* AccountTableViewCell.swift */; };
 		DF18E71F1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF18E71E1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift */; };
 		DF18E7201DF3651C00C5AEF6 /* AddAccountInvalidInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF18E71E1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift */; };
@@ -116,6 +117,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DF0365E81E037622007A4D77 /* CameraNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraNavigationController.swift; sourceTree = "<group>"; };
 		DF0E35FF1D9E6FED00C66351 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		DF18E71E1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAccountInvalidInput.swift; sourceTree = "<group>"; };
 		DF18E7211DF371A500C5AEF6 /* AddManualViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddManualViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				DF544A911D9DE5E0005F7D9E /* AccountsTableViewController.swift */,
 				DFFB27A41DAB1C74009C3088 /* AddManualViewController.swift */,
 				DF18E7211DF371A500C5AEF6 /* AddManualViewController+UITextFieldDelegate.swift */,
+				DF0365E81E037622007A4D77 /* CameraNavigationController.swift */,
 				DF92B7E01DF8F0D300FD82BD /* ScanViewController.swift */,
 			);
 			path = ViewControllers;
@@ -582,6 +585,7 @@
 				DF18E7221DF371A500C5AEF6 /* AddManualViewController+UITextFieldDelegate.swift in Sources */,
 				DF591CD21DEC08C700F6B0BC /* AppRealm.swift in Sources */,
 				DF2B75691D9F9E05003B9242 /* OTPAccountStore.swift in Sources */,
+				DF0365E91E037622007A4D77 /* CameraNavigationController.swift in Sources */,
 				DF61E54D1D9A268900DA2607 /* RealmKey.swift in Sources */,
 				DF3DB2F51DFFC91D004163F9 /* QRCodeScanner.swift in Sources */,
 				DF37B49D1DA138E900A655D1 /* VerticalProgressView.swift in Sources */,
