@@ -60,8 +60,6 @@ public final class QRCodeScanner: NSObject {
     
     public func stopScanning() {
         cameraController.stopSession()
-        
-        removePreviewLayer()
     }
     
     public func setPreviewLayerNeedsUpdate() {
@@ -84,7 +82,7 @@ public final class QRCodeScanner: NSObject {
         self.captureVideoPreviewLayer = captureVideoPreviewLayer
     }
     
-    private func removePreviewLayer() {
+    public func removePreviewLayer() {
         overlayLayer.removeFromSuperlayer()
         captureVideoPreviewLayer?.removeFromSuperlayer()
         captureVideoPreviewLayer = nil
@@ -138,8 +136,6 @@ extension QRCodeScanner: AVCaptureMetadataOutputObjectsDelegate {
             let timePassed = abs(lastDetected.timeIntervalSinceNow)
             if timePassed > detectedTargetTimeInterval {
                 DispatchQueue.main.async {
-                    self.cameraController.stopSession()
-                    
                     self.delegate?.qrCodeScanner(scanner: self, didScan: qrCodes.first!.stringValue)
                 }
             }
