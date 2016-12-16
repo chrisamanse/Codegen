@@ -11,13 +11,13 @@ import CryptoKit
 import OTPKit
 
 extension OTPAccount {
-    convenience init?(url: OTPURL) {
+    convenience init?(url: OTPURI) {
         self.init()
         
         switch url.type.lowercased() {
         case "totp":
             // Period
-            if let value = url.parameters[OTPURL.Keys.period], let interval = TimeInterval(value) {
+            if let value = url.parameters[OTPURI.Keys.period], let interval = TimeInterval(value) {
                 self.period = interval
             } else {
                 self.period = Defaults.period
@@ -26,7 +26,7 @@ extension OTPAccount {
             self.timeBased = true
         case "hotp":
             // Counter
-            guard let value = url.parameters[OTPURL.Keys.counter], let counter = UInt64(value) else {
+            guard let value = url.parameters[OTPURI.Keys.counter], let counter = UInt64(value) else {
                 return nil
             }
             
@@ -38,14 +38,14 @@ extension OTPAccount {
         }
         
         // HashFunction
-        if let algorithm = url.parameters[OTPURL.Keys.algorithm]?.lowercased(), let hash = HashFunction(rawValue: algorithm) {
+        if let algorithm = url.parameters[OTPURI.Keys.algorithm]?.lowercased(), let hash = HashFunction(rawValue: algorithm) {
             self.hashFunction = hash
         } else {
             self.hashFunction = Defaults.hashFunction
         }
         
         // Digits
-        if let value = url.parameters[OTPURL.Keys.digits], let intValue = Int(value) {
+        if let value = url.parameters[OTPURI.Keys.digits], let intValue = Int(value) {
             self.digits = intValue
         } else {
             self.digits = Defaults.digits
@@ -59,7 +59,7 @@ extension OTPAccount {
             self.account = labelComponents.dropFirst().joined(separator: ":")
         } else {
             // If no prefixed issuer, find it in parameters
-            if let issuer = url.parameters[OTPURL.Keys.issuer] {
+            if let issuer = url.parameters[OTPURI.Keys.issuer] {
                 self.issuer = issuer
             }
             
@@ -68,7 +68,7 @@ extension OTPAccount {
         }
         
         // Key
-        guard let value = url.parameters[OTPURL.Keys.secret], let data = try? Base32.decode(value) else {
+        guard let value = url.parameters[OTPURI.Keys.secret], let data = try? Base32.decode(value) else {
             return nil
         }
         

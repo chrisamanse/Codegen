@@ -1,5 +1,5 @@
 //
-//  OTPURL.swift
+//  OTPURI.swift
 //  Codegen
 //
 //  Created by Chris Amanse on 09/29/2016.
@@ -24,7 +24,7 @@ extension CharacterSet {
     }
 }
 
-public struct OTPURL {
+public struct OTPURI {
     public struct Keys {
         public static var    scheme: String { return "otpauth" }
         public static var    secret: String { return "secret" }
@@ -73,8 +73,8 @@ public struct OTPURL {
         self.parameters = parameters
     }
     
-    public init?(urlString: String) {
-        guard let url = URL(string: urlString) else { return nil }
+    public init?(uriString: String) {
+        guard let url = URL(string: uriString) else { return nil }
         
         self.init(url: url)
     }
@@ -82,8 +82,8 @@ public struct OTPURL {
 
 // Equatable
 
-extension OTPURL: Equatable {
-    public static func ==(lhs: OTPURL, rhs: OTPURL) -> Bool {
+extension OTPURI: Equatable {
+    public static func ==(lhs: OTPURI, rhs: OTPURI) -> Bool {
         return lhs.parameters == rhs.parameters && lhs.type == rhs.type && lhs.label == rhs.label
     }
 }
