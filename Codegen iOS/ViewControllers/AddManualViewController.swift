@@ -69,16 +69,6 @@ class AddManualViewController: UITableViewController {
         codeLabel.text = dummyAccount.formattedPassword(obfuscated: true)
     }
     
-    func presentErrorAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        
-        alertController.addAction(okAction)
-        
-        present(alertController, animated: true)
-    }
-    
     func createOTPAccount() throws -> OTPAccount {
         let account = accountTextField.text ?? ""
         let key = formatted(key: keyTextField.text ?? "")

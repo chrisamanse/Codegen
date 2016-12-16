@@ -54,16 +54,6 @@ class ScanViewController: UIViewController {
         
         startScanning()
     }
-    
-    func presentErrorAlert(title: String, message: String, okHandler: ((UIAlertAction) -> Void)? = nil) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: okHandler)
-        
-        alertController.addAction(okAction)
-        
-        present(alertController, animated: true)
-    }
 }
 
 extension ScanViewController: QRCodeScannerDelegate {

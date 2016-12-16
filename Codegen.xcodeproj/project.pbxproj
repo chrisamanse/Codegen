@@ -21,6 +21,7 @@
 		DF2B756C1D9FBFB1003B9242 /* Collection+Split.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B756B1D9FBFB1003B9242 /* Collection+Split.swift */; };
 		DF2B756D1D9FBFB1003B9242 /* Collection+Split.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B756B1D9FBFB1003B9242 /* Collection+Split.swift */; };
 		DF37B49D1DA138E900A655D1 /* VerticalProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF37B49C1DA138E900A655D1 /* VerticalProgressView.swift */; };
+		DF3BECB41E03B99300395369 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3BECB31E03B99300395369 /* UIViewController+Alert.swift */; };
 		DF3DB2F51DFFC91D004163F9 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3DB2F41DFFC91D004163F9 /* QRCodeScanner.swift */; };
 		DF446B631E0387B4001F91A1 /* OTPURI.Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF446B621E0387B4001F91A1 /* OTPURI.Keys.swift */; };
 		DF446B651E038871001F91A1 /* OTPURI.Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF446B641E038871001F91A1 /* OTPURI.Types.swift */; };
@@ -128,6 +129,7 @@
 		DF2B75681D9F9E05003B9242 /* OTPAccountStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPAccountStore.swift; sourceTree = "<group>"; };
 		DF2B756B1D9FBFB1003B9242 /* Collection+Split.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Split.swift"; sourceTree = "<group>"; };
 		DF37B49C1DA138E900A655D1 /* VerticalProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalProgressView.swift; sourceTree = "<group>"; };
+		DF3BECB31E03B99300395369 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		DF3DB2F41DFFC91D004163F9 /* QRCodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		DF446B621E0387B4001F91A1 /* OTPURI.Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPURI.Keys.swift; sourceTree = "<group>"; };
 		DF446B641E038871001F91A1 /* OTPURI.Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPURI.Types.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 		DF0E35FB1D9E6D6800C66351 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DF3BECB31E03B99300395369 /* UIViewController+Alert.swift */,
 				DF544A911D9DE5E0005F7D9E /* AccountsTableViewController.swift */,
 				DFFB27A41DAB1C74009C3088 /* AddManualViewController.swift */,
 				DF18E7211DF371A500C5AEF6 /* AddManualViewController+UITextFieldDelegate.swift */,
@@ -586,6 +589,7 @@
 				DFF9EFB31D9D093000EF36C6 /* HashFunction+Raw.swift in Sources */,
 				DF446B651E038871001F91A1 /* OTPURI.Types.swift in Sources */,
 				DFEB3FE21D9D2AA800A65A48 /* OTPAccount.Defaults.swift in Sources */,
+				DF3BECB41E03B99300395369 /* UIViewController+Alert.swift in Sources */,
 				DFF9EFAD1D9D05DA00EF36C6 /* OTPURI.swift in Sources */,
 				DF0E36001D9E6FED00C66351 /* AccountTableViewCell.swift in Sources */,
 				DF18E71F1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift in Sources */,
