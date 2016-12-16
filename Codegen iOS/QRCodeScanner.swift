@@ -59,6 +59,8 @@ public final class QRCodeScanner: NSObject {
     }
     
     public func stopScanning(removePreviewLayer: Bool = false) {
+        qrCodeDetectedDate = nil
+        
         cameraController.stopSession()
         
         if removePreviewLayer {
@@ -87,7 +89,9 @@ public final class QRCodeScanner: NSObject {
     }
     
     public func removePreviewLayer() {
+        overlayLayer.path = nil
         overlayLayer.removeFromSuperlayer()
+        
         captureVideoPreviewLayer?.removeFromSuperlayer()
         captureVideoPreviewLayer = nil
     }
