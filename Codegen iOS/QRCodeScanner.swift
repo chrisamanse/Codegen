@@ -81,7 +81,7 @@ public final class QRCodeScanner: NSObject {
     }
     
     private func removePreviewLayer() {
-        previewLayer.removeFromSuperlayer()
+        overlayLayer.removeFromSuperlayer()
         captureVideoPreviewLayer?.removeFromSuperlayer()
         captureVideoPreviewLayer = nil
     }
