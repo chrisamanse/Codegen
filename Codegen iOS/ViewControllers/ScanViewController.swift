@@ -44,16 +44,20 @@ class ScanViewController: UIViewController {
         } catch let error {
             print("Scanner startScanning() error: \(error)")
             
-            let alertController = UIAlertController(title: "Camera Error", message: "Failed to open camera.", preferredStyle: .alert)
-            
-            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            presentErrorAlert(title: "Camera Error", message: "Failed to open camera.") { _ in
                 self.dismiss(animated: true)
             }
-            
-            alertController.addAction(okAction)
-            
-            present(alertController, animated: true)
         }
+    }
+    
+    func presentErrorAlert(title: String, message: String, okHandler: ((UIAlertAction) -> Void)? = nil) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: okHandler)
+        
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true)
     }
 }
 
