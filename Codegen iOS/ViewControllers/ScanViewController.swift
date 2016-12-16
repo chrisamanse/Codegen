@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ScanViewController: UIViewController {
     var scanner: QRCodeScanner?
@@ -33,14 +34,9 @@ class ScanViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    func createScanner() {
-        let scanner = QRCodeScanner(previewLayer: self.view.layer, overlayColor: UIColor.green.cgColor)
-        scanner.delegate = self
-        
-        self.scanner = scanner
-        
+    func startScanning() {
         do {
-            try scanner.startScanning()
+            try scanner?.startScanning()
         } catch let error {
             print("Scanner startScanning() error: \(error)")
             
@@ -48,6 +44,15 @@ class ScanViewController: UIViewController {
                 self.dismiss(animated: true)
             }
         }
+    }
+    
+    func createScanner() {
+        let scanner = QRCodeScanner(previewLayer: self.view.layer, overlayColor: UIColor.green.cgColor)
+        scanner.delegate = self
+        
+        self.scanner = scanner
+        
+        startScanning()
     }
     
     func presentErrorAlert(title: String, message: String, okHandler: ((UIAlertAction) -> Void)? = nil) {
@@ -66,5 +71,30 @@ extension ScanViewController: QRCodeScannerDelegate {
         scanner.stopScanning()
         
         print("QR Code: \(value)")
+        
+        guard let uri = OTPURI(uriString: value), let account = OTPAccount(uri: uri) else {
+            presentErrorAlert(title: "QR Code Error", message: "Invalid code. Try adding manually if possible.") { _ in
+                self.startScanning()
+            }
+            
+            return
+        }
+        
+        do {
+            let realm = try Realm()
+            let store = try OTPAccountStore.defaultStore(in: realm)
+            
+            try realm.write {
+                store.accounts.insert(account, at: 0)
+            }
+            
+            dismiss(animated: true)
+        } catch let error {
+            print("Failed to add: \(error)")
+            
+            presentErrorAlert(title: "Failed to Add", message: "Unknown error.") { _ in
+                self.startScanning()
+            }
+        }
     }
 }
