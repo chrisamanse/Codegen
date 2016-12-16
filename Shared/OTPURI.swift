@@ -8,33 +8,7 @@
 
 import Foundation
 
-extension String {
-    var urlQueryParameterSafe: String? {
-        return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryParameterAllowed)
-    }
-    
-    var urlSafe: String {
-        return urlQueryParameterSafe ?? self
-    }
-}
-
-extension CharacterSet {
-    static var urlQueryParameterAllowed: CharacterSet {
-        return self.init(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._~/?")
-    }
-}
-
 public struct OTPURI {
-    public struct Keys {
-        public static var    scheme: String { return "otpauth" }
-        public static var    secret: String { return "secret" }
-        public static var    issuer: String { return "issuer" }
-        public static var algorithm: String { return "algorithm" }
-        public static var    digits: String { return "digits" }
-        public static var   counter: String { return "counter" }
-        public static var    period: String { return "period" }
-    }
-    
     public var url: URL? {
         var urlString = Keys.scheme + "://" + type.urlSafe + "/" + label.urlSafe
         
@@ -88,3 +62,20 @@ extension OTPURI: Equatable {
     }
 }
 
+// URL Functions
+
+extension String {
+    var urlQueryParameterSafe: String? {
+        return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryParameterAllowed)
+    }
+    
+    var urlSafe: String {
+        return urlQueryParameterSafe ?? self
+    }
+}
+
+extension CharacterSet {
+    static var urlQueryParameterAllowed: CharacterSet {
+        return self.init(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._~/?")
+    }
+}
