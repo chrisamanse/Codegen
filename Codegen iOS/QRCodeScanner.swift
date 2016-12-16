@@ -58,8 +58,12 @@ public final class QRCodeScanner: NSObject {
         addPreviewLayer(from: session)
     }
     
-    public func stopScanning() {
+    public func stopScanning(removePreviewLayer: Bool = false) {
         cameraController.stopSession()
+        
+        if removePreviewLayer {
+            self.removePreviewLayer()
+        }
     }
     
     public func setPreviewLayerNeedsUpdate() {
