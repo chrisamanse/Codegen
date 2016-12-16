@@ -64,6 +64,10 @@ public final class QRCodeScanner: NSObject {
         removePreviewLayer()
     }
     
+    public func setPreviewLayerNeedsUpdate() {
+        captureVideoPreviewLayer?.frame = previewLayer.bounds
+    }
+    
     private func addPreviewLayer(from session: AVCaptureSession) {
         removePreviewLayer()
         
