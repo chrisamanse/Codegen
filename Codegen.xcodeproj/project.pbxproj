@@ -62,8 +62,8 @@
 		DFEB3FE31D9D2AA800A65A48 /* OTPAccount.Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEB3FE11D9D2AA800A65A48 /* OTPAccount.Defaults.swift */; };
 		DFF9EFAD1D9D05DA00EF36C6 /* OTPURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFAC1D9D05DA00EF36C6 /* OTPURI.swift */; };
 		DFF9EFAE1D9D05DA00EF36C6 /* OTPURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFAC1D9D05DA00EF36C6 /* OTPURI.swift */; };
-		DFF9EFB01D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFAF1D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift */; };
-		DFF9EFB11D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFAF1D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift */; };
+		DFF9EFB01D9D06CB00EF36C6 /* OTPAccount+OTPURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFAF1D9D06CB00EF36C6 /* OTPAccount+OTPURI.swift */; };
+		DFF9EFB11D9D06CB00EF36C6 /* OTPAccount+OTPURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFAF1D9D06CB00EF36C6 /* OTPAccount+OTPURI.swift */; };
 		DFF9EFB31D9D093000EF36C6 /* HashFunction+Raw.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFB21D9D093000EF36C6 /* HashFunction+Raw.swift */; };
 		DFF9EFB41D9D093000EF36C6 /* HashFunction+Raw.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFB21D9D093000EF36C6 /* HashFunction+Raw.swift */; };
 		DFFB27A51DAB1C74009C3088 /* AddManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFB27A41DAB1C74009C3088 /* AddManualViewController.swift */; };
@@ -169,7 +169,7 @@
 		DFEB3FE11D9D2AA800A65A48 /* OTPAccount.Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPAccount.Defaults.swift; sourceTree = "<group>"; };
 		DFEB3FE41D9D303600A65A48 /* Codegen macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Codegen macOS.entitlements"; sourceTree = "<group>"; };
 		DFF9EFAC1D9D05DA00EF36C6 /* OTPURI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPURI.swift; sourceTree = "<group>"; };
-		DFF9EFAF1D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OTPAccount+OTPURL.swift"; sourceTree = "<group>"; };
+		DFF9EFAF1D9D06CB00EF36C6 /* OTPAccount+OTPURI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OTPAccount+OTPURI.swift"; sourceTree = "<group>"; };
 		DFF9EFB21D9D093000EF36C6 /* HashFunction+Raw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HashFunction+Raw.swift"; sourceTree = "<group>"; };
 		DFFB27A41DAB1C74009C3088 /* AddManualViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddManualViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -241,7 +241,7 @@
 				DF1A78AB1D9A7C3D00CEDE7C /* OTPAccount.swift */,
 				DF2B75681D9F9E05003B9242 /* OTPAccountStore.swift */,
 				DFEB3FE11D9D2AA800A65A48 /* OTPAccount.Defaults.swift */,
-				DFF9EFAF1D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift */,
+				DFF9EFAF1D9D06CB00EF36C6 /* OTPAccount+OTPURI.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -599,7 +599,7 @@
 				DF2B756C1D9FBFB1003B9242 /* Collection+Split.swift in Sources */,
 				DF18E7241DF37FA700C5AEF6 /* Pasteboard.swift in Sources */,
 				DF544A921D9DE5E0005F7D9E /* AccountsTableViewController.swift in Sources */,
-				DFF9EFB01D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift in Sources */,
+				DFF9EFB01D9D06CB00EF36C6 /* OTPAccount+OTPURI.swift in Sources */,
 				DFE7F05A1D9534A000B8E15B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -626,7 +626,7 @@
 				DF61E54E1D9A268900DA2607 /* RealmKey.swift in Sources */,
 				DF61E53E1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */,
 				DF2B756D1D9FBFB1003B9242 /* Collection+Split.swift in Sources */,
-				DFF9EFB11D9D06CB00EF36C6 /* OTPAccount+OTPURL.swift in Sources */,
+				DFF9EFB11D9D06CB00EF36C6 /* OTPAccount+OTPURI.swift in Sources */,
 				DFE7F07E1D95353F00B8E15B /* AppDelegate.swift in Sources */,
 				DF2B756A1D9F9E05003B9242 /* OTPAccountStore.swift in Sources */,
 				DF591CD31DEC08C700F6B0BC /* AppRealm.swift in Sources */,
