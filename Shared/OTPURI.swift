@@ -9,16 +9,20 @@
 import Foundation
 
 public struct OTPURI {
-    public var url: URL? {
-        var urlString = Keys.scheme + "://" + type.urlSafe + "/" + label.urlSafe
+    public var uriString: String {
+        var string = Keys.scheme + "://" + type.urlSafe + "/" + label.urlSafe
         
         let parameterStrings = parameters.map { $0.urlSafe + "=" + $1.urlSafe }
         
         if parameterStrings.count > 0 {
-            urlString += "?" + parameterStrings.joined(separator: "&")
+            string += "?" + parameterStrings.joined(separator: "&")
         }
         
-        return URL(string: urlString)
+        return string
+    }
+    
+    public var url: URL? {
+        return URL(string: uriString)
     }
     
     public let type: String
