@@ -60,7 +60,13 @@ extension ScanViewController: QRCodeScannerDelegate {
     func qrCodeScanner(scanner: QRCodeScanner, didScan value: String) {
         print("QR Code: \(value)")
         
+        let feedbackGenerator = UINotificationFeedbackGenerator()
+        
+        feedbackGenerator.prepare()
+        
         guard let uri = OTPURI(uriString: value), let account = OTPAccount(uri: uri) else {
+            feedbackGenerator.notificationOccurred(.error)
+            
             presentErrorAlert(title: "QR Code Error", message: "Invalid code. Try adding manually if possible.") { _ in
                 self.startScanning()
             }
@@ -76,9 +82,13 @@ extension ScanViewController: QRCodeScannerDelegate {
                 store.accounts.insert(account, at: 0)
             }
             
+            feedbackGenerator.notificationOccurred(.success)
+            
             dismiss(animated: true)
         } catch let error {
             print("Failed to add: \(error)")
+            
+            feedbackGenerator.notificationOccurred(.error)
             
             presentErrorAlert(title: "Failed to Add", message: "Unknown error.") { _ in
                 self.startScanning()
