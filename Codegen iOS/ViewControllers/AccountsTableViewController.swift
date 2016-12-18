@@ -21,6 +21,8 @@ class AccountsTableViewController: UITableViewController {
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
+        registerObservers()
+        
         do {
             realm = try Realm()
             store = try OTPAccountStore.defaultStore(in: realm)
@@ -43,18 +45,6 @@ class AccountsTableViewController: UITableViewController {
     
     func applicationDidEnterBackground(_ notification: NSNotification) {
         destroyTimer()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        registerObservers()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        unregisterObservers()
     }
     
     deinit {
@@ -82,10 +72,6 @@ class AccountsTableViewController: UITableViewController {
     func registerObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
-    }
-    
-    func unregisterObservers() {
-        NotificationCenter.default.removeObserver(self)
     }
     
     func createTimer() {
