@@ -69,6 +69,12 @@ class AccountsTableViewController: UITableViewController {
         self.present(actionSheet, animated: true)
     }
     
+    @IBAction func didPressTrash(_ sender: UIBarButtonItem) {
+        deleteAccounts(at: tableView.indexPathsForSelectedRows ?? [])
+        
+        setEditing(false, animated: true)
+    }
+    
     func registerObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
@@ -209,6 +215,20 @@ class AccountsTableViewController: UITableViewController {
         }
     }
     
+    func deleteAccounts(at indexPaths: [IndexPath]) {
+        guard indexPaths.count > 0 else { return }
+        
+        do {
+            try realm.write {
+                let accounts = indexPaths.map { store.accounts[$0.row] }
+                
+                realm.delete(accounts)
+            }
+        } catch let error {
+            print("Failed to delete account: \(error)")
+        }
+    }
+    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
@@ -218,6 +238,8 @@ class AccountsTableViewController: UITableViewController {
         } else {
             // Did end editing
             createTimer()
+            
+            navigationController?.setToolbarHidden(true, animated: true)
         }
         
         // Show/Hide controls based on editing and time based
@@ -293,21 +315,10 @@ class AccountsTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return tableView.isEditing ? .delete : .none
-    }
-    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete object
-            do {
-                try realm.write {
-                    realm.delete(store.accounts[indexPath.row])
-                }
-            } catch let error {
-                print("Failed to delete account: \(error)")
-            }
+            deleteAccounts(at: [indexPath])
         }
     }
     
@@ -330,17 +341,28 @@ class AccountsTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let indexPaths = tableView.indexPathsForSelectedRows ?? []
+        let hideToolbar = indexPaths.count == 0
+        
+        navigationController?.setToolbarHidden(hideToolbar, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let account = store.accounts[indexPath.row]
-        
-        do {
-            let password = try account.currentPassword()
+        if tableView.isEditing {
+            navigationController?.setToolbarHidden(false, animated: true)
+        } else {
+            let account = store.accounts[indexPath.row]
             
-            Pasteboard.general.string = password
-        } catch let error {
-            print("Failed to get password: \(error)")
+            do {
+                let password = try account.currentPassword()
+                
+                Pasteboard.general.string = password
+            } catch let error {
+                print("Failed to get password: \(error)")
+            }
+            
+            tableView.deselectRow(at: indexPath, animated: true)
         }
-        
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

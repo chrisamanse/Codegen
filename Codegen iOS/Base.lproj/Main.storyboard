@@ -20,6 +20,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="tvm-Ea-pIe">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="nGE-24-ukb" kind="relationship" relationship="rootViewController" id="0iB-2q-gQi"/>
                     </connections>
@@ -32,7 +36,7 @@
         <scene sceneID="JNz-6B-0yH">
             <objects>
                 <tableViewController id="nGE-24-ukb" customClass="AccountsTableViewController" customModule="Codegen" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="126" sectionHeaderHeight="28" sectionFooterHeight="28" id="aQf-P7-a0s">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="126" sectionHeaderHeight="28" sectionFooterHeight="28" id="aQf-P7-a0s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,7 +45,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="126"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="0vl-4h-1cy" id="YWd-Jh-W6a">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="123 456" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wFK-Ri-hEG">
@@ -128,6 +132,15 @@
                             <outlet property="delegate" destination="nGE-24-ukb" id="798-yM-U2A"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem systemItem="flexibleSpace" id="Xsr-6L-pL1"/>
+                        <barButtonItem systemItem="trash" id="kmc-8j-pxR">
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="didPressTrash:" destination="nGE-24-ukb" id="Ed7-jl-qpP"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Codegen" id="pbU-4g-L8E">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xc1-TR-n5d">
                             <connections>
@@ -135,6 +148,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="mmB-CM-SaC" kind="presentation" identifier="presentAddManual" id="qY5-vm-7kh"/>
                         <segue destination="LYX-Eh-let" kind="presentation" identifier="presentAddScan" id="NzB-6S-vjD"/>
