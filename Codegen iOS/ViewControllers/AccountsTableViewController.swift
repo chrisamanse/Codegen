@@ -40,7 +40,9 @@ class AccountsTableViewController: UITableViewController {
     func applicationDidBecomeActive(_ notification: NSNotification) {
         tableView.reloadData()
         
-        createTimer()
+        if !isEditing {
+            createTimer()
+        }
     }
     
     func applicationDidEnterBackground(_ notification: NSNotification) {
