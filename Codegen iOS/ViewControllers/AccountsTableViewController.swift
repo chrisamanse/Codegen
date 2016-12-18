@@ -31,6 +31,8 @@ class AccountsTableViewController: UITableViewController {
         } catch let error {
             fatalError("Failed to open to Realm file: \(error)")
         }
+        
+        createTimer()
     }
     
     func applicationDidBecomeActive(_ notification: NSNotification) {
@@ -46,20 +48,12 @@ class AccountsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Add observers
         registerObservers()
-        
-        tableView.reloadData()
-        
-        createTimer()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        destroyTimer()
-        
-        // Remove observers
         unregisterObservers()
     }
     
