@@ -31,6 +31,12 @@ public struct OTPURI {
     
     public var parameters: [String: String]
     
+    public init(type: String, label: String, parameters: [String: String]) {
+        self.type = type
+        self.label = label
+        self.parameters = parameters
+    }
+    
     public init?(url: URL) {
         guard url.scheme == Keys.scheme else {
             return nil
