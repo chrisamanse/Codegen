@@ -25,11 +25,11 @@ public struct OTPURI {
         return URL(string: uriString)
     }
     
-    public let type: String
+    public var type: String
     
-    public let label: String
+    public var label: String
     
-    public let parameters: [String: String]
+    public var parameters: [String: String]
     
     public init?(url: URL) {
         guard url.scheme == Keys.scheme else {
