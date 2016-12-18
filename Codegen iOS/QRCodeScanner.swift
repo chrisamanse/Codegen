@@ -82,6 +82,9 @@ public final class QRCodeScanner: NSObject {
         captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         captureVideoPreviewLayer.frame = previewLayer.bounds
         
+        overlayLayer.frame = previewLayer.frame
+        overlayLayer.path = createOverlayStartPath(in: previewLayer.bounds)
+        
         previewLayer.addSublayer(captureVideoPreviewLayer)
         previewLayer.addSublayer(overlayLayer)
         
@@ -91,29 +94,69 @@ public final class QRCodeScanner: NSObject {
     public func removePreviewLayer() {
         overlayLayer.path = nil
         overlayLayer.removeFromSuperlayer()
+        overlayLayer.removeAnimation(forKey: "path")
         
         captureVideoPreviewLayer?.removeFromSuperlayer()
         captureVideoPreviewLayer = nil
     }
     
-    fileprivate func createOverlayPath(from object: AVMetadataMachineReadableCodeObject) -> CGPath {
+    fileprivate func createPath<T: Collection>(fromCorners corners: T, rotated: Bool = false) -> CGPath where T.Iterator.Element == CGPoint, T.Index == Int, T.IndexDistance == Int {
+        let path = CGMutablePath()
+        
+        path.move(to: corners.first!)
+        
+        let addLine: (Int) -> Void = {
+            path.addLine(to: corners[$0])
+        }
+        
+        let range = 1 ..< corners.count
+        
+        if rotated {
+            range.forEach(addLine)
+        } else {
+            range.reversed().forEach(addLine)
+        }
+        
+        addLine(0)
+        
+        return path
+    }
+    
+    fileprivate func createOverlayStartPath(in rect: CGRect) -> CGPath {
+        let size = CGSize(width: 280, height: 280)
+        
+        let origin = CGPoint(x: rect.midX - (size.width / 2),
+                             y: rect.midY - (size.height / 2))
+        
+        let targetRect = CGRect(origin: origin, size: size)
+        
+        let corners = [
+            CGPoint(x: targetRect.minX, y: targetRect.minY),
+            CGPoint(x: targetRect.maxX, y: targetRect.minY),
+            CGPoint(x: targetRect.maxX, y: targetRect.maxY),
+            CGPoint(x: targetRect.minX, y: targetRect.maxY)
+        ]
+        
+        return createPath(fromCorners: corners)
+    }
+    
+    fileprivate func createOverlayAnimation(from object: AVMetadataMachineReadableCodeObject) -> CABasicAnimation {
         let code = captureVideoPreviewLayer!.transformedMetadataObject(for: object) as! AVMetadataMachineReadableCodeObject
         let cornersDictionaries = code.corners as! [[String: CGFloat]]
         let corners = cornersDictionaries.lazy.map {
             self.captureVideoPreviewLayer!.convert(CGPoint(x: $0["X"]!, y: $0["Y"]!), to: self.overlayLayer)
         }
         
-        let path = CGMutablePath()
+        let endPath = createPath(fromCorners: corners, rotated: true)
         
-        path.move(to: corners.first!)
+        let animation = CABasicAnimation(keyPath: "path")
+        animation.toValue = endPath
+        animation.duration = 0.5
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        animation.fillMode = kCAFillModeBoth
+        animation.isRemovedOnCompletion = false
         
-        for i in 1 ..< corners.count {
-            path.addLine(to: corners[i])
-        }
-        
-        path.addLine(to: corners.first!)
-        
-        return path
+        return animation
     }
 }
 
@@ -125,26 +168,27 @@ extension QRCodeScanner: AVCaptureMetadataOutputObjectsDelegate {
         guard objects.count > 0 else {
             qrCodeDetectedDate = nil
             
-            DispatchQueue.main.async {
-                self.overlayLayer.path = nil
-            }
-            
             return
-        }
-        
-        // Adjust overlay layer
-        let overlayPath = createOverlayPath(from: qrCodes.first!)
-        
-        DispatchQueue.main.async {
-            self.overlayLayer.path = overlayPath
         }
         
         // Stop if QR code is on screen for target interval
         if let lastDetected = qrCodeDetectedDate {
             let timePassed = abs(lastDetected.timeIntervalSinceNow)
             if timePassed > detectedTargetTimeInterval {
-                DispatchQueue.main.async {
-                    self.delegate?.qrCodeScanner(scanner: self, didScan: qrCodes.first!.stringValue)
+                stopScanning()
+                
+                let animation = createOverlayAnimation(from: qrCodes.first!)
+                
+                DispatchQueue.main.sync {
+                    CATransaction.begin()
+                    
+                    CATransaction.setCompletionBlock {
+                        self.delegate?.qrCodeScanner(scanner: self, didScan: qrCodes.first!.stringValue)
+                    }
+                    
+                    overlayLayer.add(animation, forKey: animation.keyPath)
+                    
+                    CATransaction.commit()
                 }
             }
         } else {

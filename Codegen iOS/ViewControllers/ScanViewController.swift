@@ -58,8 +58,6 @@ class ScanViewController: UIViewController {
 
 extension ScanViewController: QRCodeScannerDelegate {
     func qrCodeScanner(scanner: QRCodeScanner, didScan value: String) {
-        scanner.stopScanning()
-        
         print("QR Code: \(value)")
         
         guard let uri = OTPURI(uriString: value), let account = OTPAccount(uri: uri) else {
