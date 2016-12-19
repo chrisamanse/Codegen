@@ -38,6 +38,10 @@ class AddManualViewController: UITableViewController {
     }
     
     @IBAction func didPressAdd(_ sender: UIBarButtonItem) {
+        let feedbackGenerator = UINotificationFeedbackGenerator()
+        
+        feedbackGenerator.prepare()
+        
         do {
             let account = try createOTPAccount()
             
@@ -48,12 +52,18 @@ class AddManualViewController: UITableViewController {
                 store.accounts.insert(account, at: 0)
             }
             
+            feedbackGenerator.notificationOccurred(.success)
+            
             dismiss(animated: true)
         } catch let error as AddAccountInvalidInput {
+            feedbackGenerator.notificationOccurred(.error)
+            
             let alertMessage = "Please fix the following errors:\n" + error.errorMessages.joined(separator: "\n")
             presentErrorAlert(title: "Failed to Add Account", message: alertMessage)
         } catch let error {
             print("Failed to add: \(error)")
+            
+            feedbackGenerator.notificationOccurred(.error)
             
             presentErrorAlert(title: "Failed to Add", message: "Unknown error.")
         }
