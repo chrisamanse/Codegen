@@ -73,8 +73,6 @@ class AccountsTableViewController: UITableViewController {
     
     @IBAction func didPressTrash(_ sender: UIBarButtonItem) {
         deleteAccounts(at: tableView.indexPathsForSelectedRows ?? [])
-        
-        setEditing(false, animated: true)
     }
     
     func registerObservers() {
