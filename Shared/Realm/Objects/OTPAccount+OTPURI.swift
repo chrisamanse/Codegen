@@ -74,4 +74,25 @@ extension OTPAccount {
         
         self.key = data
     }
+    
+    public var uri: OTPURI {
+        let type = timeBased ? OTPURI.Types.totp : OTPURI.Types.hotp
+        
+        let noIssuer = issuer.map { $0.isEmpty } ?? true
+        
+        let label = noIssuer ? account : issuer! + ":" + account
+        
+        var parameters = [String: String]()
+        
+        if let period = self.period, timeBased {
+            parameters[OTPURI.Keys.period] = String(describing: period)
+        } else if let counter = self.counter, !timeBased {
+            parameters[OTPURI.Keys.counter] = String(describing: counter)
+        }
+        
+        parameters[OTPURI.Keys.secret] = Base32.encode(key)
+        parameters[OTPURI.Keys.digits] = String(describing: digits)
+        
+        return OTPURI(type: type, label: label, parameters: parameters)
+    }
 }
