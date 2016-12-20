@@ -111,74 +111,19 @@ class AccountsTableViewController: UITableViewController {
         timer = nil
     }
     
-    func forEachVisibleCell(body: (AccountTableViewCell, OTPAccount) throws -> Void) rethrows {
-        let indexPaths = tableView.indexPathsForVisibleRows ?? []
-        let lazy = indexPaths.lazy
-        let accounts = lazy.map { indexPath -> OTPAccount? in
-            let index = indexPath.row
-            guard (0 ..< self.store.accounts.count).contains(index) else {
-                return nil
-            }
-            
-            return self.store.accounts[index]
-        }
+    func updateVisibleCells() {
+        guard let indexPaths = tableView.indexPathsForVisibleRows else { return }
         
-        let cells = lazy.map { self.tableView.cellForRow(at: $0) as? AccountTableViewCell }
-        
-        for i in 0 ..< indexPaths.count {
-            guard let account = accounts[i] else {
-                print("NO ACCOUNT IN VISIBLE INDEXPATH")
-                continue
-            }
-            guard let cell = cells[i] else {
-                print("NO CELL IN VISIBLE INDEXPATH")
-                continue
-            }
+        for indexPath in indexPaths {
+            guard (0 ..< store.accounts.count).contains(indexPath.row) else { continue }
+            guard let cell = tableView.cellForRow(at: indexPath) as? AccountTableViewCell else { continue }
             
-            try body(cell, account)
-        }
-    }
-    
-    func updateProgressViews(for date: Date) {
-        let timeInterval = UInt64(round(date.timeIntervalSince1970))
-        
-        // Cache progress for period to avoid recomputation
-        var progressForPeriod = [TimeInterval: Float]()
-        
-        forEachVisibleCell { (cell, account) in
-            // Skip cell if not time based
-            guard account.timeBased else {
-                return
-            }
-            guard let period = account.period else {
-                fatalError("NO PERIOD SET")
-            }
-            
-            // Compute progress
-            let progress: Float
-            
-            if let cachedProgress = progressForPeriod[period] {
-                progress = cachedProgress
-            } else {
-                let timeLeft = UInt64(period) - (timeInterval % UInt64(period))
-                progress = Float(Double(timeLeft) / period)
-                
-                // Save progress to cache
-                progressForPeriod[period] = progress
-            }
-            
-            // Update cell
-            cell.progressView.progress = progress
-            
-            // Password is now different
-            if progress == 1 {
-                cell.codeLabel.text = account.formattedPassword()
-            }
+            configure(cell: cell, with: store.accounts[indexPath.row])
         }
     }
     
     func didTick(timer: Timer) {
-        updateProgressViews(for: timer.fireDate)
+        updateVisibleCells()
     }
     
     func incrementCounter(of account: OTPAccount) {
@@ -243,17 +188,7 @@ class AccountsTableViewController: UITableViewController {
             navigationController?.setToolbarHidden(true, animated: true)
         }
         
-        // Show/Hide controls based on editing and time based
-        forEachVisibleCell { (cell, account) in
-            cell.progressView.isHidden = editing ? true : !account.timeBased
-            cell.incrementButton.isHidden = editing ? true : account.timeBased
-            cell.codeLabel.text = account.formattedPassword(obfuscated: editing)
-        }
-        
-        if !editing {
-            // Update progress views if done editing
-            updateProgressViews(for: Date())
-        }
+        updateVisibleCells()
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -282,6 +217,12 @@ class AccountsTableViewController: UITableViewController {
         let account = store.accounts[indexPath.row]
         
         // Configure the cell...
+        configure(cell: cell, with: account)
+        
+        return cell
+    }
+    
+    func configure(cell: AccountTableViewCell, with account: OTPAccount) {
         cell.issuerLabel.text = account.issuer
         cell.accountLabel.text = account.account
         cell.codeLabel.text = account.formattedPassword(obfuscated: cell.isEditing)
@@ -312,8 +253,6 @@ class AccountsTableViewController: UITableViewController {
         // Hide both when editing
         cell.progressView.isHidden = tableView.isEditing ? true : !account.timeBased
         cell.incrementButton.isHidden = tableView.isEditing ? true : account.timeBased
-        
-        return cell
     }
     
     // Override to support editing the table view.
