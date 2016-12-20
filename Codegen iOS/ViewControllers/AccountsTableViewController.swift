@@ -19,7 +19,7 @@ class AccountsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        navigationItem.leftBarButtonItem = editButtonItem
         
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
@@ -69,13 +69,13 @@ class AccountsTableViewController: UITableViewController {
         actionSheet.addAction(manualAction)
         actionSheet.addAction(cancelAction)
         
-        self.present(actionSheet, animated: true)
+        present(actionSheet, animated: true)
     }
     
     @IBAction func didPressTrash(_ sender: UIBarButtonItem) {
         deleteAccounts(at: tableView.indexPathsForSelectedRows ?? [])
         
-        self.navigationController?.setToolbarHidden(true, animated: true)
+        navigationController?.setToolbarHidden(true, animated: true)
     }
     
     func createTimer() {
@@ -83,25 +83,19 @@ class AccountsTableViewController: UITableViewController {
             return
         }
         
-        print("Creating timer...")
-        
         // Get date for next second for precise tick
         let now = Date()
         let incremented = round(now.timeIntervalSince1970) + 1
         let next = Date(timeIntervalSince1970: incremented)
         
-        // Create timer with fire date for next second
-        let timer = Timer(fire: next, interval: 1.0, repeats: true, block: self.didTick(timer:))
+        let timer = Timer(fire: next, interval: 1.0, repeats: true, block: didTick(timer:))
+        
+        RunLoop.main.add(timer, forMode: .commonModes)
         
         self.timer = timer
-        
-        // Add timer to main run loop for common modes
-        RunLoop.main.add(timer, forMode: .commonModes)
     }
     
     func destroyTimer() {
-        print("Destroying timer...")
-        
         timer?.invalidate()
         
         timer = nil
@@ -128,7 +122,7 @@ class AccountsTableViewController: UITableViewController {
         }
         
         do {
-            try self.realm.write {
+            try realm.write {
                 account.counter = counter &+ 1
             }
         } catch let error {
@@ -190,7 +184,6 @@ class AccountsTableViewController: UITableViewController {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
-        // Make sure to reload the data whenever the trait collection changes
         tableView.reloadData()
     }
     
@@ -251,28 +244,23 @@ class AccountsTableViewController: UITableViewController {
         cell.incrementButton.isHidden = tableView.isEditing ? true : account.timeBased
     }
     
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             deleteAccounts(at: [indexPath])
         }
     }
     
-    // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        // Move Object
         do {
             realm.beginWrite()
             
             store.accounts.move(from: fromIndexPath.row, to: to.row)
             
-            // Commit write transaction without notifying token
             let tokens = token.map { [$0] } ?? []
             try realm.commitWrite(withoutNotifying: tokens)
         } catch let error {
             print("Failed to move: \(error)")
             
-            // Reload data in view when model failed to update
             tableView.reloadData()
         }
     }
