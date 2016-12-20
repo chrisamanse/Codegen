@@ -1,2 +1,3 @@
 github "chrisamanse/OTPKit"
 github "realm/realm-cocoa"
+github "chrisamanse/QRSwift"
