@@ -76,7 +76,7 @@ extension OTPURI: Equatable {
 
 extension String {
     var urlQueryParameterSafe: String? {
-        return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryParameterAllowed)
+        return self.addingPercentEncoding(withAllowedCharacters: .urlQueryParameterAllowed)
     }
     
     var urlSafe: String {
@@ -86,6 +86,6 @@ extension String {
 
 extension CharacterSet {
     static var urlQueryParameterAllowed: CharacterSet {
-        return self.init(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._~/?")
+        return self.init(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.~")
     }
 }
