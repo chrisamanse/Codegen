@@ -87,6 +87,8 @@ class AccountsTableViewController: UITableViewController {
             return
         }
         
+        print("Creating timer...")
+        
         // Get date for next second for precise tick
         let now = Date()
         let incremented = round(now.timeIntervalSince1970) + 1
@@ -102,6 +104,8 @@ class AccountsTableViewController: UITableViewController {
     }
     
     func destroyTimer() {
+        print("Destroying timer...")
+        
         timer?.invalidate()
         
         timer = nil
@@ -137,11 +141,6 @@ class AccountsTableViewController: UITableViewController {
     
     func updateProgressViews(for date: Date) {
         let timeInterval = UInt64(round(date.timeIntervalSince1970))
-        
-        #if DEBUG
-            print("Did tick:\n  - \(date)\n  - \(date.timeIntervalSince1970)")
-            print("Time left (30s period): \(30 - (timeInterval % 30))")
-        #endif
         
         // Cache progress for period to avoid recomputation
         var progressForPeriod = [TimeInterval: Float]()
