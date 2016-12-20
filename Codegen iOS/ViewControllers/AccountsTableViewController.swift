@@ -304,8 +304,8 @@ class AccountsTableViewController: UITableViewController {
             
             // Only enable the increment counter button after 1 second
             cell.incrementButton.isEnabled = false
-            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
-                cell.incrementButton.isEnabled = true
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { [weak cell] _ in
+                cell?.incrementButton.isEnabled = true
             }
         }
         
