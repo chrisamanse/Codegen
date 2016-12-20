@@ -116,20 +116,6 @@ class AccountsTableViewController: UITableViewController {
         updateVisibleCells()
     }
     
-    func incrementCounter(of account: OTPAccount) {
-        guard let counter = account.counter else {
-            fatalError("NO COUNTER SET")
-        }
-        
-        do {
-            try realm.write {
-                account.counter = counter &+ 1
-            }
-        } catch let error {
-            print("Failed to increment counter: \(error)")
-        }
-    }
-    
     func accountsDidChange(change: RealmCollectionChange<List<OTPAccount>>) {
         switch change {
         case .initial(_):
@@ -229,7 +215,17 @@ class AccountsTableViewController: UITableViewController {
         } else {
             // Counter based
             cell.pressIncrementHandler = { [unowned self] in
-                self.incrementCounter(of: account)
+                guard let counter = account.counter else { fatalError("Account counter not set!") }
+                
+                do {
+                    try self.realm.write {
+                        account.counter = counter &+ 1
+                    }
+                } catch let error {
+                    print("Failed to increment counter: \(error)")
+                    
+                    self.configure(cell: cell, with: account)
+                }
             }
             
             // Only enable the increment counter button after 1 second
