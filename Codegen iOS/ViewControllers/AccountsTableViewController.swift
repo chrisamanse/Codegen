@@ -148,6 +148,8 @@ class AccountsTableViewController: UITableViewController {
             }
         } catch let error {
             print("Failed to delete account: \(error)")
+            
+            tableView.reloadData()
         }
     }
     
