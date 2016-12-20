@@ -16,55 +16,30 @@ extension OTPAccount {
         
         switch uri.type.lowercased() {
         case OTPURI.Types.totp:
-            // Period
-            if let value = uri.parameters[OTPURI.Keys.period], let interval = TimeInterval(value) {
-                self.period = interval
-            } else {
-                self.period = Defaults.period
-            }
-            
-            self.timeBased = true
+            period = uri.parameters[OTPURI.Keys.period].flatMap { TimeInterval($0) } ?? Defaults.period
+            timeBased = true
         case OTPURI.Types.hotp:
-            // Counter
-            guard let value = uri.parameters[OTPURI.Keys.counter], let counter = UInt64(value) else {
-                return nil
-            }
-            
-            self.counter = counter
-            
-            self.timeBased = false
+            counter = uri.parameters[OTPURI.Keys.counter].flatMap { UInt64($0) } ?? Defaults.counter
+            timeBased = false
         default:
             return nil
         }
         
-        // HashFunction
-        if let algorithm = uri.parameters[OTPURI.Keys.algorithm]?.lowercased(), let hash = HashFunction(rawValue: algorithm) {
-            self.hashFunction = hash
-        } else {
-            self.hashFunction = Defaults.hashFunction
-        }
-        
-        // Digits
-        if let value = uri.parameters[OTPURI.Keys.digits], let intValue = Int(value) {
-            self.digits = intValue
-        } else {
-            self.digits = Defaults.digits
-        }
+        hashFunction = uri.parameters[OTPURI.Keys.algorithm].flatMap { HashFunction(rawValue: $0.lowercased()) } ?? Defaults.hashFunction
+        digits = uri.parameters[OTPURI.Keys.digits].flatMap { Int($0) } ?? Defaults.digits
         
         // Issuer and Account
         let labelComponents = uri.label.components(separatedBy: ":")
         if labelComponents.count > 1 {
             // Has prefixed issuer
-            self.issuer = labelComponents[0]
-            self.account = labelComponents.dropFirst().joined(separator: ":")
+            issuer = labelComponents.first
+            account = labelComponents.dropFirst().joined(separator: ":")
         } else {
             // If no prefixed issuer, find it in parameters
-            if let issuer = uri.parameters[OTPURI.Keys.issuer] {
-                self.issuer = issuer
-            }
+            issuer = uri.parameters[OTPURI.Keys.issuer]
             
             // Label is account
-            self.account = uri.label
+            account = uri.label
         }
         
         // Key
@@ -84,9 +59,9 @@ extension OTPAccount {
         
         var parameters = [String: String]()
         
-        if let period = self.period, timeBased {
+        if timeBased {
             parameters[OTPURI.Keys.period] = String(describing: period)
-        } else if let counter = self.counter, !timeBased {
+        } else {
             parameters[OTPURI.Keys.counter] = String(describing: counter)
         }
         

@@ -206,22 +206,16 @@ class AccountsTableViewController: UITableViewController {
         
         // Set progress
         if account.timeBased {
-            guard let period = account.period else {
-                fatalError("NO PERIOD SET")
-            }
-            
             let timeInterval = UInt64(round(Date().timeIntervalSince1970))
-            let timeLeft = UInt64(period) - (timeInterval % UInt64(period))
+            let timeLeft = UInt64(account.period) - (timeInterval % UInt64(account.period))
             
-            cell.progressView.progress = Float(Double(timeLeft) / period)
+            cell.progressView.progress = Float(Double(timeLeft) / account.period)
         } else {
             // Counter based
             cell.pressIncrementHandler = { [unowned self] in
-                guard let counter = account.counter else { fatalError("Account counter not set!") }
-                
                 do {
                     try self.realm.write {
-                        account.counter = counter &+ 1
+                        account.counter = account.counter &+ 1
                     }
                 } catch let error {
                     print("Failed to increment counter: \(error)")

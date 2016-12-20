@@ -23,9 +23,6 @@ class AddManualViewController: UITableViewController {
     
     let estimatedRowHeight: CGFloat = 50
     
-    let defaultPeriod: TimeInterval = 30
-    let defaultCounter: UInt64 = 1
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -110,9 +107,9 @@ class AddManualViewController: UITableViewController {
         
         if timeBasedSwitch.isOn {
             newAccount.timeBased = true
-            newAccount.period = defaultPeriod
+            newAccount.period = OTPAccount.Defaults.period
         } else {
-            newAccount.counter = defaultCounter
+            newAccount.counter = OTPAccount.Defaults.counter
         }
         
         return newAccount
