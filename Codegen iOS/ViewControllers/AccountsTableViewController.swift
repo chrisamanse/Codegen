@@ -21,7 +21,8 @@ class AccountsTableViewController: UITableViewController {
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
-        registerObservers()
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         
         do {
             realm = try Realm()
@@ -75,11 +76,6 @@ class AccountsTableViewController: UITableViewController {
         deleteAccounts(at: tableView.indexPathsForSelectedRows ?? [])
         
         self.navigationController?.setToolbarHidden(true, animated: true)
-    }
-    
-    func registerObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
     }
     
     func createTimer() {
