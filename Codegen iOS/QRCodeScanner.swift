@@ -40,6 +40,8 @@ public final class QRCodeScanner: NSObject {
     fileprivate var qrCodeDetectedDate: Date?
     fileprivate var detectedTargetTimeInterval: TimeInterval = 0.8
     
+    public fileprivate(set) var continuous: Bool = false
+    
     public init(previewLayer: CALayer, overlayColor: CGColor) {
         cameraController = CameraController()
         metadataObjectTypes = [AVMetadataObjectTypeQRCode]
@@ -52,7 +54,9 @@ public final class QRCodeScanner: NSObject {
         stopScanning()
     }
     
-    public func startScanning() throws {
+    public func startScanning(continuous: Bool = false) throws {
+        self.continuous = continuous
+        
         let session = try cameraController.startSession(metadataObjectTypes: metadataObjectTypes, delegate: self)
         
         addPreviewLayer(from: session)
@@ -171,28 +175,35 @@ extension QRCodeScanner: AVCaptureMetadataOutputObjectsDelegate {
             return
         }
         
-        // Stop if QR code is on screen for target interval
-        if let lastDetected = qrCodeDetectedDate {
-            let timePassed = abs(lastDetected.timeIntervalSinceNow)
-            if timePassed > detectedTargetTimeInterval {
-                stopScanning()
-                
-                let animation = createOverlayAnimation(from: qrCodes.first!)
-                
-                DispatchQueue.main.sync {
-                    CATransaction.begin()
-                    
-                    CATransaction.setCompletionBlock {
-                        self.delegate?.qrCodeScanner(scanner: self, didScan: qrCodes.first!.stringValue)
-                    }
-                    
-                    overlayLayer.add(animation, forKey: animation.keyPath)
-                    
-                    CATransaction.commit()
-                }
+        if continuous {
+            // Keep scanning
+            for code in qrCodes {
+                delegate?.qrCodeScanner(scanner: self, didScan: code.stringValue ?? "")
             }
         } else {
-            qrCodeDetectedDate = Date()
+            // Stop if QR code is on screen for target interval
+            if let lastDetected = qrCodeDetectedDate {
+                let timePassed = abs(lastDetected.timeIntervalSinceNow)
+                if timePassed > detectedTargetTimeInterval {
+                    stopScanning()
+                    
+                    let animation = createOverlayAnimation(from: qrCodes.first!)
+                    
+                    DispatchQueue.main.sync {
+                        CATransaction.begin()
+                        
+                        CATransaction.setCompletionBlock {
+                            self.delegate?.qrCodeScanner(scanner: self, didScan: qrCodes.first!.stringValue)
+                        }
+                        
+                        overlayLayer.add(animation, forKey: animation.keyPath)
+                        
+                        CATransaction.commit()
+                    }
+                }
+            } else {
+                qrCodeDetectedDate = Date()
+            }
         }
     }
 }
