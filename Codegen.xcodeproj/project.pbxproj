@@ -42,6 +42,10 @@
 		DF61E54E1D9A268900DA2607 /* RealmKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61E54C1D9A268900DA2607 /* RealmKey.swift */; };
 		DF92B7E11DF8F0D300FD82BD /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92B7E01DF8F0D300FD82BD /* ScanViewController.swift */; };
 		DF92B7E31DF8F2D600FD82BD /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92B7E21DF8F2D600FD82BD /* CameraController.swift */; };
+		DFE07DD71E09FCD1009572F6 /* QRSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE07DD61E09FCD1009572F6 /* QRSwift.framework */; };
+		DFE07DD91E09FCE6009572F6 /* QRSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE07DD81E09FCE6009572F6 /* QRSwift.framework */; };
+		DFE07DDA1E09FCE6009572F6 /* QRSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFE07DD81E09FCE6009572F6 /* QRSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DFE07DDC1E09FD1C009572F6 /* QRSwift.framework.dSYM in Carthage Copy Debug Symbols */ = {isa = PBXBuildFile; fileRef = DFE07DDB1E09FD1C009572F6 /* QRSwift.framework.dSYM */; };
 		DFE7F05A1D9534A000B8E15B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7F0591D9534A000B8E15B /* AppDelegate.swift */; };
 		DFE7F05F1D9534A000B8E15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE7F05D1D9534A000B8E15B /* Main.storyboard */; };
 		DFE7F0611D9534A000B8E15B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE7F0601D9534A000B8E15B /* Assets.xcassets */; };
@@ -99,6 +103,7 @@
 				DFE7F0A41D953A6300B8E15B /* CryptoKit.framework in Embed Frameworks */,
 				DF61E5361D9A150100DA2607 /* RealmSwift.framework in Embed Frameworks */,
 				DFE7F0A61D953A6300B8E15B /* OTPKit.framework in Embed Frameworks */,
+				DFE07DDA1E09FCE6009572F6 /* QRSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +118,7 @@
 				DFE7F0AC1D953AC000B8E15B /* OTPKit.framework.dSYM in Carthage Copy Debug Symbols */,
 				DF61E5391D9A154300DA2607 /* Realm.framework.dSYM in Carthage Copy Debug Symbols */,
 				DF61E53A1D9A154300DA2607 /* RealmSwift.framework.dSYM in Carthage Copy Debug Symbols */,
+				DFE07DDC1E09FD1C009572F6 /* QRSwift.framework.dSYM in Carthage Copy Debug Symbols */,
 			);
 			name = "Carthage Copy Debug Symbols";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +152,9 @@
 		DF61E54F1D9A2F2700DA2607 /* Codegen iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Codegen iOS.entitlements"; sourceTree = "<group>"; };
 		DF92B7E01DF8F0D300FD82BD /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		DF92B7E21DF8F2D600FD82BD /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		DFE07DD61E09FCD1009572F6 /* QRSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRSwift.framework; path = Carthage/Build/iOS/QRSwift.framework; sourceTree = "<group>"; };
+		DFE07DD81E09FCE6009572F6 /* QRSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRSwift.framework; path = Carthage/Build/Mac/QRSwift.framework; sourceTree = "<group>"; };
+		DFE07DDB1E09FD1C009572F6 /* QRSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = QRSwift.framework.dSYM; path = Carthage/Build/Mac/QRSwift.framework.dSYM; sourceTree = "<group>"; };
 		DFE7F0561D9534A000B8E15B /* Codegen-debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codegen-debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE7F0591D9534A000B8E15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFE7F05E1D9534A000B8E15B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -187,6 +196,7 @@
 				DFE7F09C1D95395B00B8E15B /* OTPKit.framework in Frameworks */,
 				DF61E52F1D9A144F00DA2607 /* Realm.framework in Frameworks */,
 				DF61E5301D9A144F00DA2607 /* RealmSwift.framework in Frameworks */,
+				DFE07DD71E09FCD1009572F6 /* QRSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +215,7 @@
 				DFE7F0A51D953A6300B8E15B /* OTPKit.framework in Frameworks */,
 				DF61E5331D9A150100DA2607 /* Realm.framework in Frameworks */,
 				DF61E5351D9A150100DA2607 /* RealmSwift.framework in Frameworks */,
+				DFE07DD91E09FCE6009572F6 /* QRSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +376,7 @@
 				DFE7F09A1D95395B00B8E15B /* OTPKit.framework */,
 				DF61E52D1D9A144F00DA2607 /* Realm.framework */,
 				DF61E52E1D9A144F00DA2607 /* RealmSwift.framework */,
+				DFE07DD61E09FCD1009572F6 /* QRSwift.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -376,10 +388,12 @@
 				DFE7F09F1D95397C00B8E15B /* OTPKit.framework */,
 				DF61E5311D9A150100DA2607 /* Realm.framework */,
 				DF61E5321D9A150100DA2607 /* RealmSwift.framework */,
+				DFE07DD81E09FCE6009572F6 /* QRSwift.framework */,
 				DFE7F0A91D953AC000B8E15B /* CryptoKit.framework.dSYM */,
 				DFE7F0AA1D953AC000B8E15B /* OTPKit.framework.dSYM */,
 				DF61E5371D9A154300DA2607 /* Realm.framework.dSYM */,
 				DF61E5381D9A154300DA2607 /* RealmSwift.framework.dSYM */,
+				DFE07DDB1E09FD1C009572F6 /* QRSwift.framework.dSYM */,
 			);
 			name = macOS;
 			sourceTree = "<group>";
@@ -569,6 +583,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/OTPKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/QRSwift.framework",
 			);
 			name = "Carthage Copy Frameworks Script";
 			outputPaths = (
