@@ -28,7 +28,7 @@ class ExportViewController: UIViewController {
     var currentQRCodeIndex = 0
     
     var timer: Timer?
-    var qrCodeChangeInterval: TimeInterval = 0.3
+    var qrCodeChangeInterval: TimeInterval = 0.25
     
     override func viewDidLoad() {
         super.viewDidLoad()
