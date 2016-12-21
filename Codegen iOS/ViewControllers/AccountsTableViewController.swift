@@ -78,6 +78,14 @@ class AccountsTableViewController: UITableViewController {
         navigationController?.setToolbarHidden(true, animated: true)
     }
     
+    @IBAction func didPressExport(_ sender: UIBarButtonItem) {
+        guard (tableView.indexPathsForSelectedRows.map { $0.count > 0 } ?? false) else {
+            return
+        }
+        
+        performSegue(withIdentifier: "showExport", sender: nil)
+    }
+    
     func createTimer() {
         guard self.timer == nil else {
             return
@@ -167,12 +175,6 @@ class AccountsTableViewController: UITableViewController {
         }
         
         updateVisibleCells()
-    }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -279,6 +281,20 @@ class AccountsTableViewController: UITableViewController {
             }
             
             tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showExport" {
+            let exportVC = segue.destination as! ExportViewController
+            
+            let accounts = tableView.indexPathsForSelectedRows.map { indexPaths in
+                indexPaths.map { store.accounts[$0.row] }
+            } ?? []
+            
+            exportVC.accounts = accounts
         }
     }
 }

@@ -26,6 +26,7 @@
 		DF446B631E0387B4001F91A1 /* OTPURI.Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF446B621E0387B4001F91A1 /* OTPURI.Keys.swift */; };
 		DF446B651E038871001F91A1 /* OTPURI.Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF446B641E038871001F91A1 /* OTPURI.Types.swift */; };
 		DF544A921D9DE5E0005F7D9E /* AccountsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF544A911D9DE5E0005F7D9E /* AccountsTableViewController.swift */; };
+		DF5743A31E0900760061FBF5 /* ExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5743A21E0900760061FBF5 /* ExportViewController.swift */; };
 		DF591CD21DEC08C700F6B0BC /* AppRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF591CD11DEC08C700F6B0BC /* AppRealm.swift */; };
 		DF591CD31DEC08C700F6B0BC /* AppRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF591CD11DEC08C700F6B0BC /* AppRealm.swift */; };
 		DF61E52F1D9A144F00DA2607 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF61E52D1D9A144F00DA2607 /* Realm.framework */; };
@@ -140,6 +141,7 @@
 		DF446B621E0387B4001F91A1 /* OTPURI.Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPURI.Keys.swift; sourceTree = "<group>"; };
 		DF446B641E038871001F91A1 /* OTPURI.Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPURI.Types.swift; sourceTree = "<group>"; };
 		DF544A911D9DE5E0005F7D9E /* AccountsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsTableViewController.swift; sourceTree = "<group>"; };
+		DF5743A21E0900760061FBF5 /* ExportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportViewController.swift; sourceTree = "<group>"; };
 		DF591CD11DEC08C700F6B0BC /* AppRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRealm.swift; sourceTree = "<group>"; };
 		DF61E52D1D9A144F00DA2607 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		DF61E52E1D9A144F00DA2607 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			children = (
 				DF3BECB31E03B99300395369 /* UIViewController+Alert.swift */,
 				DF544A911D9DE5E0005F7D9E /* AccountsTableViewController.swift */,
+				DF5743A21E0900760061FBF5 /* ExportViewController.swift */,
 				DFFB27A41DAB1C74009C3088 /* AddManualViewController.swift */,
 				DF18E7211DF371A500C5AEF6 /* AddManualViewController+UITextFieldDelegate.swift */,
 				DF0365E81E037622007A4D77 /* CameraNavigationController.swift */,
@@ -605,6 +608,7 @@
 				DF446B651E038871001F91A1 /* OTPURI.Types.swift in Sources */,
 				DFEB3FE21D9D2AA800A65A48 /* OTPAccount.Defaults.swift in Sources */,
 				DF3BECB41E03B99300395369 /* UIViewController+Alert.swift in Sources */,
+				DF5743A31E0900760061FBF5 /* ExportViewController.swift in Sources */,
 				DFF9EFAD1D9D05DA00EF36C6 /* OTPURI.swift in Sources */,
 				DF0E36001D9E6FED00C66351 /* AccountTableViewCell.swift in Sources */,
 				DF18E71F1DF3651C00C5AEF6 /* AddAccountInvalidInput.swift in Sources */,

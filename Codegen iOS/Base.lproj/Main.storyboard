@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,7 +46,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="126"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="0vl-4h-1cy" id="YWd-Jh-W6a">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="123 456" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wFK-Ri-hEG">
@@ -133,6 +134,11 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
+                        <barButtonItem title="Export" id="31y-bk-HXe">
+                            <connections>
+                                <action selector="didPressExport:" destination="nGE-24-ukb" id="mgN-og-P20"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem systemItem="flexibleSpace" id="Xsr-6L-pL1"/>
                         <barButtonItem systemItem="trash" id="kmc-8j-pxR">
                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -152,6 +158,7 @@
                     <connections>
                         <segue destination="mmB-CM-SaC" kind="presentation" identifier="presentAddManual" id="qY5-vm-7kh"/>
                         <segue destination="LYX-Eh-let" kind="presentation" identifier="presentAddScan" id="NzB-6S-vjD"/>
+                        <segue destination="ilc-c6-UQT" kind="show" identifier="showExport" id="rt5-YG-FJ1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvZ-8m-r56" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -332,7 +339,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tBv-of-z4U">
-                                                    <rect key="frame" x="288" y="12" width="51" height="29"/>
+                                                    <rect key="frame" x="288" y="11" width="51" height="29.5"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -399,6 +406,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vo8-tj-wYm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1594" y="-564"/>
+        </scene>
+        <!--Export-->
+        <scene sceneID="KhF-KB-YrX">
+            <objects>
+                <viewController id="ilc-c6-UQT" customClass="ExportViewController" customModule="Codegen" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bga-H4-LwZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="GjT-dg-wem"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ubx-Fg-Vca">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fpF-Il-i7d">
+                                <rect key="frame" x="47" y="193" width="280" height="280"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fpF-Il-i7d" secondAttribute="height" multiplier="1:1" id="47m-pY-TsB"/>
+                                    <constraint firstAttribute="width" constant="280" id="Y9l-93-Ard"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan using another device." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYo-Y9-h0u">
+                                <rect key="frame" x="64" y="489" width="248" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qYo-Y9-h0u" firstAttribute="top" secondItem="fpF-Il-i7d" secondAttribute="bottom" constant="16" id="2aD-7M-7Xd"/>
+                            <constraint firstItem="fpF-Il-i7d" firstAttribute="centerY" secondItem="Ubx-Fg-Vca" secondAttribute="centerY" id="9vd-Eu-5Z6"/>
+                            <constraint firstItem="fpF-Il-i7d" firstAttribute="centerX" secondItem="Ubx-Fg-Vca" secondAttribute="centerX" id="eaO-Tz-GZM"/>
+                            <constraint firstItem="qYo-Y9-h0u" firstAttribute="centerX" secondItem="fpF-Il-i7d" secondAttribute="centerX" id="qhK-1p-G2r"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Export" id="bWn-M3-qAc"/>
+                    <connections>
+                        <outlet property="imageView" destination="fpF-Il-i7d" id="I7a-hJ-n2T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tlY-yY-rlJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1593" y="198"/>
         </scene>
         <!--Camera Navigation Controller-->
         <scene sceneID="8tS-EK-BEp">
