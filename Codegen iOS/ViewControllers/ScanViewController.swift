@@ -12,6 +12,8 @@ import RealmSwift
 class ScanViewController: UIViewController {
     var scanner: QRCodeScanner?
     
+    var imports = [Int: String]()
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -34,9 +36,9 @@ class ScanViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    func startScanning() {
+    func startScanning(continuous: Bool = false) {
         do {
-            try scanner?.startScanning()
+            try scanner?.startScanning(continuous: continuous)
         } catch let error {
             print("Scanner startScanning() error: \(error)")
             
@@ -58,21 +60,54 @@ class ScanViewController: UIViewController {
 
 extension ScanViewController: QRCodeScannerDelegate {
     func qrCodeScanner(scanner: QRCodeScanner, didScan value: String) {
-        print("QR Code: \(value)")
-        
+        if scanner.continuous {
+            guard let components = parse(importString: value) else {
+                print("Not an import string")
+                return
+            }
+            
+            foundImport(index: components.index, uriString: components.uriString)
+            
+            if imports.count == components.count {
+                scanner.stopScanning()
+                
+                print("Found all imports: \(imports)")
+                
+                saveImports()
+            }
+        } else {
+            if let uri = OTPURI(uriString: value), let account = OTPAccount(uri: uri) {
+                found(account: account)
+            } else if let components = parse(importString: value) {
+                print("Found Import String")
+                
+                imports = [:]
+                
+                let feedbackGenerator = UIImpactFeedbackGenerator()
+                feedbackGenerator.prepare()
+                
+                foundImport(index: components.index, uriString: components.uriString)
+                
+                feedbackGenerator.impactOccurred()
+                startScanning(continuous: true)
+            } else {
+                let feedbackGenerator = UINotificationFeedbackGenerator()
+                
+                feedbackGenerator.prepare()
+                
+                feedbackGenerator.notificationOccurred(.error)
+                
+                presentErrorAlert(title: "QR Code Error", message: "Invalid code. Try adding manually if possible.") { _ in
+                    self.startScanning()
+                }
+            }
+        }
+    }
+    
+    private func found(account: OTPAccount) {
         let feedbackGenerator = UINotificationFeedbackGenerator()
         
         feedbackGenerator.prepare()
-        
-        guard let uri = OTPURI(uriString: value), let account = OTPAccount(uri: uri) else {
-            feedbackGenerator.notificationOccurred(.error)
-            
-            presentErrorAlert(title: "QR Code Error", message: "Invalid code. Try adding manually if possible.") { _ in
-                self.startScanning()
-            }
-            
-            return
-        }
         
         do {
             let realm = try Realm()
@@ -91,6 +126,50 @@ extension ScanViewController: QRCodeScannerDelegate {
             feedbackGenerator.notificationOccurred(.error)
             
             presentErrorAlert(title: "Failed to Add", message: "Unknown error.") { _ in
+                self.startScanning()
+            }
+        }
+    }
+    
+    private func parse(importString: String) -> (index: Int, count: Int, uriString: String)? {
+        let components = importString.components(separatedBy: ";")
+        
+        guard components.count >= 3 else {
+            return nil
+        }
+        
+        guard let index = Int(components[0]), let count = Int(components[1]) else {
+            return nil
+        }
+        
+        return (index: index, count: count, uriString: components.dropFirst(2).joined(separator: ";"))
+    }
+    
+    private func foundImport(index: Int, uriString: String) {
+        guard imports[index] == nil else { return }
+        
+        imports[index] = uriString
+    }
+    
+    private func saveImports() {
+        let uriStrings = (0 ..< imports.count).lazy.flatMap { self.imports[$0] }
+        let accounts = uriStrings.flatMap { OTPURI(uriString: $0) }.flatMap { OTPAccount(uri: $0) }
+        
+        do {
+            let realm = try Realm()
+            let store = try OTPAccountStore.defaultStore(in: realm)
+            
+            try realm.write {
+                for account in accounts.reversed() {
+                    store.accounts.insert(account, at: 0)
+                }
+            }
+            
+            dismiss(animated: true)
+        } catch let error {
+            print("Failed to import accounts: \(error)")
+            
+            presentErrorAlert(title: "Import Failed", message: "Failed to save accounts.") { _ in
                 self.startScanning()
             }
         }
