@@ -70,12 +70,19 @@ extension ScanViewController: QRCodeScannerDelegate {
             
             foundImport(index: components.index, uriString: components.uriString)
             
+            DispatchQueue.main.async { [unowned self] in
+                let progress = self.importProgress(count: components.count)
+                self.progressView?.setProgress(progress, animated: true)
+            }
+            
             if imports.count == components.count {
                 scanner.stopScanning()
                 
                 print("Found all imports: \(imports)")
                 
-                saveImports()
+                DispatchQueue.main.async { [unowned self] in
+                    self.saveImports()
+                }
             }
         } else {
             if let uri = OTPURI(uriString: value), let account = OTPAccount(uri: uri) {
@@ -89,6 +96,11 @@ extension ScanViewController: QRCodeScannerDelegate {
                 feedbackGenerator.prepare()
                 
                 foundImport(index: components.index, uriString: components.uriString)
+                
+                DispatchQueue.main.async { [unowned self] in
+                    self.progressView?.isHidden = false
+                    self.progressView?.progress = self.importProgress(count: components.count)
+                }
                 
                 feedbackGenerator.impactOccurred()
                 startScanning(continuous: true)
@@ -154,6 +166,9 @@ extension ScanViewController: QRCodeScannerDelegate {
     }
     
     private func saveImports() {
+        let feedbackGenerator = UINotificationFeedbackGenerator()
+        feedbackGenerator.prepare()
+        
         let uriStrings = (0 ..< imports.count).lazy.flatMap { self.imports[$0] }
         let accounts = uriStrings.flatMap { OTPURI(uriString: $0) }.flatMap { OTPAccount(uri: $0) }
         
@@ -167,13 +182,25 @@ extension ScanViewController: QRCodeScannerDelegate {
                 }
             }
             
+            feedbackGenerator.notificationOccurred(.success)
+            
             dismiss(animated: true)
         } catch let error {
             print("Failed to import accounts: \(error)")
+            
+            feedbackGenerator.notificationOccurred(.error)
             
             presentErrorAlert(title: "Import Failed", message: "Failed to save accounts.") { _ in
                 self.startScanning()
             }
         }
+    }
+    
+    private var progressView: UIProgressView? {
+        return (navigationController as? CameraNavigationController)?.progressView
+    }
+    
+    private func importProgress(count: Int) -> Float {
+        return Float(imports.count) / Float(count)
     }
 }
