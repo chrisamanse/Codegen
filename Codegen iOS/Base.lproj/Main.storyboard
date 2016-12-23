@@ -176,7 +176,18 @@
                     <view key="view" contentMode="scaleToFill" id="YpH-ny-NuC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npo-hW-ZlA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="RNh-9h-yL7" firstAttribute="top" secondItem="npo-hW-ZlA" secondAttribute="bottom" id="EuN-qt-rO2"/>
+                            <constraint firstAttribute="trailing" secondItem="npo-hW-ZlA" secondAttribute="trailing" id="F2e-oX-bLV"/>
+                            <constraint firstItem="npo-hW-ZlA" firstAttribute="leading" secondItem="YpH-ny-NuC" secondAttribute="leading" id="PdL-yn-9ig"/>
+                            <constraint firstItem="npo-hW-ZlA" firstAttribute="top" secondItem="YpH-ny-NuC" secondAttribute="top" id="mrL-GH-gOZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Scan" id="Ef0-HD-mIr">
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="PFe-9X-aOM">
@@ -185,10 +196,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cameraPreview" destination="npo-hW-ZlA" id="n5O-B0-cno"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xv5-KK-Xdp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2326" y="-1244"/>
+            <point key="canvasLocation" x="2325.5999999999999" y="-1244.527736131934"/>
         </scene>
         <!--Add Account-->
         <scene sceneID="w6r-Ie-Bvi">
@@ -339,7 +353,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tBv-of-z4U">
-                                                    <rect key="frame" x="288" y="11" width="51" height="29.5"/>
+                                                    <rect key="frame" x="288" y="12" width="51" height="29"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -428,7 +442,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan using another device." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYo-Y9-h0u">
-                                <rect key="frame" x="64" y="489" width="248" height="25.5"/>
+                                <rect key="frame" x="63" y="489" width="248" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

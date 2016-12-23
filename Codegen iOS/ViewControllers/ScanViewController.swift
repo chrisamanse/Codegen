@@ -10,6 +10,8 @@ import UIKit
 import RealmSwift
 
 class ScanViewController: UIViewController {
+    @IBOutlet weak var cameraPreview: UIView!
+    
     var scanner: QRCodeScanner?
     
     var imports = [Int: String]()
@@ -49,7 +51,7 @@ class ScanViewController: UIViewController {
     }
     
     func createScanner() {
-        let scanner = QRCodeScanner(previewLayer: self.view.layer, overlayColor: UIColor.green.cgColor)
+        let scanner = QRCodeScanner(previewLayer: self.cameraPreview.layer, overlayColor: UIColor.green.cgColor)
         scanner.delegate = self
         
         self.scanner = scanner
