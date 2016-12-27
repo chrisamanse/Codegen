@@ -13,7 +13,9 @@ class AccountsTableViewController: UITableViewController {
     @IBOutlet var flexibleBarButtonItem: UIBarButtonItem!
     @IBOutlet var addBarButtonItem: UIBarButtonItem!
     @IBOutlet var exportBarButtonItem: UIBarButtonItem!
+    @IBOutlet var exportAllBarButtonItem: UIBarButtonItem!
     @IBOutlet var trashBarButtonItem: UIBarButtonItem!
+    @IBOutlet var trashAllBarButtonItem: UIBarButtonItem!
     
     var realm: Realm!
     var store: OTPAccountStore!
@@ -21,6 +23,9 @@ class AccountsTableViewController: UITableViewController {
     
     var timer: Timer?
     
+    var editingWithNoneSelectedButtons: [UIBarButtonItem] {
+        return [exportAllBarButtonItem, flexibleBarButtonItem, trashAllBarButtonItem]
+    }
     var editingWithSelectedButtons: [UIBarButtonItem] {
         return [exportBarButtonItem, flexibleBarButtonItem, trashBarButtonItem]
     }
@@ -34,6 +39,10 @@ class AccountsTableViewController: UITableViewController {
         let indexPaths = tableView.indexPathsForSelectedRows ?? []
         
         return indexPaths.map { store.accounts[$0.row] }
+    }
+    
+    var allAccounts: [OTPAccount] {
+        return store.accounts.map { $0 }
     }
     
     override func viewDidLoad() {
@@ -104,8 +113,26 @@ class AccountsTableViewController: UITableViewController {
         updateToolbarItems()
     }
     
+    @IBAction func didPressTrashAll(_ sender: UIBarButtonItem) {
+        let confirmAlert = UIAlertController(title: "Delete All", message: "Are you sure you want to delete all accounts?", preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let delete = UIAlertAction(title: "Delete", style: .destructive) { [unowned self] _ in
+            self.delete(accounts: self.allAccounts)
+            
+            self.updateToolbarItems()
+        }
+        
+        confirmAlert.addAction(cancel)
+        confirmAlert.addAction(delete)
+        
+        present(confirmAlert, animated: true)
+    }
+    
     @IBAction func didPressExport(_ sender: UIBarButtonItem) {
-        export(accounts: selectedAccounts)
+        let accounts = sender == exportAllBarButtonItem ? allAccounts : selectedAccounts
+        
+        export(accounts: accounts)
     }
     
     func createTimer() {
@@ -188,11 +215,21 @@ class AccountsTableViewController: UITableViewController {
     }
     
     func updateToolbarItems() {
+        let buttons: [UIBarButtonItem]
+        
         if tableView.isEditing {
-            setToolbarItems(editingWithSelectedButtons, animated: true)
+            let noSelection = tableView.indexPathsForSelectedRows.map { $0.isEmpty } ?? true
+            
+            if noSelection {
+                buttons = editingWithNoneSelectedButtons
+            } else {
+                buttons = editingWithSelectedButtons
+            }
         } else {
-            setToolbarItems(notEditingButtons, animated: true)
+            buttons = notEditingButtons
         }
+        
+        setToolbarItems(buttons, animated: true)
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
