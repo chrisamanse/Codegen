@@ -28,6 +28,8 @@ class AccountsTableViewController: UITableViewController {
         return [flexibleBarButtonItem, addBarButtonItem]
     }
     
+    var exportAccounts: [OTPAccount] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -100,11 +102,10 @@ class AccountsTableViewController: UITableViewController {
     }
     
     @IBAction func didPressExport(_ sender: UIBarButtonItem) {
-        guard (tableView.indexPathsForSelectedRows.map { $0.count > 0 } ?? false) else {
-            return
-        }
+        let indexPaths = tableView.indexPathsForSelectedRows ?? []
+        let accounts = indexPaths.map { store.accounts[$0.row] }
         
-        performSegue(withIdentifier: "showExport", sender: nil)
+        export(accounts: accounts)
     }
     
     func createTimer() {
@@ -178,6 +179,12 @@ class AccountsTableViewController: UITableViewController {
             
             tableView.reloadData()
         }
+    }
+    
+    func export(accounts: [OTPAccount]) {
+        exportAccounts = accounts
+        
+        performSegue(withIdentifier: "showExport", sender: nil)
     }
     
     func updateToolbarItems() {
@@ -315,11 +322,9 @@ class AccountsTableViewController: UITableViewController {
         if segue.identifier == "showExport" {
             let exportVC = segue.destination as! ExportViewController
             
-            let accounts = tableView.indexPathsForSelectedRows.map { indexPaths in
-                indexPaths.map { store.accounts[$0.row] }
-            } ?? []
+            exportVC.accounts = exportAccounts
             
-            exportVC.accounts = accounts
+            exportAccounts = []
         }
     }
 }
