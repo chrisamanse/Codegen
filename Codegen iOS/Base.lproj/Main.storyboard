@@ -134,34 +134,37 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Export" id="31y-bk-HXe">
-                            <connections>
-                                <action selector="didPressExport:" destination="nGE-24-ukb" id="mgN-og-P20"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem systemItem="flexibleSpace" id="Xsr-6L-pL1"/>
-                        <barButtonItem systemItem="trash" id="kmc-8j-pxR">
-                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="didPressTrash:" destination="nGE-24-ukb" id="Ed7-jl-qpP"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" title="Codegen" id="pbU-4g-L8E">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="xc1-TR-n5d">
+                        <barButtonItem systemItem="flexibleSpace" id="LKF-Bj-wzN"/>
+                        <barButtonItem systemItem="add" id="xc1-TR-n5d">
                             <connections>
                                 <action selector="didPressAdd:" destination="nGE-24-ukb" id="Xfw-1U-bKa"/>
                             </connections>
                         </barButtonItem>
-                    </navigationItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Codegen" id="pbU-4g-L8E"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addBarButtonItem" destination="xc1-TR-n5d" id="pro-NN-UNh"/>
+                        <outlet property="exportBarButtonItem" destination="31y-bk-HXe" id="sMT-96-ir9"/>
+                        <outlet property="flexibleBarButtonItem" destination="LKF-Bj-wzN" id="UFL-1i-3Lh"/>
+                        <outlet property="trashBarButtonItem" destination="kmc-8j-pxR" id="cqa-Nn-a2D"/>
                         <segue destination="mmB-CM-SaC" kind="presentation" identifier="presentAddManual" id="qY5-vm-7kh"/>
                         <segue destination="LYX-Eh-let" kind="presentation" identifier="presentAddScan" id="NzB-6S-vjD"/>
                         <segue destination="ilc-c6-UQT" kind="show" identifier="showExport" id="rt5-YG-FJ1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvZ-8m-r56" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Export" id="31y-bk-HXe">
+                    <connections>
+                        <action selector="didPressExport:" destination="nGE-24-ukb" id="mgN-og-P20"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="trash" id="kmc-8j-pxR">
+                    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="didPressTrash:" destination="nGE-24-ukb" id="Ed7-jl-qpP"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="868" y="-564.46776611694156"/>
         </scene>
@@ -353,7 +356,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tBv-of-z4U">
-                                                    <rect key="frame" x="288" y="12" width="51" height="29"/>
+                                                    <rect key="frame" x="288" y="11" width="51" height="29.5"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>

@@ -10,16 +10,28 @@ import UIKit
 import RealmSwift
 
 class AccountsTableViewController: UITableViewController {
+    @IBOutlet var flexibleBarButtonItem: UIBarButtonItem!
+    @IBOutlet var addBarButtonItem: UIBarButtonItem!
+    @IBOutlet var exportBarButtonItem: UIBarButtonItem!
+    @IBOutlet var trashBarButtonItem: UIBarButtonItem!
+    
     var realm: Realm!
     var store: OTPAccountStore!
     var token: NotificationToken?
     
     var timer: Timer?
     
+    var editingWithSelectedButtons: [UIBarButtonItem] {
+        return [exportBarButtonItem, flexibleBarButtonItem, trashBarButtonItem]
+    }
+    var notEditingButtons: [UIBarButtonItem] {
+        return [flexibleBarButtonItem, addBarButtonItem]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.rightBarButtonItem = editButtonItem
         
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
@@ -81,7 +93,7 @@ class AccountsTableViewController: UITableViewController {
     @IBAction func didPressTrash(_ sender: UIBarButtonItem) {
         deleteAccounts(at: tableView.indexPathsForSelectedRows ?? [])
         
-        navigationController?.setToolbarHidden(true, animated: true)
+        updateToolbarItems()
     }
     
     @IBAction func didPressExport(_ sender: UIBarButtonItem) {
@@ -167,6 +179,14 @@ class AccountsTableViewController: UITableViewController {
         }
     }
     
+    func updateToolbarItems() {
+        if tableView.isEditing {
+            setToolbarItems(editingWithSelectedButtons, animated: true)
+        } else {
+            setToolbarItems(notEditingButtons, animated: true)
+        }
+    }
+    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
@@ -176,10 +196,9 @@ class AccountsTableViewController: UITableViewController {
         } else {
             // Did end editing
             createTimer()
-            
-            navigationController?.setToolbarHidden(true, animated: true)
         }
         
+        updateToolbarItems()
         updateVisibleCells()
     }
     
@@ -266,15 +285,12 @@ class AccountsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let indexPaths = tableView.indexPathsForSelectedRows ?? []
-        let hideToolbar = indexPaths.count == 0
-        
-        navigationController?.setToolbarHidden(hideToolbar, animated: true)
+        updateToolbarItems()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.isEditing {
-            navigationController?.setToolbarHidden(false, animated: true)
+            updateToolbarItems()
         } else {
             let account = store.accounts[indexPath.row]
             
