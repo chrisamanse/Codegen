@@ -30,6 +30,12 @@ class AccountsTableViewController: UITableViewController {
     
     var exportAccounts: [OTPAccount] = []
     
+    var selectedAccounts: [OTPAccount] {
+        let indexPaths = tableView.indexPathsForSelectedRows ?? []
+        
+        return indexPaths.map { store.accounts[$0.row] }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -93,19 +99,13 @@ class AccountsTableViewController: UITableViewController {
     }
     
     @IBAction func didPressTrash(_ sender: UIBarButtonItem) {
-        let indexPaths = tableView.indexPathsForSelectedRows ?? []
-        let accounts = indexPaths.map { store.accounts[$0.row] }
-        
-        delete(accounts: accounts)
+        delete(accounts: selectedAccounts)
         
         updateToolbarItems()
     }
     
     @IBAction func didPressExport(_ sender: UIBarButtonItem) {
-        let indexPaths = tableView.indexPathsForSelectedRows ?? []
-        let accounts = indexPaths.map { store.accounts[$0.row] }
-        
-        export(accounts: accounts)
+        export(accounts: selectedAccounts)
     }
     
     func createTimer() {
