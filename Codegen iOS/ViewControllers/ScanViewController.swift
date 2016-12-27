@@ -44,7 +44,7 @@ class ScanViewController: UIViewController {
         } catch let error {
             print("Scanner startScanning() error: \(error)")
             
-            presentErrorAlert(title: "Camera Error", message: "Failed to open camera.") { _ in
+            presentErrorAlert(title: AppStrings.Alerts.CameraError.title, message: AppStrings.Alerts.CameraError.message) { _ in
                 self.dismiss(animated: true)
             }
         }
@@ -111,7 +111,7 @@ extension ScanViewController: QRCodeScannerDelegate {
                 
                 feedbackGenerator.notificationOccurred(.error)
                 
-                presentErrorAlert(title: "QR Code Error", message: "Invalid code. Try adding manually if possible.") { _ in
+                presentErrorAlert(title: AppStrings.Alerts.QRCodeError.title, message: AppStrings.Alerts.QRCodeError.message) { _ in
                     self.startScanning()
                 }
             }
@@ -139,7 +139,7 @@ extension ScanViewController: QRCodeScannerDelegate {
             
             feedbackGenerator.notificationOccurred(.error)
             
-            presentErrorAlert(title: "Failed to Add", message: "Unknown error.") { _ in
+            presentErrorAlert(title: AppStrings.Alerts.AddAccountFailed.title, message: AppStrings.Alerts.AddAccountFailed.unknownError) { _ in
                 self.startScanning()
             }
         }
@@ -190,7 +190,7 @@ extension ScanViewController: QRCodeScannerDelegate {
             
             feedbackGenerator.notificationOccurred(.error)
             
-            presentErrorAlert(title: "Import Failed", message: "Failed to save accounts.") { _ in
+            presentErrorAlert(title: AppStrings.Alerts.ImportFailed.title, message: AppStrings.Alerts.ImportFailed.message) { _ in
                 self.startScanning()
             }
         }

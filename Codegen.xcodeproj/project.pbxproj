@@ -16,6 +16,7 @@
 		DF18E7251DF37FA700C5AEF6 /* Pasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF18E7231DF37FA700C5AEF6 /* Pasteboard.swift */; };
 		DF1A78AC1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A78AB1D9A7C3D00CEDE7C /* OTPAccount.swift */; };
 		DF1A78AD1D9A7C3D00CEDE7C /* OTPAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A78AB1D9A7C3D00CEDE7C /* OTPAccount.swift */; };
+		DF261E7E1E120096005B90E0 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF261E7D1E120096005B90E0 /* AppStrings.swift */; };
 		DF2B75691D9F9E05003B9242 /* OTPAccountStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B75681D9F9E05003B9242 /* OTPAccountStore.swift */; };
 		DF2B756A1D9F9E05003B9242 /* OTPAccountStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B75681D9F9E05003B9242 /* OTPAccountStore.swift */; };
 		DF2B756C1D9FBFB1003B9242 /* Collection+Split.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B756B1D9FBFB1003B9242 /* Collection+Split.swift */; };
@@ -134,6 +135,7 @@
 		DF18E7211DF371A500C5AEF6 /* AddManualViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddManualViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		DF18E7231DF37FA700C5AEF6 /* Pasteboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pasteboard.swift; sourceTree = "<group>"; };
 		DF1A78AB1D9A7C3D00CEDE7C /* OTPAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPAccount.swift; sourceTree = "<group>"; };
+		DF261E7D1E120096005B90E0 /* AppStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
 		DF2B75681D9F9E05003B9242 /* OTPAccountStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPAccountStore.swift; sourceTree = "<group>"; };
 		DF2B756B1D9FBFB1003B9242 /* Collection+Split.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Split.swift"; sourceTree = "<group>"; };
 		DF37B49C1DA138E900A655D1 /* VerticalProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalProgressView.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				DFE7F0591D9534A000B8E15B /* AppDelegate.swift */,
 				DF92B7E21DF8F2D600FD82BD /* CameraController.swift */,
 				DF3DB2F41DFFC91D004163F9 /* QRCodeScanner.swift */,
+				DF261E7D1E120096005B90E0 /* AppStrings.swift */,
 				DF0E35FE1D9E6FAB00C66351 /* Views */,
 				DF0E35FB1D9E6D6800C66351 /* ViewControllers */,
 				DFE7F05D1D9534A000B8E15B /* Main.storyboard */,
@@ -623,6 +626,7 @@
 				DF0365E91E037622007A4D77 /* CameraNavigationController.swift in Sources */,
 				DF61E54D1D9A268900DA2607 /* RealmKey.swift in Sources */,
 				DF3DB2F51DFFC91D004163F9 /* QRCodeScanner.swift in Sources */,
+				DF261E7E1E120096005B90E0 /* AppStrings.swift in Sources */,
 				DF37B49D1DA138E900A655D1 /* VerticalProgressView.swift in Sources */,
 				DFFB27A51DAB1C74009C3088 /* AddManualViewController.swift in Sources */,
 				DF61E53D1D9A18DA00DA2607 /* RealmDefaults.swift in Sources */,

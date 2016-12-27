@@ -55,14 +55,14 @@ class AddManualViewController: UITableViewController {
         } catch let error as AddAccountInvalidInput {
             feedbackGenerator.notificationOccurred(.error)
             
-            let alertMessage = "Please fix the following errors:\n" + error.errorMessages.joined(separator: "\n")
-            presentErrorAlert(title: "Failed to Add Account", message: alertMessage)
+            let alertMessage = AppStrings.Alerts.AddAccountFailed.fixMessage + "\n" + error.errorMessages.joined(separator: "\n")
+            presentErrorAlert(title: AppStrings.Alerts.AddAccountFailed.title, message: alertMessage)
         } catch let error {
             print("Failed to add: \(error)")
             
             feedbackGenerator.notificationOccurred(.error)
             
-            presentErrorAlert(title: "Failed to Add", message: "Unknown error.")
+            presentErrorAlert(title: AppStrings.Alerts.AddAccountFailed.title, message: AppStrings.Alerts.AddAccountFailed.unknownError)
         }
     }
     

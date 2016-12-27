@@ -92,13 +92,13 @@ class AccountsTableViewController: UITableViewController {
     @IBAction func didPressAdd(_ sender: UIBarButtonItem) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let scanAction = UIAlertAction(title: "Scan", style: .default) { [unowned self] _ in
+        let scanAction = UIAlertAction(title: AppStrings.scan, style: .default) { [unowned self] _ in
             self.performSegue(withIdentifier: "presentAddScan", sender: nil)
         }
-        let manualAction = UIAlertAction(title: "Manual", style: .default) { [unowned self] _ in
+        let manualAction = UIAlertAction(title: AppStrings.manual, style: .default) { [unowned self] _ in
             self.performSegue(withIdentifier: "presentAddManual", sender: nil)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: AppStrings.cancel, style: .cancel)
         
         actionSheet.addAction(scanAction)
         actionSheet.addAction(manualAction)
@@ -114,10 +114,10 @@ class AccountsTableViewController: UITableViewController {
     }
     
     @IBAction func didPressTrashAll(_ sender: UIBarButtonItem) {
-        let confirmAlert = UIAlertController(title: "Delete All", message: "Are you sure you want to delete all accounts?", preferredStyle: .alert)
+        let confirmAlert = UIAlertController(title: AppStrings.Alerts.DeleteAll.title, message: AppStrings.Alerts.DeleteAll.message, preferredStyle: .alert)
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        let delete = UIAlertAction(title: "Delete", style: .destructive) { [unowned self] _ in
+        let cancel = UIAlertAction(title: AppStrings.cancel, style: .cancel)
+        let delete = UIAlertAction(title: AppStrings.delete, style: .destructive) { [unowned self] _ in
             self.delete(accounts: self.allAccounts)
             
             self.updateToolbarItems()
@@ -211,7 +211,7 @@ class AccountsTableViewController: UITableViewController {
     func export(accounts: [OTPAccount]) {
         exportAccounts = accounts
         
-        performSegue(withIdentifier: "showExport", sender: nil)
+        performSegue(withIdentifier: SegueIdentifiers.showExport, sender: nil)
     }
     
     func updateToolbarItems() {
@@ -356,12 +356,18 @@ class AccountsTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showExport" {
+        if segue.identifier == SegueIdentifiers.showExport {
             let exportVC = segue.destination as! ExportViewController
             
             exportVC.accounts = exportAccounts
             
             exportAccounts = []
         }
+    }
+}
+
+extension AccountsTableViewController {
+    enum SegueIdentifiers {
+        static let showExport = "showExport"
     }
 }
