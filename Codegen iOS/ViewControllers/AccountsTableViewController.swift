@@ -91,7 +91,10 @@ class AccountsTableViewController: UITableViewController {
     }
     
     @IBAction func didPressTrash(_ sender: UIBarButtonItem) {
-        deleteAccounts(at: tableView.indexPathsForSelectedRows ?? [])
+        let indexPaths = tableView.indexPathsForSelectedRows ?? []
+        let accounts = indexPaths.map { store.accounts[$0.row] }
+        
+        delete(accounts: accounts)
         
         updateToolbarItems()
     }
@@ -163,13 +166,11 @@ class AccountsTableViewController: UITableViewController {
         }
     }
     
-    func deleteAccounts(at indexPaths: [IndexPath]) {
-        guard indexPaths.count > 0 else { return }
+    func delete(accounts: [OTPAccount]) {
+        guard accounts.count > 0 else { return }
         
         do {
             try realm.write {
-                let accounts = indexPaths.map { store.accounts[$0.row] }
-                
                 realm.delete(accounts)
             }
         } catch let error {
@@ -265,7 +266,9 @@ class AccountsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            deleteAccounts(at: [indexPath])
+            let account = store.accounts[indexPath.row]
+            
+            delete(accounts: [account])
         }
     }
     
