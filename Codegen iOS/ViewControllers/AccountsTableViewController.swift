@@ -38,6 +38,12 @@ class AccountsTableViewController: UITableViewController {
         createTimer()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.isToolbarHidden = false
+    }
+    
     func applicationDidBecomeActive(_ notification: NSNotification) {
         tableView.reloadData()
         

@@ -74,6 +74,7 @@
 		DFF9EFB31D9D093000EF36C6 /* HashFunction+Raw.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFB21D9D093000EF36C6 /* HashFunction+Raw.swift */; };
 		DFF9EFB41D9D093000EF36C6 /* HashFunction+Raw.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9EFB21D9D093000EF36C6 /* HashFunction+Raw.swift */; };
 		DFFB27A51DAB1C74009C3088 /* AddManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFB27A41DAB1C74009C3088 /* AddManualViewController.swift */; };
+		DFFBC4531E0DD409009702D4 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFBC4521E0DD409009702D4 /* MainNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +188,7 @@
 		DFF9EFAF1D9D06CB00EF36C6 /* OTPAccount+OTPURI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OTPAccount+OTPURI.swift"; sourceTree = "<group>"; };
 		DFF9EFB21D9D093000EF36C6 /* HashFunction+Raw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HashFunction+Raw.swift"; sourceTree = "<group>"; };
 		DFFB27A41DAB1C74009C3088 /* AddManualViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddManualViewController.swift; sourceTree = "<group>"; };
+		DFFBC4521E0DD409009702D4 /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 				DF18E7211DF371A500C5AEF6 /* AddManualViewController+UITextFieldDelegate.swift */,
 				DF0365E81E037622007A4D77 /* CameraNavigationController.swift */,
 				DF92B7E01DF8F0D300FD82BD /* ScanViewController.swift */,
+				DFFBC4521E0DD409009702D4 /* MainNavigationController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFFBC4531E0DD409009702D4 /* MainNavigationController.swift in Sources */,
 				DF92B7E11DF8F0D300FD82BD /* ScanViewController.swift in Sources */,
 				DF446B631E0387B4001F91A1 /* OTPURI.Keys.swift in Sources */,
 				DFF9EFB31D9D093000EF36C6 /* HashFunction+Raw.swift in Sources */,
