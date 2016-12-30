@@ -13,6 +13,7 @@ public enum AppStrings {
     public static let manual = "Manual"
     
     public enum Alerts {}
+    public enum Licenses {}
 }
 
 public extension AppStrings.Alerts {
@@ -41,4 +42,8 @@ public extension AppStrings.Alerts {
         public static let title = "Import Failed"
         public static let message = "Failed to import accounts."
     }
+}
+
+public extension AppStrings.Licenses {
+    public static let all = ["CryptoKit", "OTPKit", "Realm", "QRSwift"]
 }
