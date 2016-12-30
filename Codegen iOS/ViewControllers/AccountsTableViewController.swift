@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 class AccountsTableViewController: UITableViewController {
+    @IBOutlet var moreBarButtonItem: UIBarButtonItem!
     @IBOutlet var flexibleBarButtonItem: UIBarButtonItem!
     @IBOutlet var addBarButtonItem: UIBarButtonItem!
     @IBOutlet var exportBarButtonItem: UIBarButtonItem!
@@ -30,7 +31,7 @@ class AccountsTableViewController: UITableViewController {
         return [exportBarButtonItem, flexibleBarButtonItem, trashBarButtonItem]
     }
     var notEditingButtons: [UIBarButtonItem] {
-        return [flexibleBarButtonItem, addBarButtonItem]
+        return [moreBarButtonItem, flexibleBarButtonItem, addBarButtonItem]
     }
     
     var exportAccounts: [OTPAccount] = []

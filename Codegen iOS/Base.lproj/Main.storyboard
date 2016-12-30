@@ -134,6 +134,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
+                        <barButtonItem image="more" id="ZjZ-OC-kTN"/>
                         <barButtonItem systemItem="flexibleSpace" id="LKF-Bj-wzN"/>
                         <barButtonItem systemItem="add" id="xc1-TR-n5d">
                             <connections>
@@ -148,6 +149,7 @@
                         <outlet property="exportAllBarButtonItem" destination="5UR-fW-NDy" id="3EG-cK-pBo"/>
                         <outlet property="exportBarButtonItem" destination="31y-bk-HXe" id="sMT-96-ir9"/>
                         <outlet property="flexibleBarButtonItem" destination="LKF-Bj-wzN" id="UFL-1i-3Lh"/>
+                        <outlet property="moreBarButtonItem" destination="ZjZ-OC-kTN" id="OxM-Xr-LiF"/>
                         <outlet property="trashAllBarButtonItem" destination="Mn6-9d-W5u" id="7TA-KV-uLE"/>
                         <outlet property="trashBarButtonItem" destination="kmc-8j-pxR" id="cqa-Nn-a2D"/>
                         <segue destination="mmB-CM-SaC" kind="presentation" identifier="presentAddManual" id="qY5-vm-7kh"/>
@@ -500,4 +502,7 @@
             <point key="canvasLocation" x="1593" y="-1244"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="more" width="25" height="25"/>
+    </resources>
 </document>
