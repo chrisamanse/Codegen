@@ -1,5 +1,5 @@
 //
-//  LicensesTableViewController.swift
+//  LicenseTableViewController.swift
 //  Codegen
 //
 //  Created by Chris Amanse on 12/29/16.
@@ -8,10 +8,11 @@
 
 import UIKit
 
-public class LicensesTableViewController: UITableViewController {
+public class LicenseTableViewController: UITableViewController {
     private static let cellIdentifier = "BasicCell"
-    private static let estimatedRowHeight: CGFloat = 44
-    public var licenses: [String] {
+    private static let estimatedRowHeight: CGFloat = 200
+    
+    var licenseText: String {
         didSet {
             if isViewLoaded {
                 tableView.reloadData()
@@ -19,14 +20,14 @@ public class LicensesTableViewController: UITableViewController {
         }
     }
     
-    public init(licenses: [String]) {
-        self.licenses = licenses
+    public init(licenseText: String) {
+        self.licenseText = licenseText
         
         super.init(style: .grouped)
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        self.licenses = []
+        self.licenseText = ""
         
         super.init(coder: aDecoder)
     }
@@ -34,7 +35,7 @@ public class LicensesTableViewController: UITableViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.estimatedRowHeight = LicensesTableViewController.estimatedRowHeight
+        tableView.estimatedRowHeight = LicenseTableViewController.estimatedRowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
@@ -43,27 +44,19 @@ public class LicensesTableViewController: UITableViewController {
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return licenses.count
+        return 1
     }
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = dequeueCell()
         
-        cell.textLabel?.text = licenses[indexPath.row]
+        cell.textLabel?.text = licenseText
         
         return cell
     }
     
-    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let licenseText = "Sample license text."
-        
-        let viewController = LicenseTableViewController(licenseText: licenseText)
-        
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-    
     private func dequeueCell() -> UITableViewCell {
-        let identifier = LicensesTableViewController.cellIdentifier
+        let identifier = LicenseTableViewController.cellIdentifier
         
         if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: identifier) {
             return dequeuedCell
@@ -71,9 +64,8 @@ public class LicensesTableViewController: UITableViewController {
         
         let cell = UITableViewCell(style: .default, reuseIdentifier: identifier)
         
-        cell.accessoryType = .disclosureIndicator
+        cell.textLabel?.numberOfLines = 0
         
         return cell
     }
 }
-

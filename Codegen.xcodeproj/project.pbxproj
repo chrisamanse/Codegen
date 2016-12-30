@@ -46,6 +46,7 @@
 		DF92B7E31DF8F2D600FD82BD /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92B7E21DF8F2D600FD82BD /* CameraController.swift */; };
 		DF970AA81E15F9E500D5FEF8 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF970AA71E15F9E400D5FEF8 /* MoreViewController.swift */; };
 		DF970AAA1E15FB6C00D5FEF8 /* LicensesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF970AA91E15FB6C00D5FEF8 /* LicensesTableViewController.swift */; };
+		DF970AAC1E16058200D5FEF8 /* LicenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF970AAB1E16058200D5FEF8 /* LicenseTableViewController.swift */; };
 		DFE07DD71E09FCD1009572F6 /* QRSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE07DD61E09FCD1009572F6 /* QRSwift.framework */; };
 		DFE07DD91E09FCE6009572F6 /* QRSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE07DD81E09FCE6009572F6 /* QRSwift.framework */; };
 		DFE07DDA1E09FCE6009572F6 /* QRSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFE07DD81E09FCE6009572F6 /* QRSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -161,6 +162,7 @@
 		DF92B7E21DF8F2D600FD82BD /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		DF970AA71E15F9E400D5FEF8 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		DF970AA91E15FB6C00D5FEF8 /* LicensesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicensesTableViewController.swift; sourceTree = "<group>"; };
+		DF970AAB1E16058200D5FEF8 /* LicenseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseTableViewController.swift; sourceTree = "<group>"; };
 		DFE07DD61E09FCD1009572F6 /* QRSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRSwift.framework; path = Carthage/Build/iOS/QRSwift.framework; sourceTree = "<group>"; };
 		DFE07DD81E09FCE6009572F6 /* QRSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRSwift.framework; path = Carthage/Build/Mac/QRSwift.framework; sourceTree = "<group>"; };
 		DFE07DDB1E09FD1C009572F6 /* QRSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = QRSwift.framework.dSYM; path = Carthage/Build/Mac/QRSwift.framework.dSYM; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				DFFBC4521E0DD409009702D4 /* MainNavigationController.swift */,
 				DF970AA71E15F9E400D5FEF8 /* MoreViewController.swift */,
 				DF970AA91E15FB6C00D5FEF8 /* LicensesTableViewController.swift */,
+				DF970AAB1E16058200D5FEF8 /* LicenseTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				DF0365E91E037622007A4D77 /* CameraNavigationController.swift in Sources */,
 				DF61E54D1D9A268900DA2607 /* RealmKey.swift in Sources */,
 				DF3DB2F51DFFC91D004163F9 /* QRCodeScanner.swift in Sources */,
+				DF970AAC1E16058200D5FEF8 /* LicenseTableViewController.swift in Sources */,
 				DF261E7E1E120096005B90E0 /* AppStrings.swift in Sources */,
 				DF37B49D1DA138E900A655D1 /* VerticalProgressView.swift in Sources */,
 				DFFB27A51DAB1C74009C3088 /* AddManualViewController.swift in Sources */,
