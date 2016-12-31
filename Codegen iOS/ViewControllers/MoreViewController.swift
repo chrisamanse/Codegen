@@ -10,16 +10,22 @@ import UIKit
 
 class MoreViewController: UITableViewController {
     private let supportURLString = "http://www.chrisamanse.xyz/"
+    private let appStoreURLString = "https://itunes.apple.com/us/app/codegen/id1156067090?mt=8"
     
     @IBAction func didPressDone(_ sender: AnyObject) {
         dismiss(animated: true)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
+        switch (indexPath.section, indexPath.row) {
+        case (0, 0):
             showLicenses()
-        } else if indexPath.row == 1 {
-            openSupport()
+        case (0, 1):
+            openURL(urlString: supportURLString)
+        case (1, 0):
+            openURL(urlString: appStoreURLString)
+        default:
+            break
         }
     }
     
@@ -29,10 +35,8 @@ class MoreViewController: UITableViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
-    private func openSupport() {
-        guard let url = URL(string: supportURLString) else {
-            return
-        }
+    private func openURL(urlString: String) {
+        guard let url = URL(string: urlString) else { return }
         
         UIApplication.shared.open(url)
     }
