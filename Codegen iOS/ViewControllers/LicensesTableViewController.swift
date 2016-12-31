@@ -11,6 +11,8 @@ import UIKit
 public class LicensesTableViewController: UITableViewController {
     private static let cellIdentifier = "BasicCell"
     private static let estimatedRowHeight: CGFloat = 44
+    private static let navigationBarTitle = "Licenses"
+    
     public var licenses: [String] {
         didSet {
             if isViewLoaded {
@@ -34,6 +36,8 @@ public class LicensesTableViewController: UITableViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = LicensesTableViewController.navigationBarTitle
+        
         tableView.estimatedRowHeight = LicensesTableViewController.estimatedRowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
     }
@@ -55,9 +59,11 @@ public class LicensesTableViewController: UITableViewController {
     }
     
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let licenseText = "Sample license text."
+        let licenseTitle = licenses[indexPath.row]
+        let licenseText = LicenseFinder.licenseText(for: licenseTitle)
         
         let viewController = LicenseTableViewController(licenseText: licenseText)
+        viewController.title = licenseTitle
         
         navigationController?.pushViewController(viewController, animated: true)
     }
@@ -77,3 +83,19 @@ public class LicensesTableViewController: UITableViewController {
     }
 }
 
+public extension LicensesTableViewController {
+    public struct LicenseFinder {
+        public static let `extension` = "license"
+        public static let subdirectory = "Licenses"
+        public static let noLicenseText = "No license found."
+        
+        public static func licenseText(for license: String) -> String {
+            let url = Bundle.main.url(forResource: license, withExtension: self.extension, subdirectory: subdirectory)
+            let licenseText = url.flatMap { try? String(contentsOf: $0) } ?? noLicenseText
+            
+            return licenseText
+        }
+        
+        private init() {}
+    }
+}

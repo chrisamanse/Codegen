@@ -47,6 +47,7 @@
 		DF970AA81E15F9E500D5FEF8 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF970AA71E15F9E400D5FEF8 /* MoreViewController.swift */; };
 		DF970AAA1E15FB6C00D5FEF8 /* LicensesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF970AA91E15FB6C00D5FEF8 /* LicensesTableViewController.swift */; };
 		DF970AAC1E16058200D5FEF8 /* LicenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF970AAB1E16058200D5FEF8 /* LicenseTableViewController.swift */; };
+		DF970AAF1E16078800D5FEF8 /* Licenses in Resources */ = {isa = PBXBuildFile; fileRef = DF970AAD1E16077300D5FEF8 /* Licenses */; };
 		DFE07DD71E09FCD1009572F6 /* QRSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE07DD61E09FCD1009572F6 /* QRSwift.framework */; };
 		DFE07DD91E09FCE6009572F6 /* QRSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE07DD81E09FCE6009572F6 /* QRSwift.framework */; };
 		DFE07DDA1E09FCE6009572F6 /* QRSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFE07DD81E09FCE6009572F6 /* QRSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -163,6 +164,7 @@
 		DF970AA71E15F9E400D5FEF8 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		DF970AA91E15FB6C00D5FEF8 /* LicensesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicensesTableViewController.swift; sourceTree = "<group>"; };
 		DF970AAB1E16058200D5FEF8 /* LicenseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseTableViewController.swift; sourceTree = "<group>"; };
+		DF970AAD1E16077300D5FEF8 /* Licenses */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Licenses; sourceTree = "<group>"; };
 		DFE07DD61E09FCD1009572F6 /* QRSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRSwift.framework; path = Carthage/Build/iOS/QRSwift.framework; sourceTree = "<group>"; };
 		DFE07DD81E09FCE6009572F6 /* QRSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRSwift.framework; path = Carthage/Build/Mac/QRSwift.framework; sourceTree = "<group>"; };
 		DFE07DDB1E09FD1C009572F6 /* QRSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = QRSwift.framework.dSYM; path = Carthage/Build/Mac/QRSwift.framework.dSYM; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				DFE7F06D1D9534A000B8E15B /* Codegen iOSUITests */,
 				DFE7F07C1D95353E00B8E15B /* Codegen macOS */,
 				DFE7F08E1D95353F00B8E15B /* Codegen macOSUITests */,
+				DF970AAD1E16077300D5FEF8 /* Licenses */,
 				DFE7F0571D9534A000B8E15B /* Products */,
 				DFE7F0981D95395B00B8E15B /* Frameworks */,
 			);
@@ -561,6 +564,7 @@
 			files = (
 				DFE7F0641D9534A000B8E15B /* LaunchScreen.storyboard in Resources */,
 				DFE7F0611D9534A000B8E15B /* Assets.xcassets in Resources */,
+				DF970AAF1E16078800D5FEF8 /* Licenses in Resources */,
 				DFE7F05F1D9534A000B8E15B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
