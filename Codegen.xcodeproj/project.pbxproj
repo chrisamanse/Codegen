@@ -168,7 +168,7 @@
 		DFE07DD61E09FCD1009572F6 /* QRSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRSwift.framework; path = Carthage/Build/iOS/QRSwift.framework; sourceTree = "<group>"; };
 		DFE07DD81E09FCE6009572F6 /* QRSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRSwift.framework; path = Carthage/Build/Mac/QRSwift.framework; sourceTree = "<group>"; };
 		DFE07DDB1E09FD1C009572F6 /* QRSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = QRSwift.framework.dSYM; path = Carthage/Build/Mac/QRSwift.framework.dSYM; sourceTree = "<group>"; };
-		DFE7F0561D9534A000B8E15B /* Codegen-debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codegen-debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFE7F0561D9534A000B8E15B /* Codegen Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codegen Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE7F0591D9534A000B8E15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFE7F05E1D9534A000B8E15B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DFE7F0601D9534A000B8E15B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -324,7 +324,7 @@
 		DFE7F0571D9534A000B8E15B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DFE7F0561D9534A000B8E15B /* Codegen-debug.app */,
+				DFE7F0561D9534A000B8E15B /* Codegen Debug.app */,
 				DFE7F06A1D9534A000B8E15B /* Codegen iOSUITests.xctest */,
 				DFE7F07B1D95353E00B8E15B /* Codegen-debug.app */,
 				DFE7F08B1D95353F00B8E15B /* Codegen macOSUITests.xctest */,
@@ -437,7 +437,7 @@
 			);
 			name = "Codegen iOS";
 			productName = "Codegen iOS";
-			productReference = DFE7F0561D9534A000B8E15B /* Codegen-debug.app */;
+			productReference = DFE7F0561D9534A000B8E15B /* Codegen Debug.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DFE7F0691D9534A000B8E15B /* Codegen iOSUITests */ = {
@@ -837,7 +837,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "xyz.chrisamanse.ios.codegen-debug";
-				PRODUCT_NAME = "Codegen-debug";
+				PRODUCT_NAME = "Codegen Debug";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
