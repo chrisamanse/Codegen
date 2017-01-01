@@ -14,6 +14,7 @@ An open source one-time password generator for iOS.
 
 - [ ] Limit number of characters in account details
 - [ ] Disable special characters in account details (URL reserved characters)
+- [ ] iOS Today Widget
 - [ ] macOS App
 
 ## License
