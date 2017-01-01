@@ -45,5 +45,5 @@ public extension AppStrings.Alerts {
 }
 
 public extension AppStrings.Licenses {
-    public static let all = ["CryptoKit", "OTPKit", "Realm", "QRSwift"]
+    public static let all = ["CryptoKit", "OTPKit", "QRSwift", "Realm"]
 }
