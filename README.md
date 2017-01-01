@@ -10,6 +10,12 @@ An open source one-time password generator for iOS.
 - [x] Stored locally only
 - [x] Encrypted
 
+## To-Do
+
+- [ ] Limit number of characters in account details
+- [ ] Disable special characters in account details (URL reserved characters)
+- [ ] macOS App
+
 ## License
 
 Copyright (c) 2016 Joe Christopher Paul Amanse
