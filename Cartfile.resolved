@@ -1,4 +1,4 @@
 github "chrisamanse/CryptoKit" "0.3.7"
-github "chrisamanse/QRSwift" "0.3.1"
-github "realm/realm-cocoa" "v2.1.0"
 github "chrisamanse/OTPKit" "0.1.6"
+github "chrisamanse/QRSwift" "0.3.1"
+github "realm/realm-cocoa" "v2.7.0"
